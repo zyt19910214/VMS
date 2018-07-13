@@ -1,0 +1,268 @@
+
+<blockquote class="layui-elem-quote layui-text">
+ 注意: 同一会员只能存在一个未完成订单
+ </blockquote>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>订单信息</legend>
+</fieldset>
+
+<form class="layui-form" action="" lay-filter="layuiadmin-form-dd">
+<div class="layui-form-item">
+    <label class="layui-form-label">会员名称</label>
+    <div class="layui-input-inline">
+      <input type="text" name="username" autocomplete="off" value="武通" class="layui-input" disabled>
+    </div>
+  </div>
+<div class="layui-form-item">
+    <label class="layui-form-label">会员手机号</label>
+    <div class="layui-input-inline">
+      <input type="text" name="phone" autocomplete="off" value=" 17629298189" class="layui-input" disabled>
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+
+    <div class="layui-inline">
+      <label class="layui-form-label">订单日期</label>
+      <div class="layui-input-inline">
+        <input type="text" name="date" id="date" lay-verify="datetime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" disabled>
+      </div>
+    </div>
+
+  </div>
+
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>服务</legend>
+</fieldset>
+ <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                  <input type="checkbox" name="like1[write]" lay-skin="primary" title="再愚惊人" checked="">
+                <div class="price">
+                    <b>￥10</b>
+
+                </div>
+              </div>
+            </a>
+ </div>
+ <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                  <input type="checkbox" name="like1[write]" lay-skin="primary" title="木桶大叔" >
+                <div class="price">
+                    <b>￥10</b>
+
+                </div>
+              </div>
+            </a>
+ </div>
+ <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                  <input type="checkbox" name="like1[write]" lay-skin="primary" title="奶油打脸机" checked="">
+                <div class="price">
+                    <b>￥15</b>
+
+                </div>
+              </div>
+            </a>
+ </div>
+  <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                  <input type="checkbox" name="like1[write]" lay-skin="primary" title="画出真相" >
+                <div class="price">
+                    <b>￥12</b>
+
+                </div>
+              </div>
+            </a>
+
+ </div>
+ <div style="margin-top: 10px;clear:both;padding:20px"></div >
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 0px;">
+<legend>商品</legend>
+</fieldset>
+
+  <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                <div class="price">
+                    <b>￥12</b>
+                    <div class="jiajian" style="display: inline-block;float:right;">
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
+                      <span style="overflow: hidden;">0</span>
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
+                    </div>
+
+                </div>
+              </div>
+            </a>
+
+ </div>
+  <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;">
+              </script>
+            </a>
+
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                <div class="price">
+                    <b>￥12</b>
+                    <div class="jiajian" style="display: inline-block;float:right;">
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
+                      <span style="overflow: hidden;">0</span>
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
+                    </div>
+
+                </div>
+              </div>
+            </a>
+
+ </div>
+  <div class="cmdlist-container" style="float:left;">
+            <a href="javascript:;">
+              <script type="text/html" template>
+                <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:80px;margin-left:30px;">
+              </script>
+            </a>
+
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+               <div class="price" style="font-size: 12px;">
+               你好  <b>￥12</b>
+               </div>
+                <div class="price">
+
+                    <div class="jiajian" style="display: inline-block;">
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
+                      <span style="overflow: hidden;margin:0 5px 0 5px;">0</span>
+                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
+                    </div>
+
+                </div>
+              </div>
+            </a>
+
+ </div>
+ <div style="margin-top: 10px;clear:both;padding:20px"></div >
+  <div class="layui-form-item layui-form-text" >
+    <label class="layui-form-label">普通文本域</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <!--<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">编辑器</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+    </div>
+  </div>-->
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+
+
+
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+
+  //日期
+  laydate.render({
+    elem: '#date'
+    ,type: 'datetime'
+    ,value: new Date()
+
+  });
+
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+
+});
+function jia(e){
+  elm = e.target.parentNode.parentNode
+  var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0)
+  elm.querySelector("span").innerHTML = ++count;
+  elm.setAttribute("count",count)
+};
+function jian(e){
+  elm = e.target.parentNode.parentNode
+  var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0)
+  elm.querySelector("span").innerHTML = count >0 ?--count :count;
+  elm.setAttribute("count",count)
+
+};
+</script>
