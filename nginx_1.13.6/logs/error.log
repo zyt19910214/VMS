@@ -144,3 +144,21 @@
 2018/07/18 19:39:03 [error] 4712#7724: *736 CreateFile() "D:\VMS\nginx_1.13.6/html/layuiAdmin.pro-v1.0.0/start/{{ layui.setter.base }}style/res/template/portrait.png" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /start/%7B%7B%20layui.setter.base%20%7D%7Dstyle/res/template/portrait.png HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/start/"
 2018/07/18 19:39:08 [error] 4712#7724: *736 CreateFile() "D:\VMS\nginx_1.13.6/html/layuiAdmin.pro-v1.0.0/start/{{ layui.setter.base }}style/res/template/portrait.png" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /start/%7B%7B%20layui.setter.base%20%7D%7Dstyle/res/template/portrait.png HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/start/"
 2018/07/18 19:40:01 [error] 4712#7724: *740 CreateFile() "D:\VMS\nginx_1.13.6/html/layuiAdmin.pro-v1.0.0/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1"
+2018/07/18 22:56:28 [emerg] 2696#10604: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:01:35 [emerg] 9204#7152: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:05:50 [emerg] 11092#11096: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:06:38 [emerg] 1508#2044: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:10:08 [emerg] 6808#3872: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:10:11 [emerg] 10128#9272: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:11:09 [notice] 7852#9972: signal process started
+2018/07/18 23:11:09 [error] 7852#9972: OpenEvent("Global\ngx_reopen_7996") failed (2: The system cannot find the file specified)
+2018/07/18 23:13:34 [emerg] 5116#1164: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2018/07/18 23:16:04 [notice] 7884#6380: signal process started
+2018/07/18 23:16:04 [error] 7884#6380: OpenEvent("Global\ngx_quit_7996") failed (2: The system cannot find the file specified)
+2018/07/18 23:16:06 [notice] 9784#10784: signal process started
+2018/07/18 23:16:06 [error] 9784#10784: OpenEvent("Global\ngx_quit_7996") failed (2: The system cannot find the file specified)
+2018/07/18 23:16:07 [notice] 9860#9964: signal process started
+2018/07/18 23:16:07 [error] 9860#9964: OpenEvent("Global\ngx_quit_7996") failed (2: The system cannot find the file specified)
+2018/07/18 23:16:07 [notice] 2200#10040: signal process started
+2018/07/18 23:16:07 [error] 2200#10040: OpenEvent("Global\ngx_quit_7996") failed (2: The system cannot find the file specified)
+2018/07/18 23:17:46 [emerg] 9928#9932: CreateDirectory() "D:\Study\VMS\nginx_1.13.6/temp/client_body_temp" failed (3: The system cannot find the path specified)

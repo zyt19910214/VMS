@@ -60,6 +60,7 @@ layui.define(['table', 'form'], function(exports){
           view(this.id).render('user/user/userform', data).done(function(){
             form.render(null, 'layuiadmin-form-useradmin');
 
+            console.log(data);
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               var field = data.field; //获取提交的字段
@@ -194,3 +195,4 @@ layui.define(['table', 'form'], function(exports){
 
   exports('useradmin', {})
 });
+
