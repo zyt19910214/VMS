@@ -78,18 +78,10 @@ layui.define(['table', 'form'], function(exports){
         ,area: ['800px', '600px']
         ,id: 'LAY-popup-user-add'
         ,success: function(layero, index){
+
           view(this.id).render('template/dd', data).done(function(){
-            form.render(null,'layuiadmin-form-dd');
+              form.render(null,'layuiadmin-form-dd');
 
-            //监听提交
-            form.on('submit(LAY-user-front-submit)', function(data){
-              var field = data.field; //获取提交的字段
-
-              //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
-              layui.table.reload('LAY-user-manage'); //重载表格
-              layer.close(index); //执行关闭
-            });
           });
         }
       });
