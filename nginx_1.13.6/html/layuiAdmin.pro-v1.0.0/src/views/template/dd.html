@@ -7,20 +7,19 @@
   <legend>订单信息</legend>
 </fieldset>
 
-<form class="layui-form" action="" lay-filter="layuiadmin-form-dd">
+<div class="layui-form" action="" lay-filter="layuiadmin-form-dd">
 <div class="layui-form-item">
     <label class="layui-form-label">会员名称</label>
     <div class="layui-input-inline">
-      <input type="text" name="vip_name" autocomplete="off" value="" class="layui-input" disabled>
+      <input type="text" id="vip_name" name="vip_name" autocomplete="off" value=""  class="layui-input" disabled>
     </div>
   </div>
 <div class="layui-form-item">
     <label class="layui-form-label">会员手机号</label>
     <div class="layui-input-inline">
-      <input type="text" name="phone" autocomplete="off" value=" 17629298189" class="layui-input" disabled>
+      <input type="text" id="vip_phone" name="vip_phone" autocomplete="off" value="" class="layui-input" disabled>
     </div>
   </div>
-
 
   <div class="layui-form-item">
 
@@ -42,7 +41,7 @@
      <div  class="cmdlist-container"  style="float:left;" >
             <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;"/>
               <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
-                  <input type="checkbox" name="server[{{item.id}}]" lay-skin="primary" title="{{item.name}}" >
+                  <input type="checkbox" name="server[{{item.id}}]" lay-skin="primary" title="{{item.name}}" lay-filter='ddw'  >
                 <div class="price">
                     <b>￥{{item.price}}</b>
                 </div>
@@ -97,7 +96,7 @@
   <div class="layui-form-item layui-form-text" >
     <label class="layui-form-label">普通文本域</label>
     <div class="layui-input-block">
-      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea name="vip_notes" placeholder="请输入内容" class="layui-textarea"></textarea>
     </div>
   </div>
   <!--<div class="layui-form-item layui-form-text">
@@ -112,7 +111,7 @@
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
-</form>
+</div>
 
 
 <script>
@@ -123,63 +122,7 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
   ,laydate = layui.laydate
   ,laytpl  = layui.laytpl;
 
-var data = {
-  "code": 0
-  ,"msg": ""
-  ,"count": "4"
-  ,"data": [{
-    "id": "1"
-    ,"price": "10"
-    ,"name": "脉动"
-  },{
-    "id": "2"
-    ,"price": "10"
-    ,"name": "酷儿"
-  },{
-    "id": "3"
-    ,"price": "10"
-    ,"name": "果粒奶优"
-  },{
-    "id": "4"
-    ,"price": "12"
-    ,"name": "冰峰"
-  }]
-}
-var data2 = {
-  "code": 0
-  ,"msg": ""
-  ,"count": "4"
-  ,"data": [{
-    "id": "1"
-    ,"price": "10"
-    ,"name": "再愚惊人"
-  },{
-    "id": "2"
-    ,"price": "10"
-    ,"name": "木桶大叔"
-  },{
-    "id": "3"
-    ,"price": "10"
-    ,"name": "画出真相"
-  },{
-    "id": "4"
-    ,"price": "12"
-    ,"name": "奶油打脸"
-  }]
-}
-var getTpl = demo.innerHTML
 
-,view = document.getElementById('server');
-laytpl(getTpl).render(data2, function(html){
-  view.innerHTML = html;
-});
-
-var getTpl = demo2.innerHTML
-
-,view = document.getElementById('good');
-laytpl(getTpl).render(data, function(html){
-  view.innerHTML = html;
-});
   //日期
   laydate.render({
     elem: '#date'
@@ -213,11 +156,17 @@ laytpl(getTpl).render(data, function(html){
     layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
   });
 
+  form.on('checkbox(ddw)', function(data){
+     //console.log(data.elem); //得到checkbox原始DOM对象
+     //console.log(data.elem.checked); //是否被选中，true或者false
+  });
   //监听提交
   form.on('submit(LAY_dd_submit)', function(data){
+
     layer.alert(JSON.stringify(data.field), {
       title: '最终的提交信息'
     })
+    window.location.href='/app/workorder/list';
     return false;
   });
 

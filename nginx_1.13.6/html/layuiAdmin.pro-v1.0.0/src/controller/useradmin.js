@@ -13,7 +13,8 @@ layui.define(['table', 'form'], function(exports){
   ,admin = layui.admin
   ,view = layui.view
   ,table = layui.table
-  ,form = layui.form;
+  ,form = layui.form
+  ,laytpl = layui.laytpl;
 
   //用户管理
   table.render({
@@ -44,12 +45,19 @@ layui.define(['table', 'form'], function(exports){
         formType: 1
         ,title: '敏感操作，请验证口令'
       }, function(value, index){
-        layer.close(index);
-
-        layer.confirm('真的删除行么', function(index){
+        if(value ==='111') {
+          layer.close(index);
+          layer.confirm('真的删除行么', function(index){
           obj.del();
+          table.reload('LAY-user-manage');
           layer.close(index);
         });
+        }
+        else{
+
+        }
+
+
       });
     } else if(obj.event === 'edit'){
       admin.popup({
@@ -59,7 +67,7 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
           view(this.id).render('user/user/userform', data).done(function(){
             form.render(null, 'layuiadmin-form-useradmin');
-
+            $('#desc').val(data.vip_notes);
             console.log(data);
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
@@ -81,7 +89,40 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
 
           view(this.id).render('template/dd', data).done(function(){
-              form.render(null,'layuiadmin-form-dd');
+            //console.log(data);
+            form.render(null,'layuiadmin-form-dd');
+             $('#vip_name').val(data.vip_name);
+             $('#vip_phone').val(data.vip_phone);
+             //获取服务接口
+             admin.req({
+             url: './json/useradmin/server.js'
+             ,type: 'get'
+             ,data: {}
+             ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
+              //console.log(res);
+              var getTpl = demo.innerHTML
+              ,view = document.getElementById('server');
+              laytpl(getTpl).render(res, function(html){
+                view.innerHTML = html;
+              });
+              form.render('checkbox');
+              }
+            });
+             //获取商品接口
+             admin.req({
+             url: './json/useradmin/good.js'
+             ,type: 'get'
+             ,data: {}
+             ,done: function(res){
+              //console.log(res);
+               var getTpl = demo2.innerHTML
+              ,view = document.getElementById('good');
+              laytpl(getTpl).render(res, function(html){
+                view.innerHTML = html;
+              });
+
+              }
+            });
 
           });
         }
