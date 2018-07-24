@@ -1,6 +1,6 @@
 /**
 
- @Name：layuiAdmin 工单系统
+ @Name：layuiAdmin 订单系统
  @Author：star1029
  @Site：http://www.layui.com/admin/
  @License：GPL-2
@@ -17,17 +17,15 @@ layui.define(['table', 'form', 'element'], function(exports){
   ,element = layui.element;
 
   table.render({
-    elem: '#LAY-app-workorder'
+     elem: '#LAY-app-workorder'
     ,url: './json/workorder/demo.js' //模拟接口
     ,cols: [[
       {type: 'numbers', fixed: 'left'}
-      ,{field: 'orderid', width: 100, title: '工单号', sort: true}
-      ,{field: 'attr', width: 100, title: '业务性质'}
-      ,{field: 'title', width: 100, title: '工单标题', width: 300}
+      ,{field: 'orderid', width: 150, title: '订单号', sort: true,align: 'center'}
+      ,{field: 'attr', width: 100, title: '订单人',align: 'center'}
+      ,{field: 'type', width: 100, title: '订单类型',align: 'center'}
       ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
-      ,{field: 'submit', width: 100, title: '提交者'}
-      ,{field: 'accept', width: 100, title: '受理人员'}
-      ,{field: 'state', title: '工单状态', templet: '#buttonTpl', minWidth: 80, align: 'center'}
+      ,{field: 'state', title: '订单状态', templet: '#buttonTpl', minWidth: 80, align: 'center'}
       ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-system-order'}
     ]]
     ,page: true
@@ -42,27 +40,48 @@ layui.define(['table', 'form', 'element'], function(exports){
   //监听工具条
   table.on('tool(LAY-app-workorder)', function(obj){
     var data = obj.data;
-    if(obj.event === 'edit'){
+    if(obj.event === 'view'){
       admin.popup({
-        title: '编辑工单'
-        ,area: ['450px', '450px']
+        title: '订单信息'
         ,id: 'LAY-popup-workorder-add'
+        ,area: ['800px', '600px']
         ,success: function(layero, index){
+          // console.log(data);
           view(this.id).render('app/workorder/listform').done(function(){
             form.render(null, 'layuiadmin-form-workorder');
-
-            //监听提交
+            $("#orderid").val(data['orderid']);
+            $("#attr").val(data['attr']);
+            $("#type").val(data['type']);
+            $("#status").val(data['state']);
+            $("#time").val('2018-07-25 01:01:11');
+            $("#money").val('100');
+            $("#jf").val('10');
             form.on('submit(LAY-app-workorder-submit)', function(data){
-              var field = data.field; //获取提交的字段
-
-              //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
-              layui.table.reload('LAY-app-workorder'); //重载表格
-              layer.close(index); //执行关闭
+              layer.close(index)
             });
           });
         }
       });
+    }else if(obj.event === 'complete'){
+      admin.req({
+      url: './json/workorder/ddje.js'
+      ,type: 'get'
+      ,data: {}
+      ,done: function(res){
+        layer.open( {
+        title: '订单结算完成',
+        content: res['name']+"订单共消费"+res['money']+",共积分"+res['integration']+"分",
+        btn: ['确定'],
+        yes: function(index, layero){
+            layui.table.reload('LAY-app-workorder'); //重载表格
+            layer.close(index);
+          }
+        });
+      }
+    });
+
+
+
     }
   });
 
