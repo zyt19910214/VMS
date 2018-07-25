@@ -61,9 +61,6 @@
       ,"title": "订单系统"
       ,"jump": "app/workorder/list"
     },{
-      "name": "message"
-      ,"title": "消息中心"
-    },{
       "name": "content"
       ,"title": "商城管理"
       ,"spread": true
@@ -72,10 +69,7 @@
         ,"title": "商品列表"
       },{
         "name": "comment"
-        ,"title": "分类管理"
-      },{
-        "name": "tags"
-        ,"title": "标签管理"
+        ,"title": "服务列表"
       }]
 
     }]
