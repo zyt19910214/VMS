@@ -7,7 +7,7 @@
     ,"name": "冰峰"
     ,"type": "饮料"
     ,"uploadtime": 20121204
-    ,"status": 80
+    ,"status": 0
   },{
     "id": "2"
     ,"name": "脉动"

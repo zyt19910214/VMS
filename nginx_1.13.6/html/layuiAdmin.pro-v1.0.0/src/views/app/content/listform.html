@@ -4,7 +4,7 @@
       <label class="layui-form-label">商品名称</label>
       <div class="layui-input-inline">
         <script type="text/html" template>
-          <input type="text" name="title" value="{{ d.params.name || '' }}" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+          <input type="text" name="title" value="{{ d.params.name || '' }}" lay-verify="required" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
         </script>
       </div>
     </div>
@@ -14,7 +14,7 @@
       <div class="layui-input-inline">
         <script type="text/html" template>
           <select name="label" lay-verify="required">
-            <option value="">请选择标签</option>
+            <option value="">请选择商品分类</option>
             <option value="饮料" {{ d.params.type === '饮料' ? 'selected' : '' }}>饮料</option>
             <option value="酒水" {{ d.params.type === '酒水' ? 'selected' : '' }}>酒水</option>
             <option value="美食" {{ d.params.type === '美食' ? 'selected' : '' }}>美食</option>
@@ -26,17 +26,31 @@
     <div class="layui-form-item">
       <label class="layui-form-label">上货时间</label>
       <div class="layui-input-inline">
+        <div class="layui-input-inline">
         <script type="text/html" template>
-          <input type="text" name="title" value="{{ d.params.uploadtime || '' }}" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" >
+          <input type="text" name="date" id="date" lay-verify="datetime" value="{{d.params.uploadtime || ''}}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" disabled>
+        </script>
+      </div>
+      </div>
+    </div>
+     <div class="layui-form-item">
+      <label class="layui-form-label">目前库存</label>
+      <div class="layui-input-inline">
+        <script type="text/html" template>
+          <input type="text" name="title" value="{{ d.params.status || '0' }}" lay-verify="required" placeholder="目前库存量" autocomplete="off" class="layui-input" disabled>
         </script>
       </div>
     </div>
     <div class="layui-form-item">
-      <label class="layui-form-label">库存状态</label>
+      <label class="layui-form-label">本次上货</label>
       <div class="layui-input-inline">
-        <input type="checkbox" lay-verify="required" lay-filter="status" name="status" lay-skin="switch" lay-text="有货|已售完" {{ d.params.status === 0 ? '' : 'checked' }}>
+        <script type="text/html" template>
+          <input type="text" name="title" value="" lay-verify="required" placeholder="请输入本次上货数量" autocomplete="off" class="layui-input">
+        </script>
       </div>
     </div>
+
+
     <script type="text/html" template>
       <input type="hidden" name="id" value="{{ d.params.id || '' }}">
     </script>
@@ -46,4 +60,4 @@
         <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" value="确认" class="layui-btn">
       </div>
     </div>
-  </div>
+</div>

@@ -69,12 +69,15 @@
   </div>
 
   <script>
-  layui.use('contlist', layui.factory('contlist')).use(['admin', 'contlist', 'table'], function(){
+  layui.use('contlist', layui.factory('contlist')).use(['admin', 'contlist', 'table','laydate'], function(){
     var $ = layui.$
     ,admin = layui.admin
     ,view = layui.view
     ,table = layui.table
+    ,laydate = layui.laydate
     ,form = layui.form;
+
+
 
     form.render(null, 'app-content-list');
 
@@ -115,12 +118,18 @@
       ,add: function(othis){
         admin.popup({
           title: '添加商品'
-          ,area: ['550px', '550px']
+          ,area: ['550px', '450px']
           ,id: 'LAY-popup-content-add'
           ,success: function(layero, index){
             view(this.id).render('app/content/listform').done(function(){
               form.render(null, 'layuiadmin-app-form-list');
+               //上货日期
+                laydate.render({
+                  elem: '#date'
+                  ,type: 'datetime'
+                  ,value: new Date()
 
+                });
               //监听提交
               form.on('submit(layuiadmin-app-form-submit)', function(data){
                 var field = data.field; //获取提交的字段
