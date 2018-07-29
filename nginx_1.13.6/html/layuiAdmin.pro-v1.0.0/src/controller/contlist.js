@@ -1,6 +1,6 @@
 /**
 
- @Name：layuiAdmin 商品管理
+ @Name：layuiAdmin 营销
  @Author：star1029
  @Site：http://www.layui.com/admin/
  @License：LPPL
@@ -14,20 +14,22 @@ layui.define(['table', 'form','laydate'], function(exports){
   ,view = layui.view
   ,table = layui.table
   ,laydate = layui.laydate
+  ,layer = layui.layer
   ,form = layui.form;
 
 
 
 
 
-  //文章管理
+  //商品管理
   table.render({
     elem: '#LAY-app-content-list'
-    ,url: './json/content/list.js' //模拟接口
+    ,url: './json/content/good.js' //模拟接口
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field: 'id', width: 100, title: '商品ID', sort: true}
       ,{field: 'name', title: '商品名称', minWidth: 100}
+      ,{field: 'price', title: '商品价格(元)', minWidth: 100}
       ,{field: 'type', title: '商品分类'}
       ,{field: 'uploadtime', title: '上货时间', sort: true}
       ,{field: 'status', title: '库存', templet: '#buttonTpl', minWidth: 80, align: 'center'}
@@ -67,7 +69,7 @@ layui.define(['table', 'form','laydate'], function(exports){
             //监听提交
             form.on('submit(layuiadmin-app-form-submit)', function(data){
               var field = data.field; //获取提交的字段
-
+             layer.alert(JSON.stringify(field));
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               //$.ajax({});
               layui.table.reload('LAY-app-content-list'); //重载表格
@@ -79,7 +81,23 @@ layui.define(['table', 'form','laydate'], function(exports){
     }
   });
 
-
+  //服务列表
+  table.render({
+    elem: '#LAY-app-content-comm'
+    ,url: './json/content/server.js' //模拟接口
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field: 'id', width: 100, title: '服务ID', sort: true}
+      ,{field: 'name', title: '服务名称', minWidth: 100}
+      ,{field: 'price',title: '服务价格(元)'}
+      ,{field: 'type', title: '服务分类'}
+      ,{title: '操作', minWidth: 150, align: 'center', fixed: 'right', toolbar: '#table-content-com'}
+    ]]
+    ,page: true
+    ,limit: 10
+    ,limits: [10, 15, 20, 25, 30]
+    ,text: '对不起，加载出现异常！'
+  });
 
 
   exports('contlist', {})

@@ -95,7 +95,7 @@ layui.define(['table', 'form'], function(exports){
              $('#vip_phone').val(data.vip_phone);
              //获取服务接口
              admin.req({
-             url: './json/useradmin/server.js'
+             url: './json/content/server.js'
              ,type: 'get'
              ,data: {}
              ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
@@ -110,7 +110,7 @@ layui.define(['table', 'form'], function(exports){
             });
              //获取商品接口
              admin.req({
-             url: './json/useradmin/good.js'
+             url: './json/content/good.js'
              ,type: 'get'
              ,data: {}
              ,done: function(res){

@@ -8,41 +8,21 @@
 
   }, {
     "name": "user"
-    ,"title": "用户"
+    ,"title": "会员"
     ,"icon": "layui-icon-user"
     ,"list": [{
       "name": "user"
       ,"title": "会员用户"
       ,"jump": "user/user/list"
-    }, {
-      "name": "administrators-list"
-      ,"title": "后台管理员"
-      ,"jump": "user/administrators/list"
-    }, {
-      "name": "administrators-rule"
-      ,"title": "角色管理"
-      ,"jump": "user/administrators/role"
     }]
   },{
     "name": "template"
-    ,"title": "页面"
+    ,"title": "独立页面"
     ,"icon": "layui-icon-template"
     ,"list": [{
       "name": "addresslist"
       ,"title": "通讯录"
       ,"jump": "template/addresslist"
-    },{
-      "name": "goodslist"
-      ,"title": "商品列表"
-      ,"jump": "template/goodslist"
-    },{
-      "name": "msgboard"
-      ,"title": "留言板"
-      ,"jump": "template/msgboard"
-    },{
-      "name": "search"
-      ,"title": "搜索结果"
-      ,"jump": "template/search"
     },{
       "name": "reg"
       ,"title": "注册"
