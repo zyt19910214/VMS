@@ -36,10 +36,10 @@
         <script type="text/html" template>
           <select name="type" lay-verify="required">
             <option value="">请选择服务分类</option>
-            <option value="饮料" {{ d.params.type === '饮料' ? 'selected' : '' }}>饮料</option>
-            <option value="酒水" {{ d.params.type === '酒水' ? 'selected' : '' }}>酒水</option>
-            <option value="美食" {{ d.params.type === '美食' ? 'selected' : '' }}>美食</option>
-            <option value="火锅" {{ d.params.type === '火锅' ? 'selected' : '' }}>火锅</option>
+            <option value="团建活动" {{ d.params.type === '团建活动' ? 'selected' : '' }}>团建活动</option>
+            <option value="生日趴" {{ d.params.type === '生日趴' ? 'selected' : '' }}>生日趴</option>
+            <option value="求婚趴" {{ d.params.type === '求婚趴' ? 'selected' : '' }}>求婚趴</option>
+            <option value="交友趴" {{ d.params.type === '交友趴' ? 'selected' : '' }}>交友趴</option>
           </select>
         </script>
         </div>
@@ -111,21 +111,15 @@ layui.use('contlist', layui.factory('contlist')).use(['admin', 'contlist', 'tabl
       });
     },add: function(othis){
         admin.popup({
-          title: '添加商品'
-          ,area: ['550px', '450px']
+          title: '添加服务'
+          ,area: ['550px', '430px']
           ,id: 'LAY-popup-content-add'
           ,success: function(layero, index){
-            view(this.id).render('app/content/listform').done(function(){
-              form.render(null, 'layuiadmin-app-form-list');
-               //上货日期
-                laydate.render({
-                  elem: '#date'
-                  ,type: 'datetime'
-                  ,value: new Date()
+            view(this.id).render('app/content/serverform').done(function(){
+              form.render(null, 'layuiadmin-form-comment');
 
-                });
               //监听提交
-              form.on('submit(layuiadmin-app-form-submit)', function(data){
+              form.on('submit(layuiadmin-app-com-submit)', function(data){
                 var field = data.field; //获取提交的字段
                 layer.alert(JSON.stringify(field));
                 //提交 Ajax 成功后，关闭当前弹层并重载表格

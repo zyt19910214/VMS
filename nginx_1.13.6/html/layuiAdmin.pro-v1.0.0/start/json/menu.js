@@ -14,16 +14,16 @@
       "name": "user"
       ,"title": "会员用户"
       ,"jump": "user/user/list"
-    }]
-  },{
-    "name": "template"
-    ,"title": "独立页面"
-    ,"icon": "layui-icon-template"
-    ,"list": [{
+    },{
       "name": "addresslist"
       ,"title": "通讯录"
       ,"jump": "template/addresslist"
-    },{
+    }]
+  },{
+    "name": "template"
+    ,"title": "登录注册"
+    ,"icon": "layui-icon-template"
+    ,"list": [{
       "name": "reg"
       ,"title": "注册"
       ,"jump": "user/reg"
@@ -48,18 +48,18 @@
         "name": "list"
         ,"title": "商品列表"
       },{
-        "name": "comment"
+        "name": "serverList"
         ,"title": "服务列表"
       }]
 
     }]
   }, {
     "name": "senior"
-    ,"title": "高级"
+    ,"title": "运维分析"
     ,"icon": "layui-icon-senior"
     ,"list": [{
       "name": "echarts"
-      ,"title": "Echarts集成"
+      ,"title": "报表"
       ,"list": [{
         "name": "line"
         ,"title": "折线图"

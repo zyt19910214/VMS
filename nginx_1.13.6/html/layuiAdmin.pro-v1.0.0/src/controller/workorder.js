@@ -1,7 +1,6 @@
 /**
 
  @Name：layuiAdmin 订单系统
- @Author：star1029
  @Site：http://www.layui.com/admin/
  @License：GPL-2
 
@@ -48,14 +47,41 @@ layui.define(['table', 'form', 'element'], function(exports){
         ,success: function(layero, index){
           // console.log(data);
           view(this.id).render('app/workorder/listform').done(function(){
-            form.render(null, 'layuiadmin-form-workorder');
-            $("#orderid").val(data['orderid']);
-            $("#attr").val(data['attr']);
-            $("#type").val(data['type']);
-            $("#status").val(data['state']);
-            $("#time").val('2018-07-25 01:01:11');
-            $("#money").val('100');
-            $("#jf").val('10');
+
+            admin.req({
+              url: './json/workorder/dddetail.js'
+              ,type: 'get'
+              ,data: {}
+              ,done: function(res){
+                console.log(res);
+                 form.render(null, 'layuiadmin-form-workorder');
+                  $("#orderid").val(data['orderid']);
+                  $("#attr").val(data['attr']);
+                  $("#type").val(data['type']);
+                  $("#status").val(data['state']);
+                  if(res['end_time']){
+                    $("#time").val(res['end_time']);
+                  }else{
+                     $("#time").val(res['start_time']);
+                  }
+                  $("#money").val(res['money']);
+                  $("#jf").val(res['integration']);
+                  var server = res.server
+                  var good = res.good
+                  //console.log(result);
+                  var my_str='';
+                  var my_str2 ='';
+                  for (var i=0;i<server.length;i++){
+                      my_str += server[i].name+' x '+server[i].count+'</br>'
+                  }
+                   for (var i=0;i<good.length;i++){
+                      my_str2 += good[i].name+' x '+good[i].count+'</br>'
+                  }
+                  $("#serverlist").html(my_str)
+                  $("#goodlist").html(my_str2)
+
+              }
+            });
             form.on('submit(LAY-app-workorder-submit)', function(data){
               layer.close(index)
             });

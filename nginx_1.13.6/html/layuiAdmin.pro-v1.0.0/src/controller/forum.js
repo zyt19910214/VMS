@@ -1,10 +1,9 @@
 /**
 
  @Name：layuiAdmin 社区系统
- @Author：star1029
  @Site：http://www.layui.com/admin/
  @License：LPPL
-    
+
  */
 
 
@@ -34,7 +33,7 @@ layui.define(['table', 'form'], function(exports){
     ,limits: [10, 15, 20, 25, 30]
     ,text: '对不起，加载出现异常！'
   });
-  
+
   //监听工具条
   table.on('tool(LAY-app-forum-list)', function(obj){
     var data = obj.data;
@@ -52,7 +51,7 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
           view(this.id).render('app/forum/listform', data).done(function(){
             form.render(null, 'layuiadmin-form-list');
-            
+
             //监听提交
             form.on('submit(layuiadmin-app-forum-submit)', function(data){
               var field = data.field; //获取提交的字段
@@ -60,7 +59,7 @@ layui.define(['table', 'form'], function(exports){
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               //$.ajax({});
               layui.table.reload('LAY-app-forum-list'); //重载表格
-              layer.close(index); //执行关闭 
+              layer.close(index); //执行关闭
             });
           });
         }
@@ -87,7 +86,7 @@ layui.define(['table', 'form'], function(exports){
     ,limits: [10, 15, 20, 25, 30]
     ,text: '对不起，加载出现异常！'
   });
-  
+
   //监听工具条
   table.on('tool(LAY-app-forumreply-list)', function(obj){
     var data = obj.data;
@@ -105,7 +104,7 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
           view(this.id).render('app/forum/replysform', data).done(function(){
             form.render(null, 'layuiadmin-app-forum-reply');
-            
+
             //监听提交
             form.on('submit(layuiadmin-app-forumreply-submit)', function(data){
               var field = data.field; //获取提交的字段
@@ -113,13 +112,13 @@ layui.define(['table', 'form'], function(exports){
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               //$.ajax({});
               layui.table.reload('LAY-app-forumreply-list'); //重载表格
-              layer.close(index); //执行关闭 
+              layer.close(index); //执行关闭
             });
           });
         }
       });
     }
   });
-  
+
   exports('forum', {})
 });
