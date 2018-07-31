@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-07-30 23:57:46
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-07-31 00:33:29
+* @Last Modified time: 2018-08-01 00:35:14
 */
 
 CREATE DATABASE vms;
@@ -11,7 +11,7 @@ CREATE TABLE person(
    id INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(20) NOT NULL,
    sex TINYINT(1) NOT NULL,
-   phone NUMERIC(11) NOT NULL,
+   phone VARCHAR(11) NOT NULL,
    note VARCHAR(100) default NULL,
    create_time DATETIME default NULL,
    resrver1 VARCHAR(50) default NULL,
@@ -53,13 +53,13 @@ CREATE TABLE server_category(
 	name VARCHAR(30) NOT NULL,
 	PRIMARY KEY ( id )
 );
-CREATE TABLE order(
+CREATE TABLE vip_order(
 	id INT NOT NULL AUTO_INCREMENT,
 	order_serial_number VARCHAR(20) NOT NULL,
-	status  TINYINT(1) NOT NULL,
-	order_category_id INT NOT NULL, 
+	order_status  TINYINT(1) NOT NULL,
+	order_category_id INT NOT NULL,
 	create_time DATETIME NOT NULL,
-	all_value INT NOT NULL, 
+	all_value INT NOT NULL,
 	PRIMARY KEY ( id )
 );
 

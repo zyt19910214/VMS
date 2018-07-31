@@ -18,8 +18,8 @@ layui.define(['table', 'form'], function(exports){
   //用户管理
   table.render({
     elem: '#LAY-user-manage'
-   //,url: 'http://127.0.0.1:8888/listVipPerson/'
-   ,url: './json/useradmin/webuser.js' //模拟接口
+   ,url: 'http://127.0.0.1:8888/listVipPerson/'
+   //,url: './json/useradmin/webuser.js' //模拟接口
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field: 'id', width: '8%', title: 'ID', sort: true, align:'center'}
