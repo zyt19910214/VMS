@@ -323,6 +323,6 @@ class Mysql(object):
 
 if __name__ == '__main__':
     db = Mysql()
+    print db.getAll('select * from person a,point_detail b WHERE a.id = b.person_id and a.name=\'温娜\'')
 
-    print db.getAll('select b.point_value from vms_vip_person a,vms_vip_point b WHERE a.id = b.vip_person_id and a.vip_name=\'武通\'')
     db.dispose()

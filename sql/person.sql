@@ -1,0 +1,2 @@
+INSERT INTO `person` VALUES (1, '武通', 1, 17629298189, NULL, '2018-7-31 15:09:53', '');
+INSERT INTO `person` VALUES (2, '温娜', 0, 15353775130, '活动会员', '2018-7-31 15:16:30', NULL);
