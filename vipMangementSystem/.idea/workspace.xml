@@ -42,12 +42,45 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vms/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+            <state relative-caret-position="186">
+              <caret line="19" column="88" lean-forward="true" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
-                <marker date="1533057982927" expanded="true" signature="476:649" ph="select a.id,... person" />
-                <marker date="1533057982927" expanded="true" signature="476:666" ph="select a.id,... person" />
+                <marker date="1533144206724" expanded="true" signature="463:615" ph="SELECT a.id,... person" />
+                <marker date="1533144206724" expanded="true" signature="463:662" ph="SELECT a.id,... person" />
+                <marker date="1533144206724" expanded="true" signature="463:677" ph="SELECT a.id,... person" />
+                <marker date="1533144206724" expanded="true" signature="1764:1865" ph="INSERT INTO person... " />
+                <marker date="1533144206724" expanded="true" signature="1764:1875" ph="INSERT INTO person... " />
+                <marker date="1533144206724" expanded="true" signature="1764:1885" ph="INSERT INTO person... " />
+                <marker date="1533144206724" expanded="true" signature="1764:1896" ph="INSERT INTO person... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DB.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vms/DB.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="107" column="32" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="32" />
+              <folding>
+                <marker date="1533051575340" expanded="true" signature="3636:3648" ph="insert into missing_value... " />
+                <marker date="1533051575340" expanded="true" signature="4120:4132" ph="insert into missing_value... " />
+                <marker date="1533051575340" expanded="true" signature="4992:5004" ph="insert into missing_value... " />
+                <marker date="1533051575340" expanded="true" signature="6540:6562" ph="select * fro... missing_value" />
+                <marker date="1533051575340" expanded="true" signature="9675:9755" ph="select * fro... person" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding>
+                <element signature="e#652#684#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,6 +92,7 @@
     <findStrings>
       <find>corsheaders</find>
       <find>getAll</find>
+      <find>csrf</find>
     </findStrings>
     <dirStrings>
       <dir>D:\VMS\vipMangementSystem</dir>
@@ -68,12 +102,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vipMangementSystem/urls.py" />
-        <option value="$PROJECT_DIR$/vipMangementSystem/settings.py" />
         <option value="$PROJECT_DIR$/vms/models.py" />
         <option value="$PROJECT_DIR$/vms/admin.py" />
         <option value="$PROJECT_DIR$/vms/Config.py" />
         <option value="$PROJECT_DIR$/vms/DB.py" />
+        <option value="$PROJECT_DIR$/vipMangementSystem/urls.py" />
+        <option value="$PROJECT_DIR$/vipMangementSystem/settings.py" />
         <option value="$PROJECT_DIR$/vms/views.py" />
       </list>
     </option>
@@ -241,7 +275,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45326087" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28695652" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19402985" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19616205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -576,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/db/models/manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -604,22 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vipMangementSystem/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="74" column="1" lean-forward="false" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vms/DB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6762">
-          <caret line="327" column="0" lean-forward="false" selection-start-line="327" selection-start-column="0" selection-end-line="327" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vms/Config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -628,14 +639,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vipMangementSystem/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="44" column="52" lean-forward="true" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="e#652#684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vms/DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="107" column="32" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="32" />
+          <folding>
+            <marker date="1533051575340" expanded="true" signature="3636:3648" ph="insert into missing_value... " />
+            <marker date="1533051575340" expanded="true" signature="4120:4132" ph="insert into missing_value... " />
+            <marker date="1533051575340" expanded="true" signature="4992:5004" ph="insert into missing_value... " />
+            <marker date="1533051575340" expanded="true" signature="6540:6562" ph="select * fro... missing_value" />
+            <marker date="1533051575340" expanded="true" signature="9675:9755" ph="select * fro... person" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+        <state relative-caret-position="186">
+          <caret line="19" column="88" lean-forward="true" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <marker date="1533057982927" expanded="true" signature="476:649" ph="select a.id,... person" />
-            <marker date="1533057982927" expanded="true" signature="476:666" ph="select a.id,... person" />
+            <marker date="1533144206724" expanded="true" signature="463:615" ph="SELECT a.id,... person" />
+            <marker date="1533144206724" expanded="true" signature="463:662" ph="SELECT a.id,... person" />
+            <marker date="1533144206724" expanded="true" signature="463:677" ph="SELECT a.id,... person" />
+            <marker date="1533144206724" expanded="true" signature="1764:1865" ph="INSERT INTO person... " />
+            <marker date="1533144206724" expanded="true" signature="1764:1875" ph="INSERT INTO person... " />
+            <marker date="1533144206724" expanded="true" signature="1764:1885" ph="INSERT INTO person... " />
+            <marker date="1533144206724" expanded="true" signature="1764:1896" ph="INSERT INTO person... " />
           </folding>
         </state>
       </provider>

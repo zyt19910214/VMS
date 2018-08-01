@@ -130,13 +130,27 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
 
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
-              layer.alert(JSON.stringify(data.field), {
-      title: '最终的提交信息'
-    })
+              // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
               var field = data.field; //获取提交的字段
 
               //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
+              $.ajax({
+                url: 'http://127.0.0.1:8888/addVipPerson/',
+                type: 'POST',
+                data:field,
+                error:function(request){//请求失败之后的操作
+                    layer.msg("添加失败");
+                },
+                success:function(data){//请求成功之后的操作
+                		if(data['code'] == 0){
+                			layer.msg("添加成功");
+                		}else{
+ 											layer.msg("添加失败");
+                		}
+
+                }
+
+               });
               layui.table.reload('LAY-user-manage'); //重载表格
               layer.close(index); //执行关闭
             });
