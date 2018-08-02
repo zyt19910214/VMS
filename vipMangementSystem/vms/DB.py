@@ -34,7 +34,7 @@ class Mysql(object):
         try:
             self._conn = Mysql.__getConn()
             self._cursor = self._conn.cursor()
-        except Exception, e:
+        except Exception as e:
             error = 'Connect failed! ERROR (%s): %s' % (e.args[0], e.args[1])
             print error
             sys.exit()
@@ -64,9 +64,9 @@ class Mysql(object):
             self._cursor.execute(sql)
             records = self._cursor.fetchall()
             return records
-        except MySQLdb.Error, e:
+        except MySQLdb.Error as e:
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print error
+            print (error)
 
             # 针对更新,删除,事务等操作失败时回滚
 
@@ -77,10 +77,10 @@ class Mysql(object):
             else:
                 self._cursor.execute(sql, arg)
             self._conn.commit()
-        except MySQLdb.Error, e:
+        except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print error
+            print (error)
             # sys.exit()
 
     # 创建表
@@ -168,10 +168,10 @@ class Mysql(object):
             for i in range(0, len(values), 20000):
                 self._cursor.executemany(sql, values[i:i + 20000])
                 self._conn.commit()
-        except MySQLdb.Error, e:
+        except MySQLdb.Error as e:
             self._conn.rollback()
             error = '_insertMany executemany failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print error
+            print (error)
             sys.exit()
 
     def insertMany(self, sql, values=None):
@@ -187,10 +187,10 @@ class Mysql(object):
             else:
                 count = self._cursor.execute(sql, values)
             self._conn.commit()
-        except MySQLdb.Error, e:
+        except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print error
+            print (error)
             sys.exit()
         return count
 
@@ -320,9 +320,14 @@ class Mysql(object):
         self._cursor.close()
         self._conn.close()
 
+    @classmethod
+    def getListPerson(cls):
+        sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
+              ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id'
+        person_list = list(cls().getAll(sql))
+        cls().dispose()
+        return person_list
+
 
 if __name__ == '__main__':
-    db = Mysql()
-    print db.getAll('select * from person a,point_detail b WHERE a.id = b.person_id and a.name=\'温娜\'')
-
-    db.dispose()
+    print (Mysql.getListPerson())

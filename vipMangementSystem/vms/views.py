@@ -1,31 +1,31 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.shortcuts import render,render_to_response
-from django.http import HttpResponse,HttpResponseRedirect
-from django.template import RequestContext
-from models import vip_person
-from models import vip_point
+from django.http import HttpResponse
 from DB import Mysql
-
-# Create your views here.
 import json
-import time
+
 
 def list_vip_person(req):
-    # print req.GET
+    """
+    会员列表查询
+    :param req:
+    :return:
+    """
     db = Mysql()
-    sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point' \
-          ' FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id'
+    sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
+          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id'
     person_list = list(db.getAll(sql))
-    print person_list
-    print len(person_list)
     db.dispose()
-
+    # print(person_list)
+    # print(len(person_list))
+    # print req.GET
     limit = int(req.GET['limit'])
     page = int(req.GET['page'])
-
     # person_list =  list(vip_person.objects.filter().values())
     n_list = []
     for x in person_list:
@@ -38,21 +38,28 @@ def list_vip_person(req):
         else:
             x['vip_sex'] = '未知'
         n_list.append(x)
-    print len(n_list)
-    print len(n_list[(page-1)*limit:page*limit])
-    resp ={
-        "code": 0
-        , "msg": ""
-        , "count": len(n_list)
-        , "data":n_list[(page-1)*limit:page*limit]
+    # print(len(n_list))
+    # print(len(n_list[(page - 1) * limit:page * limit]))
+
+    resp = {
+        "code": 0,
+        "msg": "",
+        "count": len(n_list),
+        "data": n_list[(page-1)*limit:page*limit]
     }
-    print '【VIP人员接口数据】：'+json.dumps(resp)
+    print ('【VIP人员接口数据】：' + json.dumps(resp))
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
+
 def add_vip_person(req):
-    print req
-    print req.POST
+    """
+    会员添加
+    :param req:
+    :return:
+    """
+    # print (req)
+    print ('添加会员传入参数：'+str(req.POST))
     data = req.POST.copy()
     if data['sex'] == '男':
         data['sex'] = '1'
@@ -60,23 +67,47 @@ def add_vip_person(req):
         data['sex'] = '0'
 
     db = Mysql()
-    sql = "INSERT INTO person (`name`, `sex`, `phone`, `note`, `create_time`, `resrver1`)" \
-          " VALUES('%s','%s','%s','%s',now(),NULL)"%(data['username'],data['sex'],data['phone'],data['desc'])
-    print sql
-    dd = db.insertOne(sql)
-    db.dispose()
-    if dd == 0:
+    is_exist = db.getAll('SELECT * from person where phone =\'%s\''%(data['phone']))
+    if (is_exist):
+        # 已存在手机号无法注册会员
         resp = {
-            "code": 1
-            , "msg": "success"
+            "code": 2,
+            "msg": "phone_is_exist"
         }
-        return HttpResponse(json.dumps(resp), content_type="application/json")
+        print('添加失败,手机号已存在')
     else:
-        resp = {
-            "code": 0
-            , "msg": "success"
-        }
-        return HttpResponse(json.dumps(resp), content_type="application/json")
+        sql = "INSERT INTO person (`name`, `sex`, `phone`, `note`, `create_time`, `resrver1`)" \
+              " VALUES('%s','%s','%s','%s',now(),NULL)" %(data['username'],data['sex'],data['phone'],data['desc'])
+        print (sql)
+        dd = db.insertOne(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员添加成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            print('会员添加成功')
+        else:
+            # 会员添加失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            print('服务异常,会员添加失败')
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+def del_vip_person(req):
+    print(req.POST)
+
+    resp = {
+        "code": 1,
+        "msg": "internal_exceptions"
+    }
+
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
 
 
 
