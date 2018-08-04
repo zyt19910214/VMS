@@ -98,13 +98,15 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
       if(checkData.length === 0){
         return layer.msg('请选择数据',{icon:5});
       }
-      var jsonObj = [];
+      var jsonObj = {};
+			var mycars=new Array()
       for (var i=0;i<checkData.length;i++)
 			{
-				jsonObj.push(checkData[i])
+				mycars[i]=checkData[i]['id']
 			}
+			jsonObj['del_list'] = mycars
 
-      console.log(checkData);
+			console.log(jsonObj);
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
@@ -117,8 +119,7 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
           $.ajax({
              url: 'http://127.0.0.1:8888/delVipPerson/',
              type: 'POST',
-             data: jsonObj,
-             contentType: 'application/json;charset=utf-8',
+             data: JSON.stringify(mycars),
              error:function(request){
                 layer.alert("会员添加失败",{icon: 2});
              },
@@ -156,7 +157,7 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
             form.on('submit(LAY-user-front-submit)', function(data){
               // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
               var field = data.field; //获取提交的字段
-
+              console.log(field);
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: 'http://127.0.0.1:8888/addVipPerson/',

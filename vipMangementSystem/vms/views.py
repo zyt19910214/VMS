@@ -61,6 +61,7 @@ def add_vip_person(req):
     # print (req)
     print ('添加会员传入参数：'+str(req.POST))
     data = req.POST.copy()
+    print(data)
     if data['sex'] == '男':
         data['sex'] = '1'
     else:
@@ -98,7 +99,11 @@ def add_vip_person(req):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 def del_vip_person(req):
-    print(req.POST)
+    if req.method == 'POST':
+        for key in req.POST:
+            for x in key:
+                print(x)
+
 
     resp = {
         "code": 1,
