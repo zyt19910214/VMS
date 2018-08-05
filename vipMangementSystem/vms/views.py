@@ -10,7 +10,8 @@ from DB import Mysql
 import json
 import logging
 
-logger = logging.getLogger('sourceDns.webdns.views')
+logger = logging.getLogger('django')
+
 
 def list_vip_person(req):
     """
@@ -28,7 +29,7 @@ def list_vip_person(req):
     # print req.GET
     limit = int(req.GET['limit'])
     page = int(req.GET['page'])
-    # person_list =  list(vip_person.objects.filter().values())
+
     n_list = []
     for x in person_list:
         if x['vip_person_point'] is None:
@@ -49,8 +50,8 @@ def list_vip_person(req):
         "count": len(n_list),
         "data": n_list[(page-1)*limit:page*limit]
     }
-    logger.info('【VIP人员接口数据】：' + json.dumps(resp))
-    print ('【VIP人员接口数据】：' + json.dumps(resp))
+    logger.debug('【VIP人员接口数据】：' + json.dumps(resp))
+    # print ('【VIP人员接口数据】：' + json.dumps(resp))
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
@@ -62,9 +63,8 @@ def add_vip_person(req):
     :return:
     """
     # print (req)
-    print ('添加会员传入参数：'+str(req.POST))
+    logger.debug('添加会员传入参数：'+str(req.POST))
     data = req.POST.copy()
-    print(data)
     if data['sex'] == '男':
         data['sex'] = '1'
     else:
@@ -72,17 +72,18 @@ def add_vip_person(req):
 
     db = Mysql()
     is_exist = db.getAll('SELECT * from person where phone =\'%s\''%(data['phone']))
+
     if (is_exist):
         # 已存在手机号无法注册会员
         resp = {
             "code": 2,
             "msg": "phone_is_exist"
         }
-        print('添加失败,手机号已存在')
+        logger.debug('添加失败,手机号已存在')
     else:
         sql = "INSERT INTO person (`name`, `sex`, `phone`, `note`, `create_time`, `resrver1`)" \
               " VALUES('%s','%s','%s','%s',now(),NULL)" %(data['username'],data['sex'],data['phone'],data['desc'])
-        print (sql)
+        logger.debug (sql)
         dd = db.insertOne(sql)
         db.dispose()
         if dd != 0:
@@ -91,24 +92,28 @@ def add_vip_person(req):
                 "code": 0,
                 "msg": "success"
             }
-            print('会员添加成功')
+            logger.debug('会员添加成功')
         else:
             # 会员添加失败
             resp = {
                 "code": 1,
                 "msg": "internal_exceptions"
             }
-            print('服务异常,会员添加失败')
+            logger.debug('服务异常,会员添加失败')
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-def del_vip_person(req):
 
-    # print (req.POST.copy()['checkData'].split(','))
+def del_vip_person(req):
+    """
+    会员删除（单个/批量删除）
+    :param req:
+    :return:
+    """
+
     id_list= req.POST.copy()['checkData']
     sql = 'DELETE FROM vms.person WHERE id IN (%s)'%(id_list)
-    #sql = 'DELETE FROM vms.person WHERE id IN (5)'
     db = Mysql()
-    count =  (db.delete(sql))
+    count = (db.delete(sql))
     db.dispose()
     if count == len(id_list.split(",")):
         resp = {
@@ -123,6 +128,19 @@ def del_vip_person(req):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
+
+def update_vip_person(req):
+    """
+    更新会员信息
+    :param req:
+    :return:
+    """
+    resp = {
+        "code": 1,
+        "msg": "internal_exceptions"
+    }
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
 

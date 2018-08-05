@@ -31,8 +31,10 @@ layui.define(['table', 'form'], function(exports){
       ,{title: '操作', width: '28%', align:'center', fixed: 'right', toolbar: '#table-useradmin-webuser'}
     ]]
     ,page: true
-    ,limit: 10
-    ,height: 'full-320'
+    ,done:function (res) {
+       console.log(res.data);
+    }
+    //,height: 'full-320'
     ,text: '对不起，加载出现异常！'
   });
 
