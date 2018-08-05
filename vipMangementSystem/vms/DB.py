@@ -71,17 +71,19 @@ class Mysql(object):
             # 针对更新,删除,事务等操作失败时回滚
 
     def _exeCuteCommit(self, sql='', arg=None):
+        count = 0
         try:
             if arg is None:
-                self._cursor.execute(sql)
+                count = self._cursor.execute(sql)
             else:
-                self._cursor.execute(sql, arg)
+                count = self._cursor.execute(sql, arg)
             self._conn.commit()
         except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
             print (error)
             # sys.exit()
+        return count
 
     # 创建表
     # tablename:表名称,attr_dict:属性键值对,constraint:主外键约束

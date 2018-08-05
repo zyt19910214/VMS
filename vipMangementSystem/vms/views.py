@@ -8,7 +8,9 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from DB import Mysql
 import json
+import logging
 
+logger = logging.getLogger('sourceDns.webdns.views')
 
 def list_vip_person(req):
     """
@@ -18,7 +20,7 @@ def list_vip_person(req):
     """
     db = Mysql()
     sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
-          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id'
+          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
     person_list = list(db.getAll(sql))
     db.dispose()
     # print(person_list)
@@ -47,6 +49,7 @@ def list_vip_person(req):
         "count": len(n_list),
         "data": n_list[(page-1)*limit:page*limit]
     }
+    logger.info('【VIP人员接口数据】：' + json.dumps(resp))
     print ('【VIP人员接口数据】：' + json.dumps(resp))
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
@@ -99,17 +102,24 @@ def add_vip_person(req):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 def del_vip_person(req):
-    if req.method == 'POST':
-        for key in req.POST:
-            for x in key:
-                print(x)
 
-
-    resp = {
-        "code": 1,
-        "msg": "internal_exceptions"
-    }
-
+    # print (req.POST.copy()['checkData'].split(','))
+    id_list= req.POST.copy()['checkData']
+    sql = 'DELETE FROM vms.person WHERE id IN (%s)'%(id_list)
+    #sql = 'DELETE FROM vms.person WHERE id IN (5)'
+    db = Mysql()
+    count =  (db.delete(sql))
+    db.dispose()
+    if count == len(id_list.split(",")):
+        resp = {
+            "code": 0,
+            "msg": "success"
+        }
+    else:
+        resp = {
+            "code": 1,
+            "msg": "internal_exceptions"
+        }
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 

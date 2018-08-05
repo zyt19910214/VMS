@@ -40,22 +40,40 @@ layui.define(['table', 'form'], function(exports){
   table.on('tool(LAY-user-manage)', function(obj){
     var data = obj.data;
     if(obj.event === 'del'){
+      var dic ={};
+      dic['checkData'] =data['id']
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
       }, function(value, index){
-        if(value ==='111') {
+        if(value =='693582'){
           layer.close(index);
-          layer.confirm('真的删除行么', function(index){
-          obj.del();
+          layer.confirm('确定删除吗？', function(index) {
+
+          //执行 Ajax 后重载
+          $.ajax({
+             url: 'http://127.0.0.1:8888/delVipPerson/',
+             type: 'POST',
+             data: dic ,
+             error:function(request){
+                layer.alert("会员添加失败",{icon: 2});
+             },
+             success:function(data){
+                if(data['code'] == 0){
+                  layer.msg('会员删除成功', {icon: 1});
+                }else {
+                  layer.alert("删除失败!",{icon: 2});
+                }
+              }
+          });
+
           table.reload('LAY-user-manage');
+
+          });
+        }else{
           layer.close(index);
-        });
+          layer.alert('密码错误',{icon:2})
         }
-        else{
-
-        }
-
 
       });
     } else if(obj.event === 'edit'){

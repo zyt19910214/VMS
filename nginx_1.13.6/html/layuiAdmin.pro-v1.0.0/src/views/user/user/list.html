@@ -98,15 +98,20 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
       if(checkData.length === 0){
         return layer.msg('请选择数据',{icon:5});
       }
-      var jsonObj = {};
-			var mycars=new Array()
-      for (var i=0;i<checkData.length;i++)
-			{
-				mycars[i]=checkData[i]['id']
-			}
-			jsonObj['del_list'] = mycars
-
-			console.log(jsonObj);
+      console.log(checkData)
+   		var l= []
+      for (var i =0;i<checkData.length; i++) {
+      		l.push(checkData[i]['id'])
+      };
+			var mycars=checkData[0]['id']
+			console.log(mycars)
+			var dic ={};
+   //    for (var i=0;i<checkData.length;i++)
+			// {
+			// 	mycars.push(checkData[i]['id'])
+			// }
+			dic['checkData'] = l.toString()
+			console.log(typeof(dic))
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
@@ -119,23 +124,21 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
           $.ajax({
              url: 'http://127.0.0.1:8888/delVipPerson/',
              type: 'POST',
-             data: JSON.stringify(mycars),
+             data: dic ,
              error:function(request){
                 layer.alert("会员添加失败",{icon: 2});
              },
              success:function(data){
           			if(data['code'] == 0){
-          				layer.msg('会员添加成功', {icon: 1});
-          			}else if(data['code'] == 2){
-									layer.alert("手机号已存在,添加失败!",{icon: 2});
+          				layer.msg('会员删除成功', {icon: 1});
           			}else {
-          				layer.alert("添加失败!",{icon: 2});
+          				layer.alert("删除失败!",{icon: 2});
           			}
               }
           });
 
           table.reload('LAY-user-manage');
-          layer.msg('已删除');
+
         	});
       	}else{
       		layer.close(index);
@@ -156,8 +159,11 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
+              console.log(data)
+              console.log(typeof(data))
               var field = data.field; //获取提交的字段
               console.log(field);
+              console.log(typeof(field));
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: 'http://127.0.0.1:8888/addVipPerson/',
