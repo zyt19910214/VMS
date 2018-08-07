@@ -32,7 +32,7 @@ layui.define(['table', 'form'], function(exports){
     ]]
     ,page: true
     ,done:function (res) {
-       console.log(res.data);
+       //console.log(res.data);
     }
     //,height: 'full-320'
     ,text: '对不起，加载出现异常！'
@@ -62,6 +62,8 @@ layui.define(['table', 'form'], function(exports){
              },
              success:function(data){
                 if(data['code'] == 0){
+                  var curr = $('.layui-laypage-curr em:eq(1)').html(); // 获取当前页码
+                  console.log(curr);
                   layer.msg('会员删除成功', {icon: 1});
                 }else {
                   layer.alert("删除失败!",{icon: 2});
@@ -86,14 +88,32 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
           view(this.id).render('user/user/userform', data).done(function(){
             form.render(null, 'layuiadmin-form-useradmin');
+
+            $('#id').val(data.id);
             $('#desc').val(data.vip_notes);
-            console.log(data);
+            //console.log(data);
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               var field = data.field; //获取提交的字段
 
               //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
+              $.ajax({
+                url: 'http://127.0.0.1:8888/editVipPerson/',
+                type: 'POST',
+                data:field,
+                error:function(request){//请求失败之后的操作
+                    layer.alert("更新失败",{icon: 2});
+                },
+                success:function(data){//请求成功之后的操作
+                    if(data['code'] == 0){
+                      layer.msg('更新成功', {icon: 1});
+                    }else if(data['code'] == 2){
+                      layer.alert("手机号已存在,更新失败!",{icon: 2});
+                    }else {
+                      layer.alert("更新失败!",{icon: 2});
+                    }
+                }
+              });
               layui.table.reload('LAY-user-manage'); //重载表格
               layer.close(index); //执行关闭
             });

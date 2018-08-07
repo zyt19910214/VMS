@@ -3,3 +3,290 @@
 2018-08-05 13:08:23,535 [base:get_response] [WARNING]- Not Found: /
 2018-08-05 13:11:43,084 [base:get_response] [WARNING]- Not Found: /
 2018-08-05 13:14:21,233 [base:get_response] [WARNING]- Not Found: /
+2018-08-07 22:32:42,055 [base:get_response] [WARNING]- Not Found: /
+2018-08-07 22:32:42,207 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-08 00:05:07,108 [base:get_response] [WARNING]- Not Found: /editVipPerson/
+2018-08-08 00:18:51,369 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:19:18,714 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:19:35,259 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:20:26,084 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:20:36,397 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:20:40,345 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:21:31,575 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    is_exist = db.getAll("SELECT * from person where phone ='%s' AND id NOT IN('%s')" % (data['phone']),data['id'])
+TypeError: not enough arguments for format string
+2018-08-08 00:28:11,561 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    sql2 ="SELECT * from person where phone ='%s' AND id NOT IN('%s')"%(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:29:25,861 [base:get_response] [WARNING]- Not Found: /
+2018-08-08 00:29:32,877 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 145, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s' AND id NOT IN('%s')" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:30:02,224 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 146, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s' AND id NOT IN('%s')" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:30:31,648 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s' AND id NOT IN('%s')" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:30:45,569 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 148, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s' AND id NOT IN('%s')" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:31:32,385 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone =\'%s\' AND id NOT IN(%s)" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:33:02,642 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone =\'%s\' and id not in (\'%s\') " %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:34:18,473 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone =\'%s\' and id not in (\'%s\') " %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:35:29,463 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone =\'%s\' and id != \'%s\' " %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:37:01,029 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 159, in edit_vip_person
+    sql = "UPDATE person SET name = '%s',sex= '%s',phone='%s',note='%s',create_time = now() WHERE id=%s" % (data['username'], data['sex'], data['phone'], data['desc'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:38:05,244 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s'  and id != %d" %(data['phone'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:38:43,040 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 147, in edit_vip_person
+    print (data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:38:59,697 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 141, in edit_vip_person
+    print (data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:40:17,420 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 149, in edit_vip_person
+    sql2 = "SELECT * from person where phone ='%s' and person.name != %d" %(data['phone'],data['username'])
+TypeError: %d format: a number is required, not unicode
+2018-08-08 00:41:11,849 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 161, in edit_vip_person
+    sql = "UPDATE person SET name = '%s',sex= '%s',phone='%s',note='%s',create_time = now() WHERE id=%s" % (data['username'], data['sex'], data['phone'], data['desc'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"
+2018-08-08 00:49:00,002 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 161, in edit_vip_person
+    sql = "UPDATE person SET name = '%s',sex= '%s',phone='%s',note='%s',create_time = now() WHERE id=%s" % (data['username'], data['sex'], data['phone'], data['desc'],data['id'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'id'"

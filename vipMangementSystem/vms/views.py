@@ -129,16 +129,53 @@ def del_vip_person(req):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
-def update_vip_person(req):
+def edit_vip_person(req):
     """
     更新会员信息
     :param req:
     :return:
     """
-    resp = {
-        "code": 1,
-        "msg": "internal_exceptions"
-    }
+    logger.debug('更新会员传入参数：' + str(req.POST))
+    data = req.POST.copy()
+    logger.debug(data)
+
+    if data['sex'] == '男':
+        data['sex'] = '1'
+
+    else:
+        data['sex'] = '0'
+    db = Mysql()
+
+    sql2 = "SELECT * from person where phone ='%s' and id != '%s'" %(data['phone'],data['id'])
+    logger.debug(sql2)
+    is_exist = db.getAll(sql2)
+
+    if (is_exist):
+        # 无法更新为已存在的手机号
+        resp = {
+            "code": 2,
+            "msg": "phone_is_exist"
+        }
+        logger.debug('更新失败,手机号已存在')
+    else:
+        sql = "UPDATE person SET name = '%s',sex= '%s',phone='%s',note='%s',create_time = now() WHERE id=%s" % (data['username'], data['sex'], data['phone'], data['desc'],data['id'])
+        logger.debug(sql)
+        dd = db.update(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员添加成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('更新成功')
+        else:
+            # 会员添加失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            logger.debug('服务异常,更新失败')
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 

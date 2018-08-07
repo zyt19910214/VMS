@@ -96,20 +96,20 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
       if(checkData.length === 0){
         return layer.msg('请选择数据',{icon:5});
       }
-      console.log(checkData)
+
    		var l= []
       for (var i =0;i<checkData.length; i++) {
       		l.push(checkData[i]['id'])
       };
 			var mycars=checkData[0]['id']
-			console.log(mycars)
+
 			var dic ={};
    //    for (var i=0;i<checkData.length;i++)
 			// {
 			// 	mycars.push(checkData[i]['id'])
 			// }
 			dic['checkData'] = l.toString()
-			console.log(typeof(dic))
+
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
@@ -157,11 +157,8 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
-              console.log(data)
-              console.log(typeof(data))
               var field = data.field; //获取提交的字段
-              console.log(field);
-              console.log(typeof(field));
+              //console.log(field);
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: 'http://127.0.0.1:8888/addVipPerson/',
