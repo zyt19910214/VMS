@@ -242,7 +242,7 @@ class Mysql(object):
         if count > 0:
             result = self._cursor.fetchall()
         else:
-            result = False
+            result = []
         return result
 
     def getOne(self, sql, param=None):

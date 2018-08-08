@@ -22,36 +22,47 @@ def list_vip_person(req):
     db = Mysql()
     sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
           ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
-    person_list = list(db.getAll(sql))
-    db.dispose()
-    # print(person_list)
-    # print(len(person_list))
-    # print req.GET
-    limit = int(req.GET['limit'])
-    page = int(req.GET['page'])
-
     n_list = []
-    for x in person_list:
-        if x['vip_person_point'] is None:
-            x['vip_person_point'] = 0
-        if x['vip_sex'] == 0:
-            x['vip_sex'] = '女'
-        elif x['vip_sex'] == 1:
-            x['vip_sex'] = '男'
-        else:
-            x['vip_sex'] = '未知'
-        n_list.append(x)
-    # print(len(n_list))
-    # print(len(n_list[(page - 1) * limit:page * limit]))
+    resp = ''
+    query_result = db.getAll(sql)
+    db.dispose()
+    print (len(query_result))
+    if  len(query_result)!=0:
+        person_list = list(query_result)
 
-    resp = {
-        "code": 0,
-        "msg": "",
-        "count": len(n_list),
-        "data": n_list[(page-1)*limit:page*limit]
-    }
+        # print(len(person_list))
+        # print req.GET
+        limit = int(req.GET['limit'])
+        page = int(req.GET['page'])
+
+        for x in person_list:
+            if x['vip_person_point'] is None:
+                x['vip_person_point'] = 0
+            if x['vip_sex'] == 0:
+                x['vip_sex'] = '女'
+            elif x['vip_sex'] == 1:
+                x['vip_sex'] = '男'
+            else:
+                x['vip_sex'] = '未知'
+            n_list.append(x)
+            # print(len(n_list))
+            # print(len(n_list[(page - 1) * limit:page * limit]))
+
+            resp = {
+                "code": 0,
+                "msg": "",
+                "count": len(n_list),
+                "data": n_list[(page - 1) * limit:page * limit]
+            }
+    else:
+
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": 0,
+            "data": n_list
+        }
     logger.debug('【VIP人员接口数据】：' + json.dumps(resp))
-    # print ('【VIP人员接口数据】：' + json.dumps(resp))
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
@@ -163,14 +174,14 @@ def edit_vip_person(req):
         dd = db.update(sql)
         db.dispose()
         if dd != 0:
-            # 会员添加成功
+            # 会员更新成功
             resp = {
                 "code": 0,
                 "msg": "success"
             }
             logger.debug('更新成功')
         else:
-            # 会员添加失败
+            # 会员更新失败
             resp = {
                 "code": 1,
                 "msg": "internal_exceptions"

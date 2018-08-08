@@ -32,7 +32,10 @@ layui.define(['table', 'form'], function(exports){
     ]]
     ,page: true
     ,done:function (res) {
-       //console.log(res.data);
+        if(res.data.length == 0){
+          layer.confirm('暂无会员信息')
+        }
+
     }
     //,height: 'full-320'
     ,text: '对不起，加载出现异常！'
@@ -58,20 +61,27 @@ layui.define(['table', 'form'], function(exports){
              type: 'POST',
              data: dic ,
              error:function(request){
-                layer.alert("会员添加失败",{icon: 2});
+                layer.alert("会员删除失败",{icon: 2});
              },
              success:function(data){
                 if(data['code'] == 0){
-                  var curr = $('.layui-laypage-curr em:eq(1)').html(); // 获取当前页码
-                  console.log(curr);
+
                   layer.msg('会员删除成功', {icon: 1});
+                  table.reload('LAY-user-manage', {
+                                page: {
+                                    curr: deleteJumpPage(obj)
+                                }
+                                ,where: {
+                                    id:data.id
+                                }
+                             });
                 }else {
                   layer.alert("删除失败!",{icon: 2});
                 }
               }
           });
 
-          table.reload('LAY-user-manage');
+
 
           });
         }else{
@@ -107,6 +117,7 @@ layui.define(['table', 'form'], function(exports){
                 success:function(data){//请求成功之后的操作
                     if(data['code'] == 0){
                       layer.msg('更新成功', {icon: 1});
+                      table.reload('LAY-user-manage'); //重载表格
                     }else if(data['code'] == 2){
                       layer.alert("手机号已存在,更新失败!",{icon: 2});
                     }else {
@@ -114,12 +125,12 @@ layui.define(['table', 'form'], function(exports){
                     }
                 }
               });
-              layui.table.reload('LAY-user-manage'); //重载表格
               layer.close(index); //执行关闭
             });
           });
         }
       });
+
     }else if(obj.event === 'add'){
       admin.popup({
         title:  '生成订单'
@@ -169,6 +180,21 @@ layui.define(['table', 'form'], function(exports){
     }
   });
 
+ function deleteJumpPage(obj){
+        // 获取当前页码   console.log(obj.tr[0]);// 获取行数据内容
+        var curr = $('.layui-laypage-curr em:eq(1)').text();
+        // console.log(curr);
+        // 获取tr的data-index属性的值验证是否是当前页的第一条
+        var s = $('.layui-table table tr');
+        console.log(s);
+        var dataIndex = $(obj.tr[0]).attr("data-index");
+        // 如是当前页的第一条数据,curr-1
+        if (dataIndex == 0) {
+            curr = curr == 1 ? curr : curr - 1
+        }
+        //console.log(curr);
+        return curr;
+  }
 
   exports('useradmin', {})
 });
