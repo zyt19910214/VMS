@@ -14,24 +14,14 @@
   <div class="layui-card">
     <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
       <div class="layui-form-item">
-        <div class="layui-inline">
-          <label class="layui-form-label">ID</label>
-          <div class="layui-input-block">
-            <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input">
-          </div>
-        </div>
+
         <div class="layui-inline">
           <label class="layui-form-label">用户名</label>
           <div class="layui-input-block">
             <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">邮箱</label>
-          <div class="layui-input-block">
-            <input type="text" name="email" placeholder="请输入" autocomplete="off" class="layui-input">
-          </div>
-        </div>
+
         <div class="layui-inline">
           <label class="layui-form-label">性别</label>
           <div class="layui-input-block">
@@ -74,137 +64,6 @@ layui.use('useradmin', layui.factory('useradmin')).use(['admin', 'useradmin', 't
   ,view = layui.view
   ,table = layui.table
   ,form = layui.form;
-
-  form.render(null, 'layadmin-userfront-formlist');
-
-  //监听搜索
-  form.on('submit(LAY-user-front-search)', function(data){
-    var field = data.field;
-
-    //执行重载
-    table.reload('LAY-user-manage', {
-      where: field
-    });
-  });
-
-  //事件
-  var active = {
-    batchdel: function(){
-      var checkStatus = table.checkStatus('LAY-user-manage')
-      ,checkData = checkStatus.data; //得到选中的数据
-
-      if(checkData.length === 0){
-        return layer.msg('请选择数据',{icon:5});
-      }
-
-   		var l= []
-      for (var i =0;i<checkData.length; i++) {
-      		l.push(checkData[i]['id'])
-      };
-			var mycars=checkData[0]['id']
-
-			var dic ={};
-   //    for (var i=0;i<checkData.length;i++)
-			// {
-			// 	mycars.push(checkData[i]['id'])
-			// }
-			dic['checkData'] = l.toString()
-
-      layer.prompt({
-        formType: 1
-        ,title: '敏感操作，请验证口令'
-      }, function(value, index){
-      	if(value =='693582'){
-      		layer.close(index);
-        	layer.confirm('确定删除吗？', function(index) {
-
-          //执行 Ajax 后重载
-          $.ajax({
-             url: 'http://127.0.0.1:8888/delVipPerson/',
-             type: 'POST',
-             data: dic ,
-             error:function(request){
-                layer.alert("会员删除失败",{icon: 2});
-             },
-             success:function(data){
-          			if(data['code'] == 0){
-          				layer.msg('会员删除成功', {icon: 1});
-                    table.reload('LAY-user-manage', {
-                                page: {
-                                    curr: deleteDulJumpPage(checkData)
-                                }
-                                ,where: {
-                                    id:data.id
-                                }
-                    });
-          			}else {
-          				layer.alert("删除失败!",{icon: 2});
-          			}
-              }
-            });
-        	});
-      	}else{
-      		layer.close(index);
-        	layer.alert('密码错误',{icon:2})
-        }
-
-      });
-    }
-    ,add: function(){
-      admin.popup({
-        title: '添加用户'
-        ,area: ['500px', '450px']
-        ,id: 'LAY-popup-user-add'
-        ,success: function(layero, index){
-          view(this.id).render('user/user/userform').done(function(){
-            form.render(null, 'layuiadmin-form-useradmin');
-
-            //监听提交
-            form.on('submit(LAY-user-front-submit)', function(data){
-              // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
-              var field = data.field; //获取提交的字段
-              //console.log(field);
-              //提交 Ajax 成功后，关闭当前弹层并重载表格
-              $.ajax({
-                url: 'http://127.0.0.1:8888/addVipPerson/',
-                type: 'POST',
-                data:field,
-                error:function(request){//请求失败之后的操作
-                    layer.alert("会员添加失败",{icon: 2});
-                },
-                success:function(data){//请求成功之后的操作
-                		if(data['code'] == 0){
-                			layer.msg('会员添加成功', {icon: 1});
-                		}else if(data['code'] == 2){
- 											layer.alert("手机号已存在,添加失败!",{icon: 2});
-                		}else {
-                			layer.alert("添加失败!",{icon: 2});
-                		}
-                }
-
-               });
-              layui.table.reload('LAY-user-manage'); //重载表格
-              layer.close(index); //执行关闭
-            });
-          });
-        }
-      });
-    }
-  };
-
-  $('.layui-btn.layuiadmin-btn-useradmin').on('click', function(){
-    var type = $(this).data('type');
-    active[type] ? active[type].call(this) : '';
-  });
-    // 批量删除返回跳转
-function deleteDulJumpPage(checkStatus) {
-    var curr = $('.layui-laypage-curr em:eq(1)').text(); // 获取当前页码
-    console.log(curr);// 获取行数据内容
-    if (checkStatus.isAll) { // 如是当前页的第一条数据
-        curr = curr == 1 ? curr : curr - 1
-    }
-    return curr; // 返回curr
-}
 });
 
 

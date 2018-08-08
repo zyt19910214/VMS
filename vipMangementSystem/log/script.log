@@ -290,3 +290,239 @@ Traceback (most recent call last):
   File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
     raise MultiValueDictKeyError(repr(key))
 MultiValueDictKeyError: "u'id'"
+2018-08-08 22:46:12,059 [base:get_response] [WARNING]- Not Found: /
+2018-08-08 22:46:12,536 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-09 00:06:37,500 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.query_vip_person didn't return an HttpResponse object. It returned None instead.
+2018-08-09 00:12:27,815 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 202, in query_vip_person
+    query_result = db.getAll(sql)
+  File "D:\Study\VMS\vipMangementSystem\vms\DB.py", line 239, in getAll
+    count = self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "C:\Python27\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\Python27\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a  LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc' at line 1")
+2018-08-09 00:19:25,994 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 211, in query_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:20:14,674 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 212, in query_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:20:47,605 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 212, in query_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:30:01,220 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /queryVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 211, in query_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:33:17,815 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 25, in list_vip_person
+    sql2 = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:33:24,173 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 37, in list_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:35:29,302 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 25, in list_vip_person
+    sql2 = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:36:22,338 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 22, in list_vip_person
+    print(req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:36:28,796 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 22, in list_vip_person
+    print(req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:38:03,690 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 22, in list_vip_person
+    if not req.GET['username'] and not req.GET['sex']:
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:38:06,717 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 22, in list_vip_person
+    if not req.GET['username'] and not req.GET['sex']:
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:38:56,098 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 22, in list_vip_person
+    if not req.GET['username'] and not req.GET['sex']:
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:40:23,463 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 26, in list_vip_person
+    sql= "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:41:16,641 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 27, in list_vip_person
+    sql= "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (req.GET['username'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'username'"
+2018-08-09 00:41:59,572 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 41, in list_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-09 00:44:40,789 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 41, in list_vip_person
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"

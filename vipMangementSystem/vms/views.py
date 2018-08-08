@@ -19,14 +19,20 @@ def list_vip_person(req):
     :param req:
     :return:
     """
+    if req.method =='GET':
+        sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
+              ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
+    if req.method == 'POST':
+        data = req.POST.copy()
+        sql= "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (data['username'])
+
     db = Mysql()
-    sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
-          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
+
     n_list = []
     resp = ''
     query_result = db.getAll(sql)
     db.dispose()
-    print (len(query_result))
+    # print (len(query_result))
     if  len(query_result)!=0:
         person_list = list(query_result)
 
@@ -122,6 +128,7 @@ def del_vip_person(req):
     """
 
     id_list= req.POST.copy()['checkData']
+    print (id_list)
     sql = 'DELETE FROM vms.person WHERE id IN (%s)'%(id_list)
     db = Mysql()
     count = (db.delete(sql))
@@ -189,7 +196,6 @@ def edit_vip_person(req):
             logger.debug('服务异常,更新失败')
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
-
 
 
 

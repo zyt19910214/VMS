@@ -19,9 +19,11 @@ from vms.views import list_vip_person as views_list_vip_person
 from vms.views import add_vip_person as views_add_vip_person
 from vms.views import del_vip_person as views_del_vip_person
 from vms.views import edit_vip_person as views_edit_vip_person
+
 urlpatterns = [
     url(r'^listVipPerson/$',views_list_vip_person),
     url(r'^addVipPerson/$', views_add_vip_person),
     url(r'^delVipPerson/$', views_del_vip_person),
     url(r'^editVipPerson/$', views_edit_vip_person),
+
 ]
