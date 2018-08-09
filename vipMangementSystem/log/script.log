@@ -526,3 +526,60 @@ Traceback (most recent call last):
   File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
     raise MultiValueDictKeyError(repr(key))
 MultiValueDictKeyError: "u'limit'"
+2018-08-09 21:26:57,969 [base:get_response] [WARNING]- Not Found: /
+2018-08-09 21:26:58,098 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-09 21:27:06,976 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 244, in list_good
+    if x['uploadtime'] != '':
+KeyError: u'uploadtime'
+2018-08-09 21:29:33,181 [base:get_response] [WARNING]- Not Found: /addGood/
+2018-08-09 21:30:25,197 [base:get_response] [WARNING]- Not Found: /addGood/
+2018-08-09 21:52:23,862 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 291, in add_good
+    sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`) VALUES ('%s', '%s', '%s', now(), '%s');"%(data['title'],data['label'],data['price'],count)
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'label'"
+2018-08-09 22:47:31,645 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.edit_good didn't return an HttpResponse object. It returned None instead.
+2018-08-09 23:36:32,736 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 336, in edit_good
+    count = str(int(data['count'])+int(data['add_count']))
+UnicodeEncodeError: 'decimal' codec can't encode characters in position 0-7: invalid decimal Unicode string
+2018-08-09 23:36:45,838 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /editGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 336, in edit_good
+    count = str(int(data['count'])+int(data['add_count']))
+ValueError: invalid literal for int() with base 10: 'p'

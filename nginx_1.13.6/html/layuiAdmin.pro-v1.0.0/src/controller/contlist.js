@@ -10,6 +10,7 @@
 layui.define(['table', 'form','laydate'], function(exports){
   var $ = layui.$
   ,admin = layui.admin
+  ,setter = layui.setter
   ,view = layui.view
   ,table = layui.table
   ,laydate = layui.laydate
@@ -23,15 +24,15 @@ layui.define(['table', 'form','laydate'], function(exports){
   //商品管理
   table.render({
     elem: '#LAY-app-content-list'
-    ,url: 'http://127.0.0.1:8888/listGood/'
+    ,url: setter.http+'listGood/'
     //,url: './json/content/good.js' //模拟接口
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field: 'id', width: 100, title: '商品ID', sort: true}
-      ,{field: 'name', title: '商品名称', minWidth: 100}
-      ,{field: 'price', title: '商品价格(元)', minWidth: 100}
-      ,{field: 'type', title: '商品分类'}
-      ,{field: 'uploadtime',width:170, title: '上货时间', sort: true}
+      ,{field: 'id', width: 100, title: '商品ID', sort: true, align: 'center'}
+      ,{field: 'name', title: '商品名称', minWidth: 100, align: 'center'}
+      ,{field: 'price', title: '商品价格(元)', minWidth: 100, align: 'center'}
+      ,{field: 'type', title: '商品分类', align: 'center'}
+      ,{field: 'uploadtime',width:170, title: '最近一次上货时间', sort: true, align: 'center'}
       ,{field: 'status', title: '库存', templet: '#buttonTpl', minWidth: 80, align: 'center'}
       ,{title: '操作', minWidth: 150, align: 'center', fixed: 'right', toolbar: '#table-content-list'}
     ]]
@@ -47,7 +48,8 @@ layui.define(['table', 'form','laydate'], function(exports){
     ,text: '对不起，加载出现异常！'
   });
 
- //监听搜索
+
+    //监听搜索
     form.on('submit(LAY-app-contlist-search)', function(data){
       var field = data.field;
 
@@ -63,20 +65,45 @@ layui.define(['table', 'form','laydate'], function(exports){
         ,checkData = checkStatus.data; //得到选中的数据
 
         if(checkData.length === 0){
-          return layer.msg('请选择数据');
+          return layer.msg('请选择数据',{icon:5});
         }
+        var l= []
+        for (var i =0;i<checkData.length; i++) {
+            l.push(checkData[i]['id'])
+        };
+        var mycars=checkData[0]['id']
+
+        var dic ={};
+     //    for (var i=0;i<checkData.length;i++)
+        // {
+        //  mycars.push(checkData[i]['id'])
+        // }
+        dic['checkData'] = l.toString()
+
 
         layer.confirm('确定删除吗？', function(index) {
+          $.ajax({
+             url: setter.http+'delGood/',
+             type: 'POST',
+             data: dic ,
+             error:function(request){
+                layer.alert("商品删除失败",{icon: 2});
+             },
+             success:function(data){
+                if(data['code'] == 0){
+                  layer.msg('商品删除成功', {icon: 1});
+                  table.reload('LAY-app-content-list', {
+                                page: {
+                                    curr: deleteDulJumpPage(checkStatus)
+                                }
+                  });
 
-          //执行 Ajax 后重载
-          /*
-          admin.req({
-            url: 'xxx'
-            //,……
-          });
-          */
-          table.reload('LAY-app-content-list');
-          layer.msg('已删除');
+                }else {
+                  layer.alert("商品删除失败!",{icon: 2});
+                }
+              }
+            });
+
         });
       }
 
@@ -96,7 +123,7 @@ layui.define(['table', 'form','laydate'], function(exports){
                 //layer.alert(JSON.stringify(field));
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 $.ajax({
-                  url: 'http://127.0.0.1:8888/addGood/',
+                  url: setter.http+'addGood/',
                   type: 'POST',
                   data:field,
                   error:function(request){//请求失败之后的操作
@@ -105,7 +132,7 @@ layui.define(['table', 'form','laydate'], function(exports){
                   success:function(data){//请求成功之后的操作
                       if(data['code'] == 0){
                         layer.msg('添加成功', {icon: 1});
-                        table.reload('LAY-user-manage'); //重载表格
+                        table.reload('LAY-app-content-list'); //重载表格
                       }else if(data['code'] == 2){
                         layer.alert("手机号已存在,添加失败!",{icon: 2});
                       }else {
@@ -114,7 +141,7 @@ layui.define(['table', 'form','laydate'], function(exports){
                   }
 
                 });
-                layui.table.reload('LAY-app-content-list'); //重载表格
+
                 layer.close(index); //执行关闭
               });
             });
@@ -129,12 +156,35 @@ layui.define(['table', 'form','laydate'], function(exports){
     });
 
 
-  //监听工具条
+
+  //监听工具条 --删除和编辑
   table.on('tool(LAY-app-content-list)', function(obj){
     var data = obj.data;
     if(obj.event === 'del'){
+      var dic ={};
+      dic['checkData'] =data['id']
       layer.confirm('确定删除此商品？', function(index){
-        obj.del();
+            $.ajax({
+             url: setter.http+'delGood/',
+             type: 'POST',
+             data: dic ,
+             error:function(request){
+                layer.alert("商品删除失败",{icon: 2});
+             },
+             success:function(data){
+                if(data['code'] == 0){
+
+                  layer.msg('商品删除成功', {icon: 1});
+                  table.reload('LAY-app-content-list', {
+                                page: {
+                                    curr: deleteJumpPage(obj)
+                                }
+                             });
+                }else {
+                  layer.alert("商品删除失败!",{icon: 2});
+                }
+              }
+          });
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
@@ -147,20 +197,36 @@ layui.define(['table', 'form','laydate'], function(exports){
             //console.log(data);
             form.render(null, 'layuiadmin-app-form-list');
 
-              //上货日期
-              laydate.render({
-                elem: '#date'
-                ,type: 'datetime'
-                ,value: new Date()
-
-              });
             //监听提交
             form.on('submit(layuiadmin-app-form-submit)', function(data){
-              var field = data.field; //获取提交的字段
-             layer.alert(JSON.stringify(field));
+              var field = data.field; //获取提交的字段a
+              //layer.alert(JSON.stringify(field));
               //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
-              layui.table.reload('LAY-app-content-list'); //重载表格
+              if(parseInt(field['add_count'])<0){
+                layer.msg("失败！上货数量不能为负数",{icon: 2});
+              }else{
+                $.ajax({
+                url: setter.http+'editGood/',
+                type: 'POST',
+                data:field,
+                error:function(request){//请求失败之后的操作
+                    layer.alert("更新失败",{icon: 2});
+                },
+                success:function(data){//请求成功之后的操作
+                    if(data['code'] == 0){
+                      table.reload('LAY-app-content-list'); //重载表格
+                      layer.msg('更新成功', {icon: 1});
+                    }else if(data['code'] == 2){
+                      layer.alert("手机号已存在,更新失败!",{icon: 2});
+                    }else {
+                      layer.alert("更新失败!",{icon: 2});
+                    }
+                }
+              });
+
+              }
+
+
               layer.close(index); //执行关闭
             });
           });
@@ -220,6 +286,38 @@ layui.define(['table', 'form','laydate'], function(exports){
       });
     }
   });
+   $('.layui-btn.layuiadmin-btn-useradmin').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+
+
+ function deleteJumpPage(obj){
+        // 获取当前页码   console.log(obj.tr[0]);// 获取行数据内容
+        var curr = $('.layui-laypage-curr em:eq(1)').text();
+        //console.log(curr);
+        // 获取tr的data-index属性的值验证是否是当前页的第一条
+        var s = $('.layui-table tbody tr').length;
+        console.log(s);
+        var dataIndex = $(obj.tr[0]).attr("data-index");
+        // 如是当前页的第一条数据,curr-1
+        if (dataIndex == 0 && s == 3 ) {
+            curr = curr == 1 ? curr : curr - 1
+        }
+        //console.log(curr);
+        return curr;
+  }
+   // 批量删除返回跳转
+    function deleteDulJumpPage(checkStatus) {
+    var curr = $('.layui-laypage-curr em:eq(1)').text(); // 获取当前页码
+    //console.log(curr);// 获取行数据内容
+    //console.log(checkStatus);
+    //console.log(checkStatus.isAll)
+    if (checkStatus.isAll) {
+        curr = curr == 1 ? curr : curr - 1
+    }
+    return curr; // 返回curr
+}
 
   exports('contlist', {})
 });

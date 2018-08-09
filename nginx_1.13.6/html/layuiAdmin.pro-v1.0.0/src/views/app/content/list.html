@@ -49,10 +49,12 @@
         </div>
         <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
         <script type="text/html" id="buttonTpl">
-          {{#  if(d.status >0){ }}
-            <button class="layui-btn layui-btn-xs">库存 {{d.status}}</button>
-          {{#  } else { }}
-            <button class="layui-btn layui-btn-warm layui-btn-xs">已售完</button>
+          {{#  if(d.status >10 ){ }}
+            <button class="layui-btn layui-btn-xs" style="width:80px;">{{d.status}}</button>
+          {{#  } else if(d.status>0) { }}
+            <button class="layui-btn layui-btn-warm layui-btn-xs" style="width:80px;">{{d.status}}</button>
+          {{#  }else{ }}
+            <button class="layui-btn layui-btn-danger layui-btn-xs " style="width:80px;">已售完</button>
           {{#  } }}
         </script>
         <script type="text/html" id="table-content-list">

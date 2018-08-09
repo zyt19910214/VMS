@@ -10,6 +10,7 @@
 layui.define(['table', 'form'], function(exports){
   var $ = layui.$
   ,admin = layui.admin
+  ,setter = layui.setter
   ,view = layui.view
   ,table = layui.table
   ,form = layui.form
@@ -18,11 +19,11 @@ layui.define(['table', 'form'], function(exports){
   //用户管理-列表
   table.render({
     elem: '#LAY-user-manage'
-   ,url: 'http://127.0.0.1:8888/listVipPerson/'
+   ,url: setter.http+'listVipPerson/'
    //,url: './json/useradmin/webuser.js' //模拟接口
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field: 'id', width: '8%', title: 'ID', sort: true, align:'center'}
+      ,{field: 'id', width: '8%', title: '会员ID', sort: true, align:'center'}
       ,{field: 'vip_name',width:'10%', title: '用户名', align:'center'}
       ,{field: 'vip_sex', width: '8%', title: '性别' ,sort: true, align:'center'}
       ,{field: 'vip_phone', width: '12%',title: '手机', align:'center'}
@@ -75,7 +76,7 @@ layui.define(['table', 'form'], function(exports){
           layer.confirm('确定删除吗？', function(index) {
 
           $.ajax({
-             url: 'http://127.0.0.1:8888/delVipPerson/',
+             url: setter.http+'delVipPerson/',
              type: 'POST',
              data: dic ,
              error:function(request){
@@ -125,7 +126,7 @@ layui.define(['table', 'form'], function(exports){
 
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
-                url: 'http://127.0.0.1:8888/editVipPerson/',
+                url: setter.http+'editVipPerson/',
                 type: 'POST',
                 data:field,
                 error:function(request){//请求失败之后的操作
@@ -231,7 +232,7 @@ layui.define(['table', 'form'], function(exports){
 
           //执行 Ajax 后重载
           $.ajax({
-             url: 'http://127.0.0.1:8888/delVipPerson/',
+             url: setter.http+'delVipPerson/',
              type: 'POST',
              data: dic ,
              error:function(request){
@@ -275,7 +276,7 @@ layui.define(['table', 'form'], function(exports){
               //console.log(field);
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
-                url: 'http://127.0.0.1:8888/addVipPerson/',
+                url: setter.http+'addVipPerson/',
                 type: 'POST',
                 data:field,
                 error:function(request){//请求失败之后的操作

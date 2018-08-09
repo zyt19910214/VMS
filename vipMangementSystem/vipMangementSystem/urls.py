@@ -20,12 +20,18 @@ from vms.views import add_vip_person as views_add_vip_person
 from vms.views import del_vip_person as views_del_vip_person
 from vms.views import edit_vip_person as views_edit_vip_person
 from vms.views import list_good as views_list_good
+from vms.views import add_good as views_add_good
+from vms.views import edit_good as views_edit_good
+from vms.views import del_good as views_del_good
+
 urlpatterns = [
     url(r'^listVipPerson/$',views_list_vip_person),
     url(r'^addVipPerson/$', views_add_vip_person),
     url(r'^delVipPerson/$', views_del_vip_person),
     url(r'^editVipPerson/$', views_edit_vip_person),
     url(r'^listGood/$', views_list_good),
-
+    url(r'^addGood/$', views_add_good),
+    url(r'^editGood/$', views_edit_good),
+    url(r'^delGood/$', views_del_good),
 
 ]

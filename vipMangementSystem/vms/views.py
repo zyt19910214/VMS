@@ -140,7 +140,7 @@ def del_vip_person(req):
     """
 
     id_list= req.POST.copy()['checkData']
-    print (id_list)
+    # print (id_list)
     sql = 'DELETE FROM vms.person WHERE id IN (%s)'%(id_list)
     db = Mysql()
     count = (db.delete(sql))
@@ -218,16 +218,16 @@ def list_good(req):
     :return:
     """
     data = req.GET.copy()
-    sql = 'select a.*,b.name as type from good a INNER JOIN good_category b ON a.good_category_id = b.id'
+    sql = 'select a.*,b.name as type from good a INNER JOIN good_category b ON a.good_category_id = b.id ORDER BY uploadtime desc'
     if 'title' in data:
         good_name = data['title']
         good_type = data['label']
         if good_name != '' and good_type == '':
-            sql = "select a.*,b.`name` as type from(select * from good where `name`='%s')a INNER JOIN good_category b ON a.good_category_id = b.id"%(good_name)
+            sql = "select a.*,b.`name` as type from(select * from good where `name`='%s')a INNER JOIN good_category b ON a.good_category_id = b.id ORDER BY a.uploadtime desc"%(good_name)
         elif good_name == '' and good_type != '':
-            sql = "select a.*,b.`name` as type from(select * from good )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id"%(good_type)
+            sql = "select a.*,b.`name` as type from(select * from good )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id ORDER BY a.uploadtime desc"%(good_type)
         elif good_name != '' and good_type != '':
-            sql ="select a.*,b.`name` as type from(select * from good where `name`='%s' )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id"%(good_name,good_type)
+            sql ="select a.*,b.`name` as type from(select * from good where `name`='%s' )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id ORDER BY a.uploadtime desc"%(good_name,good_type)
         else:
             pass
     db = Mysql()
@@ -268,6 +268,11 @@ def list_good(req):
 
 
 def add_good(req):
+    """
+
+    :param req:
+    :return:
+    """
     logger.debug('添加商品传入参数：' + str(req.POST))
     data = req.POST.copy()
 
@@ -282,7 +287,8 @@ def add_good(req):
         }
         logger.debug('添加失败,商品已存在')
     else:
-        sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`) VALUES ('%s', '%s', '%s', now(), '%s');"%(data['title'],data['label'],data['price'],)
+        count = str(int(data['add_count'])+int(data['count']))
+        sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`) VALUES ('%s', '%s', '%s', now(), '%s');"%(data['title'],data['type'],data['price'],count)
         logger.debug(sql)
         dd = db.insertOne(sql)
         db.dispose()
@@ -300,4 +306,78 @@ def add_good(req):
                 "msg": "internal_exceptions"
             }
             logger.debug('服务异常,商品添加失败')
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def edit_good(req):
+    """
+    编辑商品
+    :param req:
+    :return:
+    """
+    logger.debug('更新商品传入参数：' + str(req.POST))
+    data = req.POST.copy()
+    logger.debug(data)
+
+    sql2 = "SELECT * from good where `name` ='%s' and id != '%s'" % (data['title'], data['id'])
+    logger.debug(sql2)
+
+    db = Mysql()
+    is_exist = db.getAll(sql2)
+
+    if(is_exist):
+        # 无法更新为已存在商品
+        resp = {
+            "code": 2,
+            "msg": "phone_is_exist"
+        }
+        logger.debug('更新失败,商品已存在')
+    else:
+        count = str(int(data['count'])+int(data['add_count']))
+        sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now() WHERE id=%s" % (
+        data['title'], data['type'], data['price'], count, data['id'])
+        logger.debug(sql)
+        dd = db.update(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员更新成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('商品更新成功')
+        else:
+            # 会员更新失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            logger.debug('服务异常,商品更新失败')
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def del_good(req):
+    """
+    商品 删除（单个/批量删除）
+    :param req:
+    :return:
+    """
+    id_list = req.POST.copy()['checkData']
+    logger.debug("删除数据的ID："+str(id_list))
+    sql = 'DELETE FROM good WHERE id IN (%s)' % (id_list)
+    db = Mysql()
+    count = (db.delete(sql))
+    db.dispose()
+    if count == len(id_list.split(",")):
+        resp = {
+            "code": 0,
+            "msg": "success"
+        }
+    else:
+        resp = {
+            "code": 1,
+            "msg": "internal_exceptions"
+        }
+
     return HttpResponse(json.dumps(resp), content_type="application/json")
