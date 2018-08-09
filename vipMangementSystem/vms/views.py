@@ -13,18 +13,31 @@ import logging
 logger = logging.getLogger('django')
 
 
+# 会员增删改查
 def list_vip_person(req):
     """
     会员列表查询
     :param req:
     :return:
     """
-    if req.method =='GET':
-        sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
-              ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
-    if req.method == 'POST':
-        data = req.POST.copy()
-        sql= "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `name`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (data['username'])
+    data = req.GET.copy()
+    sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
+          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
+
+    if 'phone' in  data:
+        phone = data['phone']
+        sex = data['sex']
+        if phone != '' and sex == '2':
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `phone`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+            phone)
+        elif phone == '' and sex != '2':
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+                sex)
+        elif phone != '' and sex != '2':
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `phone`='%s' AND `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+                phone,sex)
+        else:
+            pass
 
     db = Mysql()
 
@@ -53,7 +66,6 @@ def list_vip_person(req):
             n_list.append(x)
             # print(len(n_list))
             # print(len(n_list[(page - 1) * limit:page * limit]))
-
             resp = {
                 "code": 0,
                 "msg": "",
@@ -198,5 +210,94 @@ def edit_vip_person(req):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
+# 商品增删改查
+def list_good(req):
+    """
+    商品查询
+    :param req:
+    :return:
+    """
+    data = req.GET.copy()
+    sql = 'select a.*,b.name as type from good a INNER JOIN good_category b ON a.good_category_id = b.id'
+    if 'title' in data:
+        good_name = data['title']
+        good_type = data['label']
+        if good_name != '' and good_type == '':
+            sql = "select a.*,b.`name` as type from(select * from good where `name`='%s')a INNER JOIN good_category b ON a.good_category_id = b.id"%(good_name)
+        elif good_name == '' and good_type != '':
+            sql = "select a.*,b.`name` as type from(select * from good )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id"%(good_type)
+        elif good_name != '' and good_type != '':
+            sql ="select a.*,b.`name` as type from(select * from good where `name`='%s' )a INNER  JOIN (select * from good_category where `id`='%s')  b ON a.good_category_id = b.id"%(good_name,good_type)
+        else:
+            pass
+    db = Mysql()
+
+    g_list = []
+    resp = ''
+    query_result = db.getAll(sql)
+    db.dispose()
+
+    if  len(query_result)!=0:
+        good_list = list(query_result)
+
+        for x in good_list:
+           if x['uploadtime'] != '':
+               x['uploadtime'] = str(x['uploadtime'])
+           g_list.append(x)
+        limit = int(req.GET['limit'])
+        page = int(req.GET['page'])
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": len(g_list),
+            "data": g_list[(page - 1) * limit:page * limit]
+        }
+    else:
+
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": 0,
+            "data": g_list
+        }
 
 
+    logger.debug('【商品接口数据】：' + json.dumps(resp))
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def add_good(req):
+    logger.debug('添加商品传入参数：' + str(req.POST))
+    data = req.POST.copy()
+
+    db = Mysql()
+    is_exist = db.getAll('SELECT * from good where `name` =\'%s\'' % (data['title']))
+
+    if (is_exist):
+        # 已存在该商品无法添加
+        resp = {
+            "code": 2,
+            "msg": "good_is_exist"
+        }
+        logger.debug('添加失败,商品已存在')
+    else:
+        sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`) VALUES ('%s', '%s', '%s', now(), '%s');"%(data['title'],data['label'],data['price'],)
+        logger.debug(sql)
+        dd = db.insertOne(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员添加成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('商品添加成功')
+        else:
+            # 会员添加失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            logger.debug('服务异常,商品添加失败')
+    return HttpResponse(json.dumps(resp), content_type="application/json")

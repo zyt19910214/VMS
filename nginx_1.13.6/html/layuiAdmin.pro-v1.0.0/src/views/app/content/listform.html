@@ -15,24 +15,15 @@
         <script type="text/html" template>
           <select name="type" lay-verify="required">
             <option value="">请选择商品分类</option>
-            <option value="饮料" {{ d.params.type === '饮料' ? 'selected' : '' }}>饮料</option>
-            <option value="酒水" {{ d.params.type === '酒水' ? 'selected' : '' }}>酒水</option>
-            <option value="美食" {{ d.params.type === '美食' ? 'selected' : '' }}>美食</option>
-            <option value="火锅" {{ d.params.type === '火锅' ? 'selected' : '' }}>火锅</option>
+            <option value="1" {{ d.params.type === '饮料' ? 'selected' : '' }}>饮料</option>
+            <option value="2" {{ d.params.type === '酒水' ? 'selected' : '' }}>酒水</option>
+            <option value="3" {{ d.params.type === '简餐' ? 'selected' : '' }}>美食</option>
+            <option value="4" {{ d.params.type === '火锅' ? 'selected' : '' }}>火锅</option>
           </select>
         </script>
       </div>
     </div>
-    <div class="layui-form-item">
-      <label class="layui-form-label">上货时间</label>
-      <div class="layui-input-inline">
-        <div class="layui-input-inline">
-        <script type="text/html" template>
-          <input type="text" name="date" id="date" lay-verify="datetime" value="{{d.params.uploadtime || ''}}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" disabled>
-        </script>
-      </div>
-      </div>
-    </div>
+
      <div class="layui-form-item">
       <label class="layui-form-label">目前库存</label>
       <div class="layui-input-inline">

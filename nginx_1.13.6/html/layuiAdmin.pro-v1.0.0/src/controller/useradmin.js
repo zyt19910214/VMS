@@ -34,7 +34,7 @@ layui.define(['table', 'form'], function(exports){
     ,done:function (res) {
       data_len = res.data.length;
       if(data_len == 0){
-        var s = $('.layui-none').html('暂无会员数据')
+        var s = $('.layui-none').html('无会员数据')
 
       }
     }
@@ -51,23 +51,6 @@ layui.define(['table', 'form'], function(exports){
     console.log(field);
 
 
-      $.ajax({
-         url: 'http://127.0.0.1:8888/listVipPerson/',
-         type: 'POST',
-         data: field ,
-         error:function(request){
-            layer.alert("查询失败",{icon: 2});
-         },
-         success:function(data){
-            if(data['code'] == 0){
-
-              layer.msg('查询成功', {icon: 1});
-
-            }else {
-              layer.alert("查询失败!",{icon: 2});
-            }
-          }
-      });
 
     //执行重载
     table.reload('LAY-user-manage', {
@@ -301,6 +284,7 @@ layui.define(['table', 'form'], function(exports){
                 success:function(data){//请求成功之后的操作
                     if(data['code'] == 0){
                       layer.msg('添加成功', {icon: 1});
+                      table.reload('LAY-user-manage'); //重载表格
                     }else if(data['code'] == 2){
                       layer.alert("手机号已存在,添加失败!",{icon: 2});
                     }else {
@@ -309,7 +293,7 @@ layui.define(['table', 'form'], function(exports){
                 }
 
                });
-              layui.table.reload('LAY-user-manage'); //重载表格
+
               layer.close(index); //执行关闭
             });
           });
