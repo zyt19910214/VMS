@@ -23,8 +23,13 @@ from vms.views import list_good as views_list_good
 from vms.views import add_good as views_add_good
 from vms.views import edit_good as views_edit_good
 from vms.views import del_good as views_del_good
+from vms.views import list_server as views_list_server
+from vms.views import add_server as views_add_server
+from vms.views import edit_server as views_edit_server
+from vms.views import del_server as views_del_server
 
 urlpatterns = [
+
     url(r'^listVipPerson/$',views_list_vip_person),
     url(r'^addVipPerson/$', views_add_vip_person),
     url(r'^delVipPerson/$', views_del_vip_person),
@@ -33,5 +38,9 @@ urlpatterns = [
     url(r'^addGood/$', views_add_good),
     url(r'^editGood/$', views_edit_good),
     url(r'^delGood/$', views_del_good),
+    url(r'^listServer/$', views_list_server),
+    url(r'^addServer/$', views_add_server),
+    url(r'^editServer/$', views_edit_server),
+    url(r'^delServer/$', views_del_server),
 
 ]

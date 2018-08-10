@@ -269,7 +269,7 @@ def list_good(req):
 
 def add_good(req):
     """
-
+    添加商品
     :param req:
     :return:
     """
@@ -366,6 +366,162 @@ def del_good(req):
     id_list = req.POST.copy()['checkData']
     logger.debug("删除数据的ID："+str(id_list))
     sql = 'DELETE FROM good WHERE id IN (%s)' % (id_list)
+    db = Mysql()
+    count = (db.delete(sql))
+    db.dispose()
+    if count == len(id_list.split(",")):
+        resp = {
+            "code": 0,
+            "msg": "success"
+        }
+    else:
+        resp = {
+            "code": 1,
+            "msg": "internal_exceptions"
+        }
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+# 服务增删改查
+def list_server(req):
+    """
+    服务查询
+    :param req:
+    :return:
+    """
+    data = req.GET.copy()
+    sql = 'select a.*,b.name as type from server a INNER JOIN server_category b ON a.server_category_id = b.id order by id'
+    if 'servername' in data:
+        server_name = data['servername']
+        server_type = data['type']
+        if server_name != '' and server_type == '':
+            sql = "select a.*,b.`name` as type from(select * from server where `name`='%s')a INNER JOIN server_category b ON a.server_category_id = b.id ORDER BY id "%(server_name)
+        elif server_name == '' and server_type != '':
+            sql = "select a.*,b.`name` as type from(select * from server )a INNER  JOIN (select * from server_category where `id`='%s')  b ON a.server_category_id = b.id ORDER BY id "%(server_type)
+        elif server_name != '' and server_type != '':
+            sql ="select a.*,b.`name` as type from(select * from server where `name`='%s' )a INNER  JOIN (select * from server_category where `id`='%s')  b ON a.server_category_id = b.id ORDER BY id"%(server_name,server_type)
+        else:
+            pass
+    db = Mysql()
+
+    query_result = db.getAll(sql)
+    db.dispose()
+
+    server_list = list(query_result)
+
+    limit = int(req.GET['limit'])
+    page = int(req.GET['page'])
+    resp = {
+        "code": 0,
+        "msg": "",
+        "count": len(server_list),
+        "data": server_list[(page - 1) * limit:page * limit]
+    }
+
+    logger.debug('【服务接口数据】：' + json.dumps(resp))
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def add_server(req):
+    """
+    添加服务
+    :param req:
+    :return:
+    """
+    logger.debug('添加服务传入参数：' + str(req.POST))
+    data = req.POST.copy()
+
+    db = Mysql()
+    is_exist = db.getAll('SELECT * from server where `name` =\'%s\'' % (data['name']))
+
+    if (is_exist):
+        # 已存在该服务无法添加
+        resp = {
+            "code": 2,
+            "msg": "server_is_exist"
+        }
+        logger.debug('添加失败,服务已存在')
+    else:
+        sql = "INSERT INTO `server` ( `name`, `server_category_id`, `price`) VALUES ('%s', '%s', '%s');"%(data['name'],data['type'],data['price'])
+        logger.debug(sql)
+        dd = db.insertOne(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员添加成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('商品添加成功')
+        else:
+            # 会员添加失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            logger.debug('服务异常,商品添加失败')
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def edit_server(req):
+    """
+    编辑服务
+    :param req:
+    :return:
+    """
+    logger.debug('更新服务传入参数：' + str(req.POST))
+    data = req.POST.copy()
+    logger.debug(data)
+
+    sql2 = "SELECT * from server where `name` ='%s' and id != '%s'" % (data['name'], data['id'])
+    logger.debug(sql2)
+
+    db = Mysql()
+    is_exist = db.getAll(sql2)
+
+    if(is_exist):
+        # 无法更新为已存在商品
+        resp = {
+            "code": 2,
+            "msg": "phone_is_exist"
+        }
+        logger.debug('更新失败,商品已存在')
+    else:
+        count = str(int(data['count'])+int(data['add_count']))
+        sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now() WHERE id=%s" % (
+        data['title'], data['type'], data['price'], count, data['id'])
+        logger.debug(sql)
+        dd = db.update(sql)
+        db.dispose()
+        if dd != 0:
+            # 会员更新成功
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('商品更新成功')
+        else:
+            # 会员更新失败
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
+            logger.debug('服务异常,商品更新失败')
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def del_server(req):
+    """
+    服务删除（单个/批量删除）
+    :param req:
+    :return:
+    """
+    id_list = req.POST.copy()['checkData']
+    logger.debug("删除数据的ID："+str(id_list))
+    sql = 'DELETE FROM server WHERE id IN (%s)' % (id_list)
     db = Mysql()
     count = (db.delete(sql))
     db.dispose()
