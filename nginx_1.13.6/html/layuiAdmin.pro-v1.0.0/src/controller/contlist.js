@@ -127,16 +127,16 @@ layui.define(['table', 'form','laydate'], function(exports){
                   type: 'POST',
                   data:field,
                   error:function(request){//请求失败之后的操作
-                      layer.alert("添加失败",{icon: 2});
+                      layer.alert("商品添加失败",{icon: 2});
                   },
                   success:function(data){//请求成功之后的操作
                       if(data['code'] == 0){
-                        layer.msg('添加成功', {icon: 1});
+                        layer.msg('商品添加成功', {icon: 1});
                         table.reload('LAY-app-content-list'); //重载表格
                       }else if(data['code'] == 2){
                         layer.alert("商品已存在,添加失败!",{icon: 2});
                       }else {
-                        layer.alert("添加失败!",{icon: 2});
+                        layer.alert("商品添加失败!",{icon: 2});
                       }
                   }
 
@@ -271,19 +271,19 @@ layui.define(['table', 'form','laydate'], function(exports){
              type: 'POST',
              data: dic ,
              error:function(request){
-                layer.alert("商品删除失败",{icon: 2});
+                layer.alert("服务删除失败",{icon: 2});
              },
              success:function(data){
                 if(data['code'] == 0){
 
-                  layer.msg('商品删除成功', {icon: 1});
+                  layer.msg('服务删除成功', {icon: 1});
                   table.reload('LAY-app-content-comm', {
                                 page: {
                                     curr: deleteJumpPage(obj)
                                 }
                              });
                 }else {
-                  layer.alert("商品删除失败!",{icon: 2});
+                  layer.alert("服务删除失败!",{icon: 2});
                 }
               }
           });
@@ -385,16 +385,16 @@ layui.define(['table', 'form','laydate'], function(exports){
                   type: 'POST',
                   data:field,
                   error:function(request){//请求失败之后的操作
-                      layer.alert("添加失败",{icon: 2});
+                      layer.alert("服务添加失败",{icon: 2});
                   },
                   success:function(data){//请求成功之后的操作
                       if(data['code'] == 0){
-                        layer.msg('添加成功', {icon: 1});
+                        layer.msg('服务添加成功', {icon: 1});
                         table.reload('LAY-app-content-comm'); //重载表格
                       }else if(data['code'] == 2){
                         layer.alert("服务已存在,添加失败!",{icon: 2});
                       }else {
-                        layer.alert("添加失败!",{icon: 2});
+                        layer.alert("服务添加失败!",{icon: 2});
                       }
                   }
 

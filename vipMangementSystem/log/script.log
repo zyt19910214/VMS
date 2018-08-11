@@ -583,3 +583,5 @@ Traceback (most recent call last):
   File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 336, in edit_good
     count = str(int(data['count'])+int(data['add_count']))
 ValueError: invalid literal for int() with base 10: 'p'
+2018-08-10 23:49:29,845 [base:get_response] [WARNING]- Not Found: /
+2018-08-10 23:49:29,966 [base:get_response] [WARNING]- Not Found: /favicon.ico
