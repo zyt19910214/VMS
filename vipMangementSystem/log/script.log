@@ -585,3 +585,174 @@ Traceback (most recent call last):
 ValueError: invalid literal for int() with base 10: 'p'
 2018-08-10 23:49:29,845 [base:get_response] [WARNING]- Not Found: /
 2018-08-10 23:49:29,966 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-12 16:45:27,003 [base:get_response] [WARNING]- Not Found: /
+2018-08-12 16:45:27,130 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-12 16:58:26,670 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 16:58:53,790 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 16:59:29,092 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 16:59:40,184 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:00:36,624 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:01:34,118 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:01:42,404 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:02:21,111 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:02:57,351 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:03:17,686 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:06:18,766 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:07:20,187 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"
+2018-08-12 17:08:28,558 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listGood/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 247, in list_good
+    limit = int(req.GET['limit'])
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'limit'"

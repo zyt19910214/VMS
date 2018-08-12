@@ -164,11 +164,12 @@ layui.define(['table', 'form'], function(exports){
              $('#vip_phone').val(data.vip_phone);
              //获取服务接口
              admin.req({
+            //,url: setter.http+'listServer/'
              url: './json/content/server.js'
              ,type: 'get'
              ,data: {}
              ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
-              //console.log(res);
+              console.log(res);
               var getTpl = demo.innerHTML
               ,view = document.getElementById('server');
               laytpl(getTpl).render(res, function(html){
@@ -177,21 +178,23 @@ layui.define(['table', 'form'], function(exports){
               form.render('checkbox');
               }
             });
-             //获取商品接口
-             admin.req({
-             url: './json/content/good.js'
-             ,type: 'get'
-             ,data: {}
-             ,done: function(res){
-              //console.log(res);
+
+            $.ajax({
+             url: setter.http+'listGood/',
+             type: 'GET',
+             error:function(request){
+                layer.msg(request);
+             },
+             success:function(data){
+              console.log(data);
                var getTpl = demo2.innerHTML
               ,view = document.getElementById('good');
               laytpl(getTpl).render(res, function(html){
                 view.innerHTML = html;
               });
-
               }
             });
+
 
           });
         }
