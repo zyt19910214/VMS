@@ -219,7 +219,7 @@ def list_good(req):
     """
     data = req.GET.copy()
     sql = 'select a.*,b.name as type from good a INNER JOIN good_category b ON a.good_category_id = b.id ORDER BY uploadtime desc'
-    if 'title' in data:
+    if 'title' in data or 'label' in data:
         good_name = data['title']
         good_type = data['label']
         if good_name != '' and good_type == '':
@@ -233,25 +233,33 @@ def list_good(req):
     db = Mysql()
 
     g_list = []
-    resp = ''
     query_result = db.getAll(sql)
     db.dispose()
 
-    if  len(query_result)!=0:
+    if len(query_result) != 0:
         good_list = list(query_result)
 
         for x in good_list:
            if x['uploadtime'] != '':
                x['uploadtime'] = str(x['uploadtime'])
            g_list.append(x)
-        limit = int(req.GET['limit'])
-        page = int(req.GET['page'])
-        resp = {
-            "code": 0,
-            "msg": "",
-            "count": len(g_list),
-            "data": g_list[(page - 1) * limit:page * limit]
-        }
+        if 'limit' in req.GET:
+            limit = int(req.GET['limit'])
+            page = int(req.GET['page'])
+            resp = {
+                "code": 0,
+                "msg": "",
+                "count": len(g_list),
+                "data": g_list[(page - 1) * limit:page * limit]
+            }
+        else:
+            resp = {
+                "code": 0,
+                "msg": "",
+                "count": len(g_list),
+                "data": g_list
+            }
+
     else:
 
         resp = {
@@ -392,7 +400,7 @@ def list_server(req):
     """
     data = req.GET.copy()
     sql = 'select a.*,b.name as type from server a INNER JOIN server_category b ON a.server_category_id = b.id order by id'
-    if 'servername' in data:
+    if 'servername' in data or 'type' in data:
         server_name = data['servername']
         server_type = data['type']
         if server_name != '' and server_type == '':
@@ -409,15 +417,22 @@ def list_server(req):
     db.dispose()
 
     server_list = list(query_result)
-
-    limit = int(req.GET['limit'])
-    page = int(req.GET['page'])
-    resp = {
-        "code": 0,
-        "msg": "",
-        "count": len(server_list),
-        "data": server_list[(page - 1) * limit:page * limit]
-    }
+    if 'limit' in req.GET:
+        limit = int(req.GET['limit'])
+        page = int(req.GET['page'])
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": len(server_list),
+            "data": server_list[(page - 1) * limit:page * limit]
+        }
+    else:
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": len(server_list),
+            "data": server_list
+        }
 
     logger.debug('【服务接口数据】：' + json.dumps(resp))
 
@@ -537,3 +552,31 @@ def del_server(req):
         }
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+# 订单系统处理
+def list_order(req):
+    pass
+
+def add_order(req):
+    """
+    订单添加
+    :param req:
+    :return:
+    """
+    logger.debug('订单生成传入参数：' + str(req.POST))
+    data = req.POST.copy()
+    print (data)
+
+    resp = {
+        "code": 0,
+        "msg": "success"
+    }
+    logger.debug('订单生成成功')
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
+def edit_order(req):
+    pass
+
+def del_order(req):
+    pass

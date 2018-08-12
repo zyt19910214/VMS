@@ -27,7 +27,10 @@ from vms.views import list_server as views_list_server
 from vms.views import add_server as views_add_server
 from vms.views import edit_server as views_edit_server
 from vms.views import del_server as views_del_server
-
+from vms.views import list_order as views_list_order
+from vms.views import add_order as views_add_order
+from vms.views import edit_order as views_edit_order
+from vms.views import del_order as views_del_order
 urlpatterns = [
 
     url(r'^listVipPerson/$',views_list_vip_person),
@@ -42,5 +45,9 @@ urlpatterns = [
     url(r'^addServer/$', views_add_server),
     url(r'^editServer/$', views_edit_server),
     url(r'^delServer/$', views_del_server),
+    url(r'^listOrder/$', views_list_order),
+    url(r'^addOrder/$', views_add_order),
+    url(r'^editOrder/$', views_edit_order),
+    url(r'^delOrder/$', views_del_order),
 
 ]

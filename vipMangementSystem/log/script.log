@@ -756,3 +756,5 @@ Traceback (most recent call last):
   File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
     raise MultiValueDictKeyError(repr(key))
 MultiValueDictKeyError: "u'limit'"
+2018-08-12 21:23:04,355 [base:get_response] [WARNING]- Not Found: /
+2018-08-12 21:23:04,483 [base:get_response] [WARNING]- Not Found: /favicon.ico

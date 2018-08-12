@@ -162,41 +162,103 @@ layui.define(['table', 'form'], function(exports){
             form.render(null,'layuiadmin-form-dd');
              $('#vip_name').val(data.vip_name);
              $('#vip_phone').val(data.vip_phone);
-             //获取服务接口
-             admin.req({
-            //,url: setter.http+'listServer/'
-             url: './json/content/server.js'
-             ,type: 'get'
-             ,data: {}
-             ,done: function(res){ //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
-              console.log(res);
-              var getTpl = demo.innerHTML
-              ,view = document.getElementById('server');
-              laytpl(getTpl).render(res, function(html){
-                view.innerHTML = html;
-              });
-              form.render('checkbox');
+
+            //获取服务列表接口
+             $.ajax({
+               url: setter.http+'listServer/',
+               type: 'GET',
+               error:function(data){
+                  layer.msg("获取服务列表失败");
+               },
+               success:function(data){
+                  console.log(data);
+                  var getTpl = demo.innerHTML
+                  ,view = document.getElementById('server');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                  form.render('checkbox');
+                }
+            });
+            
+            //获取饮料列表接口
+            $.ajax({
+              url: setter.http+'listGood/',
+              type: 'GET',
+              data:{"title":"","label":"1"}
+              ,error:function(data){
+                layer.msg("获取饮料列表失败");
+              },
+              success:function(data){
+                //console.log(data);
+                var getTpl = demo2.innerHTML
+                ,view = document.getElementById('drink');
+                laytpl(getTpl).render(data, function(html){
+                  view.innerHTML = html;
+                });
+              }
+            });
+            
+            //获取酒水列表接口
+            $.ajax({
+              url: setter.http+'listGood/',
+              type: 'GET',
+              data:{"title":"","label":"2"}
+              ,error:function(data){
+                layer.msg("获取酒水列表失败");
+              },
+              success:function(data){
+                //console.log(data);
+                var getTpl = demo2.innerHTML
+                ,view = document.getElementById('wine');
+                laytpl(getTpl).render(data, function(html){
+                  view.innerHTML = html;
+                });
               }
             });
 
+            //获取简餐列表接口
             $.ajax({
-             url: setter.http+'listGood/',
-             type: 'GET',
-             error:function(request){
-                layer.msg(request);
-             },
-             success:function(data){
-              console.log(data);
-               var getTpl = demo2.innerHTML
-              ,view = document.getElementById('good');
-              laytpl(getTpl).render(res, function(html){
-                view.innerHTML = html;
-              });
+              url: setter.http+'listGood/',
+              type: 'GET',
+              data:{"title":"","label":"3"}
+              ,error:function(data){
+                layer.msg("获取简餐列表失败");
+              },
+              success:function(data){
+                //console.log(data);
+                var getTpl = demo2.innerHTML
+                ,view = document.getElementById('snack');
+                laytpl(getTpl).render(data, function(html){
+                  view.innerHTML = html;
+                });
               }
             });
+
+            //获取火锅列表接口
+            $.ajax({
+              url: setter.http+'listGood/',
+              type: 'GET',
+              data:{"title":"","label":"4"}
+              ,error:function(data){
+                layer.msg("获取火锅列表失败");
+              },
+              success:function(data){
+                //console.log(data);
+                var getTpl = demo2.innerHTML
+                ,view = document.getElementById('hot_pot');
+                laytpl(getTpl).render(data, function(html){
+                  view.innerHTML = html;
+                });
+              }
+            });
+
+            
 
 
           });
+
+          
         }
       });
     }
