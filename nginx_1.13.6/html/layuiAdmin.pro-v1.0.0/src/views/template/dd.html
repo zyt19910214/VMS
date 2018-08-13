@@ -65,8 +65,10 @@
               <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
               <div class="price">{{item.name}}</div>
                 <div class="price">
+
                     <b>￥{{item.price}}</b>
-                    <div class="jiajian" style="display: inline-block;float:right;">
+                    <div class="jiajian" style="display: inline-block;float:right;" count1="{{item.status}}">
+                     <span style="display:none;" >{{item.status}}</span>
                       <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
                       <input  name="good[{{item.id}}]"  readonly="readonly" style="border:0px;outline: none;width:20px;" type="text" value="0" >
                       <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
@@ -221,8 +223,14 @@ function jia(e){
 
   elm = e.target.parentNode.parentNode;
   var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
-  elm.querySelector("input").value = ++count;
-  elm.setAttribute("count",count);
+  if (count <parseInt(elm.getAttribute("count1"))){
+    elm.querySelector("input").value = ++count;
+
+    elm.setAttribute("count",count);
+  }else{
+    layer.msg("商品不足",{icon:5});
+  }
+
 };
 function jian(e){
   elm = e.target.parentNode.parentNode;

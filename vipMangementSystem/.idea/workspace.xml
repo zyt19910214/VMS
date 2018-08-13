@@ -22,30 +22,13 @@
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand>
-      <path>
-        <item name="数据库" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="vms@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="数据库" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="vms@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="数据库" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="vms@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="vms: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -59,31 +42,54 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vms/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="560" column="19" lean-forward="true" selection-start-line="560" selection-start-column="19" selection-end-line="560" selection-end-column="19" />
+            <state relative-caret-position="12">
+              <caret line="424" column="22" lean-forward="true" selection-start-line="424" selection-start-column="22" selection-end-line="424" selection-end-column="22" />
               <folding>
                 <element signature="e#381#3035#0" expanded="false" />
                 <element signature="e#3067#4291#0" expanded="false" />
                 <element signature="e#4323#4868#0" expanded="false" />
                 <element signature="e#4901#6164#0" expanded="false" />
-                <element signature="e#6200#8361#0" expanded="false" />
-                <element signature="e#8387#9539#0" expanded="false" />
-                <element signature="e#9566#10817#0" expanded="false" />
-                <element signature="e#10843#11405#0" expanded="false" />
-                <element signature="e#11443#13226#0" expanded="false" />
-                <element signature="e#13254#14307#0" expanded="false" />
-                <element signature="e#14336#15588#0" expanded="false" />
-                <element signature="e#15616#16179#0" expanded="false" />
+                <marker date="1534160419608" expanded="true" signature="470:689" ph="SELECT a.id,... person" />
+                <marker date="1534160419608" expanded="true" signature="831:1072" ph="SELECT a.id,... *" />
+                <marker date="1534160419608" expanded="true" signature="961:1002" ph="select * FRO... person" />
+                <marker date="1534160419608" expanded="true" signature="1157:1397" ph="SELECT a.id,... *" />
+                <marker date="1534160419608" expanded="true" signature="1287:1327" ph="select * FRO... person" />
+                <marker date="1534160419608" expanded="true" signature="1484:1741" ph="SELECT a.id,... *" />
+                <marker date="1534160419608" expanded="true" signature="1614:1671" ph="select * FRO... person" />
+                <marker date="1534160419608" expanded="true" signature="3339:3379" ph="SELECT * fro... person" />
+                <marker date="1534160419608" expanded="true" signature="3588:3724" ph="INSERT INTO person... " />
+                <marker date="1534160419608" expanded="true" signature="4458:4497" ph="DELETE FROM " />
+                <marker date="1534160419608" expanded="true" signature="5170:5223" ph="SELECT * fro... person" />
+                <marker date="1534160419608" expanded="true" signature="5497:5587" ph="UPDATE perso... " />
+                <marker date="1534160419608" expanded="true" signature="6287:6405" ph="select a.*,b... good" />
+                <marker date="1534160419608" expanded="true" signature="6585:6739" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="6618:6654" ph="select * fro... good" />
+                <marker date="1534160419608" expanded="true" signature="6822:6993" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="6855:6873" ph="select * fro... good" />
+                <marker date="1534160419608" expanded="true" signature="6890:6933" ph="select * fro... good_category" />
+                <marker date="1534160419608" expanded="true" signature="7075:7264" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="7108:7144" ph="select * fro... good" />
+                <marker date="1534160419608" expanded="true" signature="7161:7204" ph="select * fro... good_category" />
+                <marker date="1534160419608" expanded="true" signature="8554:8593" ph="SELECT * fro... good" />
+                <marker date="1534160419608" expanded="true" signature="8863:8982" ph="INSERT INTO `good`... " />
+                <marker date="1534160419608" expanded="true" signature="9725:9777" ph="SELECT * fro... good" />
+                <marker date="1534160419608" expanded="true" signature="10130:10235" ph="UPDATE good " />
+                <marker date="1534160419608" expanded="true" signature="10999:11032" ph="DELETE FROM " />
+                <marker date="1534160419608" expanded="true" signature="11530:11641" ph="select a.*,b... server" />
+                <marker date="1534160419608" expanded="true" signature="11837:11982" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="11870:11908" ph="select * fro... server" />
+                <marker date="1534160419608" expanded="true" signature="12072:12234" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="12105:12125" ph="select * fro... server" />
+                <marker date="1534160419608" expanded="true" signature="12142:12187" ph="select * fro... server_category" />
+                <marker date="1534160419608" expanded="true" signature="12323:12503" ph="select a.*,b... *" />
+                <marker date="1534160419608" expanded="true" signature="12356:12394" ph="select * fro... server" />
+                <marker date="1534160419608" expanded="true" signature="12411:12456" ph="select * fro... server_category" />
+                <marker date="1534160419608" expanded="true" signature="13421:13462" ph="SELECT * fro... server" />
+                <marker date="1534160419608" expanded="true" signature="13670:13757" ph="INSERT INTO `server`... " />
+                <marker date="1534160419608" expanded="true" signature="14495:14549" ph="SELECT * fro... server" />
+                <marker date="1534160419608" expanded="true" signature="14901:15006" ph="UPDATE good " />
+                <marker date="1534160419608" expanded="true" signature="15771:15806" ph="DELETE FROM " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vip_order" pinned="false" current-in-tab="false">
-        <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.vip_order">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -91,27 +97,11 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-118">
-              <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="good" pinned="false" current-in-tab="false">
-        <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.good">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order_server_item" pinned="false" current-in-tab="false">
-        <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_server_item">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state relative-caret-position="304">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <marker date="1534160419577" expanded="true" signature="2325:2331" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,7 +214,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -271,7 +261,6 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="vipMangementSystem" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -332,35 +321,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22919819" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37828946" sideWeight="0.5136157" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13918306" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45326087" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38913044" sideWeight="0.48638427" order="15" side_tool="false" content_ui="combo" x="20" y="676" width="1914" height="1034" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22547974" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13965885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45326087" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3881579" sideWeight="0.48638427" order="15" side_tool="false" content_ui="combo" x="20" y="676" width="1914" height="1034" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.5043478" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="数据库" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18923241" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="文档" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="434" height="856" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -616,73 +605,71 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a812b875-75a2-47c0-b81b-f50b66e3d533/console_1.sql" />
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_good_item">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.good_category">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_category">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_good_item" />
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.good_category" />
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_category" />
     <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="304">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <marker date="1534160419577" expanded="true" signature="2325:2331" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_server_item">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.good">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.vip_order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.order_server_item" />
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.good" />
+    <entry file="das://table:/db2d09a1/a812b875-75a2-47c0-b81b-f50b66e3d533/vms.vip_order" />
     <entry file="file://$PROJECT_DIR$/vms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="560" column="19" lean-forward="true" selection-start-line="560" selection-start-column="19" selection-end-line="560" selection-end-column="19" />
+        <state relative-caret-position="12">
+          <caret line="424" column="22" lean-forward="true" selection-start-line="424" selection-start-column="22" selection-end-line="424" selection-end-column="22" />
           <folding>
             <element signature="e#381#3035#0" expanded="false" />
             <element signature="e#3067#4291#0" expanded="false" />
             <element signature="e#4323#4868#0" expanded="false" />
             <element signature="e#4901#6164#0" expanded="false" />
-            <element signature="e#6200#8361#0" expanded="false" />
-            <element signature="e#8387#9539#0" expanded="false" />
-            <element signature="e#9566#10817#0" expanded="false" />
-            <element signature="e#10843#11405#0" expanded="false" />
-            <element signature="e#11443#13226#0" expanded="false" />
-            <element signature="e#13254#14307#0" expanded="false" />
-            <element signature="e#14336#15588#0" expanded="false" />
-            <element signature="e#15616#16179#0" expanded="false" />
+            <marker date="1534160419608" expanded="true" signature="470:689" ph="SELECT a.id,... person" />
+            <marker date="1534160419608" expanded="true" signature="831:1072" ph="SELECT a.id,... *" />
+            <marker date="1534160419608" expanded="true" signature="961:1002" ph="select * FRO... person" />
+            <marker date="1534160419608" expanded="true" signature="1157:1397" ph="SELECT a.id,... *" />
+            <marker date="1534160419608" expanded="true" signature="1287:1327" ph="select * FRO... person" />
+            <marker date="1534160419608" expanded="true" signature="1484:1741" ph="SELECT a.id,... *" />
+            <marker date="1534160419608" expanded="true" signature="1614:1671" ph="select * FRO... person" />
+            <marker date="1534160419608" expanded="true" signature="3339:3379" ph="SELECT * fro... person" />
+            <marker date="1534160419608" expanded="true" signature="3588:3724" ph="INSERT INTO person... " />
+            <marker date="1534160419608" expanded="true" signature="4458:4497" ph="DELETE FROM " />
+            <marker date="1534160419608" expanded="true" signature="5170:5223" ph="SELECT * fro... person" />
+            <marker date="1534160419608" expanded="true" signature="5497:5587" ph="UPDATE perso... " />
+            <marker date="1534160419608" expanded="true" signature="6287:6405" ph="select a.*,b... good" />
+            <marker date="1534160419608" expanded="true" signature="6585:6739" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="6618:6654" ph="select * fro... good" />
+            <marker date="1534160419608" expanded="true" signature="6822:6993" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="6855:6873" ph="select * fro... good" />
+            <marker date="1534160419608" expanded="true" signature="6890:6933" ph="select * fro... good_category" />
+            <marker date="1534160419608" expanded="true" signature="7075:7264" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="7108:7144" ph="select * fro... good" />
+            <marker date="1534160419608" expanded="true" signature="7161:7204" ph="select * fro... good_category" />
+            <marker date="1534160419608" expanded="true" signature="8554:8593" ph="SELECT * fro... good" />
+            <marker date="1534160419608" expanded="true" signature="8863:8982" ph="INSERT INTO `good`... " />
+            <marker date="1534160419608" expanded="true" signature="9725:9777" ph="SELECT * fro... good" />
+            <marker date="1534160419608" expanded="true" signature="10130:10235" ph="UPDATE good " />
+            <marker date="1534160419608" expanded="true" signature="10999:11032" ph="DELETE FROM " />
+            <marker date="1534160419608" expanded="true" signature="11530:11641" ph="select a.*,b... server" />
+            <marker date="1534160419608" expanded="true" signature="11837:11982" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="11870:11908" ph="select * fro... server" />
+            <marker date="1534160419608" expanded="true" signature="12072:12234" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="12105:12125" ph="select * fro... server" />
+            <marker date="1534160419608" expanded="true" signature="12142:12187" ph="select * fro... server_category" />
+            <marker date="1534160419608" expanded="true" signature="12323:12503" ph="select a.*,b... *" />
+            <marker date="1534160419608" expanded="true" signature="12356:12394" ph="select * fro... server" />
+            <marker date="1534160419608" expanded="true" signature="12411:12456" ph="select * fro... server_category" />
+            <marker date="1534160419608" expanded="true" signature="13421:13462" ph="SELECT * fro... server" />
+            <marker date="1534160419608" expanded="true" signature="13670:13757" ph="INSERT INTO `server`... " />
+            <marker date="1534160419608" expanded="true" signature="14495:14549" ph="SELECT * fro... server" />
+            <marker date="1534160419608" expanded="true" signature="14901:15006" ph="UPDATE good " />
+            <marker date="1534160419608" expanded="true" signature="15771:15806" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
