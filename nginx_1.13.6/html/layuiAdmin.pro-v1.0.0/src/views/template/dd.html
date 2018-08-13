@@ -33,7 +33,7 @@
 
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>订单详情</legend>
+  <legend >订单详情</legend>
 </fieldset>
 
 
@@ -206,7 +206,7 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
               //window.location.href='#/app/workorder/list';
             return false;
           }else if(data['code'] == 2){
-            layer.alert("该用户存在未结算订单,生成失败!",{icon: 2});
+            layer.alert("订单生成失败,该会员主订单已存在",{icon: 2});
           }else {
             layer.alert("订单生成失败!",{icon: 2});
           }
@@ -228,7 +228,7 @@ function jia(e){
 
     elm.setAttribute("count",count);
   }else{
-    layer.msg("商品不足",{icon:5});
+    layer.msg("商品不足",{icon:5,time: 800});
   }
 
 };

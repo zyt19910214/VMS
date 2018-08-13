@@ -758,3 +758,95 @@ Traceback (most recent call last):
 MultiValueDictKeyError: "u'limit'"
 2018-08-12 21:23:04,355 [base:get_response] [WARNING]- Not Found: /
 2018-08-12 21:23:04,483 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-13 22:38:58,956 [base:get_response] [WARNING]- Not Found: /
+2018-08-13 22:38:59,138 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-13 23:31:07,706 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 590, in add_order
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+UnboundLocalError: local variable 'resp' referenced before assignment
+2018-08-13 23:32:11,661 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 591, in add_order
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+UnboundLocalError: local variable 'resp' referenced before assignment
+2018-08-13 23:33:38,058 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 591, in add_order
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+UnboundLocalError: local variable 'resp' referenced before assignment
+2018-08-13 23:38:01,845 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 588, in add_order
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+UnboundLocalError: local variable 'resp' referenced before assignment
+2018-08-13 23:38:16,459 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 588, in add_order
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+UnboundLocalError: local variable 'resp' referenced before assignment
+2018-08-13 23:40:04,184 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 573, in add_order
+    is_exist = db.getAll('SELECT * from vip_order where `phone` =\'%s\'' % (data['vip_phone']))
+  File "C:\Python27\lib\site-packages\django\utils\datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "u'vip_phone'"
+2018-08-13 23:57:20,292 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 585, in add_order
+    serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())+str(random.randint(9))
+TypeError: randint() takes exactly 3 arguments (2 given)
+2018-08-13 23:57:41,431 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 585, in add_order
+    serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())+str(random.randint(9))
+TypeError: randint() takes exactly 3 arguments (2 given)

@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from DB import Mysql
 import json
 import logging
+import time
+import random
 
 logger = logging.getLogger('django')
 
@@ -46,7 +48,7 @@ def list_vip_person(req):
     query_result = db.getAll(sql)
     db.dispose()
     # print (len(query_result))
-    if  len(query_result)!=0:
+    if len(query_result)!=0:
         person_list = list(query_result)
 
         # print(len(person_list))
@@ -66,12 +68,12 @@ def list_vip_person(req):
             n_list.append(x)
             # print(len(n_list))
             # print(len(n_list[(page - 1) * limit:page * limit]))
-            resp = {
-                "code": 0,
-                "msg": "",
-                "count": len(n_list),
-                "data": n_list[(page - 1) * limit:page * limit]
-            }
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": len(n_list),
+            "data": n_list[(page - 1) * limit:page * limit]
+        }
     else:
 
         resp = {
@@ -556,7 +558,50 @@ def del_server(req):
 
 # 订单系统处理
 def list_order(req):
-    pass
+    data = req.GET.copy()
+    print(data)
+    sql = "select c.order_serial_number,d.name,c.phone,c.type,c.order_status as state,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.phone = d.phone  ORDER BY c.order_serial_number desc"
+    db = Mysql()
+    n_list = []
+    resp = ''
+    query_result = db.getAll(sql)
+    db.dispose()
+    if len(query_result) != 0:
+        order_list = list(query_result)
+
+        # print(len(person_list))
+        # print req.GET
+        limit = int(req.GET['limit'])
+        page = int(req.GET['page'])
+
+        for x in order_list:
+            if x['state'] == 0:
+                x['progress'] = '50%'
+            elif x['state'] == 1:
+                x['progress'] = '100%'
+            else:
+                x['progress'] = '0%'
+            n_list.append(x)
+            # print(len(n_list))
+        print(n_list[(page - 1) * limit:page * limit])
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": len(n_list),
+            "data": n_list[(page - 1) * limit:page * limit]
+        }
+    else:
+
+        resp = {
+            "code": 0,
+            "msg": "",
+            "count": 0,
+            "data": n_list
+        }
+    logger.debug('【订单接口数据】：' + json.dumps(resp))
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
 
 def add_order(req):
     """
@@ -564,15 +609,43 @@ def add_order(req):
     :param req:
     :return:
     """
+
     logger.debug('订单生成传入参数：' + str(req.POST))
     data = req.POST.copy()
-    print (data)
+    db = Mysql()
+    resp = ''
+    if 'lay_value' not in data:
+        is_exist = db.getAll('SELECT * from vip_order where `phone` =\'%s\'' % (data['vip_phone']))
+        if (is_exist):
+            # 该会员已存在订单无法继续添加
+            resp = {
+                "code": 2,
+                "msg": "main_order_is_exist"
+            }
+            logger.debug('订单生成失败,该会员主订单已存在')
+            db.dispose()
+        else:
+            serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())
+            sql = "INSERT INTO vip_order(`phone`, `order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
+            data['vip_phone'], serial_num,data['type'], data['vip_notes'])
+            dd = db.insertOne(sql)
+            db.dispose()
+            if dd != 0:
+                resp = {
+                    "code": 0,
+                    "msg": "success"
+                }
+                logger.debug('订单生成成功')
+            else:
+                resp = {
+                    "code": 1,
+                    "msg": "internal_exceptions"
+                }
+                logger.debug('订单生成失败')
+    else:
+        pass
 
-    resp = {
-        "code": 0,
-        "msg": "success"
-    }
-    logger.debug('订单生成成功')
+
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 def edit_order(req):

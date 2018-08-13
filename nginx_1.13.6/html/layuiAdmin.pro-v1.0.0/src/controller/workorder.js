@@ -10,6 +10,7 @@
 layui.define(['table', 'form', 'element'], function(exports){
   var $ = layui.$
   ,admin = layui.admin
+  ,setter = layui.setter
   ,laytpl = layui.laytpl
   ,setter = layui.setter
   ,view = layui.view
@@ -19,14 +20,19 @@ layui.define(['table', 'form', 'element'], function(exports){
 
   table.render({
      elem: '#LAY-app-workorder'
-    ,url: './json/workorder/demo.js' //模拟接口
+     ,url: setter.http+'listOrder/'
+    //,url: './json/workorder/demo.js' //模拟接口
     ,cols: [[
       {type: 'numbers', fixed: 'left'}
-      ,{field: 'orderid', width: 150, title: '订单号', sort: true,align: 'center'}
-      ,{field: 'attr', width: 100, title: '订单人',align: 'center'}
+      ,{field: 'order_serial_number', width: 150, title: '订单号', sort: true,align: 'center'}
+      ,{field: 'name', width: 100, title: '订单人',align: 'center'}
+      ,{field: 'phone', width: 150, title: '手机号',align: 'center'}
       ,{field: 'type', width: 100, title: '订单类型',align: 'center'}
+      ,{field: 'free_value', width: 100, title: '优惠费用',align: 'center'}
+      ,{field: 'lay_value', width: 100, title: '延时费用',align: 'center'}
       ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
-      ,{field: 'state', title: '订单状态', templet: '#buttonTpl', minWidth: 80, align: 'center'}
+      ,{field: 'notes', width: 200, title: '备注',align: 'center'}
+      ,{field: 'state', width: 120,title: '订单状态', templet: '#buttonTpl', align: 'center'}
       ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-system-order'}
     ]]
     ,page: true

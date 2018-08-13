@@ -153,7 +153,7 @@ layui.define(['table', 'form'], function(exports){
     }else if(obj.event === 'add'){
       admin.popup({
         title:  '生成订单'
-        ,area: ['800px', '600px']
+        ,area: ['800px', '800px']
         ,id: 'LAY-popup-user-add'
         ,success: function(layero, index){
 
@@ -180,7 +180,7 @@ layui.define(['table', 'form'], function(exports){
                   form.render('checkbox');
                 }
             });
-            
+
             //获取饮料列表接口
             $.ajax({
               url: setter.http+'listGood/',
@@ -198,7 +198,7 @@ layui.define(['table', 'form'], function(exports){
                 });
               }
             });
-            
+
             //获取酒水列表接口
             $.ajax({
               url: setter.http+'listGood/',
@@ -253,12 +253,12 @@ layui.define(['table', 'form'], function(exports){
               }
             });
 
-            
+
 
 
           });
 
-          
+
         }
       });
     }
