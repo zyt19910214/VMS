@@ -31,6 +31,7 @@ layui.define(['table', 'form','laydate'], function(exports){
       ,{field: 'id', width: 100, title: '商品ID', sort: true, align: 'center'}
       ,{field: 'name', title: '商品名称', minWidth: 100, align: 'center'}
       ,{field: 'price', title: '商品价格(元)', minWidth: 100, align: 'center'}
+      ,{field: 'origin_price', title: '商品原价(元)', minWidth: 100, align: 'center'}
       ,{field: 'type', title: '商品分类', align: 'center'}
       ,{field: 'uploadtime',width:170, title: '最近一次上货时间', sort: true, align: 'center'}
       ,{field: 'status', title: '库存', templet: '#buttonTpl', minWidth: 80, align: 'center'}
@@ -135,7 +136,9 @@ layui.define(['table', 'form','laydate'], function(exports){
                         table.reload('LAY-app-content-list'); //重载表格
                       }else if(data['code'] == 2){
                         layer.alert("商品已存在,添加失败!",{icon: 2});
-                      }else {
+                      }else if(data['code'] == 3) {
+                        layer.alert("售价低于原价,添加失败!",{icon: 2});
+                      }else{
                         layer.alert("商品添加失败!",{icon: 2});
                       }
                   }
@@ -218,6 +221,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                       layer.msg('更新成功', {icon: 1});
                     }else if(data['code'] == 2){
                       layer.alert("商品已存在,更新失败!",{icon: 2});
+                    }else if(data['code'] == 3){
+                      layer.alert("售价低于原价,请重新更新!",{icon: 2});
                     }else {
                       layer.alert("更新失败!",{icon: 2});
                     }

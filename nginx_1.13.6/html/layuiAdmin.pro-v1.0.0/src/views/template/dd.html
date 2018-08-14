@@ -27,8 +27,8 @@
       <input type="radio" name="type" value="1" title="299轰趴" checked>
       <input type="radio" name="type" value="2" title="399轰趴" >
       <input type="radio" name="type" value="3" title="521轰趴" >
-      <input type="radio" name="type" value="2" title="麻将" >
-      <input type="radio" name="type" value="3" title="狼人杀包场" >
+      <input type="radio" name="type" value="4" title="麻将" >
+      <input type="radio" name="type" value="5" title="狼人杀包场" >
   </div>
 
 
@@ -42,7 +42,7 @@
      <div  class="cmdlist-container"  style="float:left;" >
             <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;margin-top:20px;"/>
               <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
-                  <input type="checkbox" name="server[{{item.id}}]" lay-skin="primary" title="{{item.name}}" lay-filter='ddw'  >
+                  <input type="checkbox" name="server{{item.id}}" lay-skin="primary" title="{{item.name}}" lay-filter='ddw'  >
                 <div class="price">
                     <b>￥{{item.price}}</b>
                 </div>
@@ -53,7 +53,6 @@
   无数据
   {{#  } }}
 </script>
-
 
 <script id="demo2" type="text/html"  >
   {{#  layui.each(d.data, function(index, item){   }}
@@ -70,7 +69,7 @@
                     <div class="jiajian" style="display: inline-block;float:right;" count1="{{item.status}}">
                      <span style="display:none;" >{{item.status}}</span>
                       <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
-                      <input  name="good[{{item.id}}]"  readonly="readonly" style="border:0px;outline: none;width:20px;" type="text" value="0" >
+                      <input  name="good{{item.id}}"  readonly="readonly" style="border:0px;outline: none;width:20px;" type="text" value="0" >
                       <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
                     </div>
 
@@ -123,7 +122,7 @@
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit lay-filter="LAY_dd_submit">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
     </div>
   </div>
 
@@ -184,7 +183,7 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
   form.on('submit(LAY_dd_submit)', function(data){
     // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
     var field = data.field; //获取提交的字段
-    console.log(field);
+    //console.log(field);
     //提交 Ajax 成功后，关闭当前弹层并重载表格
     $.ajax({
       url: setter.http+'addOrder/',

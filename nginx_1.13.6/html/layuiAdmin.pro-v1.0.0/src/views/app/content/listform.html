@@ -31,6 +31,15 @@
         </script>
       </div>
     </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">商品原价</label>
+      <div class="layui-input-inline">
+        <script type="text/html" template>
+          <input type="text" name="origin_price" value="{{ d.params.origin_price || '' }}" lay-verify="required" placeholder="商品原价" autocomplete="off" class="layui-input" >
+        </script>
+      </div>
+    </div>
+
 
      <div class="layui-form-item">
       <label class="layui-form-label">目前库存</label>

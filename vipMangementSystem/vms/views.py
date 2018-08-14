@@ -254,6 +254,7 @@ def list_good(req):
                 "count": len(g_list),
                 "data": g_list[(page - 1) * limit:page * limit]
             }
+            print (g_list[(page - 1) * limit:page * limit])
         else:
             resp = {
                 "code": 0,
@@ -285,37 +286,43 @@ def add_good(req):
     """
     logger.debug('添加商品传入参数：' + str(req.POST))
     data = req.POST.copy()
-
-    db = Mysql()
-    is_exist = db.getAll('SELECT * from good where `name` =\'%s\'' % (data['title']))
-
-    if (is_exist):
-        # 已存在该商品无法添加
+    if float(data['origin_price'])> float(data['price']):
         resp = {
-            "code": 2,
-            "msg": "good_is_exist"
+            "code": 3,
+            "msg": "price_incorrect"
         }
-        logger.debug('添加失败,商品已存在')
+        logger.debug('原价低于售价,请重新添加')
     else:
-        count = str(int(data['add_count'])+int(data['count']))
-        sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`) VALUES ('%s', '%s', '%s', now(), '%s');"%(data['title'],data['type'],data['price'],count)
-        logger.debug(sql)
-        dd = db.insertOne(sql)
-        db.dispose()
-        if dd != 0:
-            # 会员添加成功
+        db = Mysql()
+        is_exist = db.getAll('SELECT * from good where `name` =\'%s\'' % (data['title']))
+
+        if (is_exist):
+            # 已存在该商品无法添加
             resp = {
-                "code": 0,
-                "msg": "success"
+                "code": 2,
+                "msg": "good_is_exist"
             }
-            logger.debug('商品添加成功')
+            logger.debug('添加失败,商品已存在')
         else:
-            # 会员添加失败
-            resp = {
-                "code": 1,
-                "msg": "internal_exceptions"
-            }
-            logger.debug('服务异常,商品添加失败')
+            count = str(int(data['add_count'])+int(data['count']))
+            sql = "INSERT INTO `good` (`name`, `good_category_id`, `price`, `uploadtime`, `status`,`origin_price`) VALUES ('%s', '%s', '%s', now(), '%s','%s');"%(data['title'],data['type'],data['price'],count,data['origin_price'])
+            logger.debug(sql)
+            dd = db.insertOne(sql)
+            db.dispose()
+            if dd != 0:
+                # 会员添加成功
+                resp = {
+                    "code": 0,
+                    "msg": "success"
+                }
+                logger.debug('商品添加成功')
+            else:
+                # 会员添加失败
+                resp = {
+                    "code": 1,
+                    "msg": "internal_exceptions"
+                }
+                logger.debug('服务异常,商品添加失败')
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
@@ -332,37 +339,44 @@ def edit_good(req):
     sql2 = "SELECT * from good where `name` ='%s' and id != '%s'" % (data['title'], data['id'])
     logger.debug(sql2)
 
-    db = Mysql()
-    is_exist = db.getAll(sql2)
-
-    if(is_exist):
-        # 无法更新为已存在商品
+    if float(data['origin_price']) > float(data['price']):
         resp = {
-            "code": 2,
-            "msg": "phone_is_exist"
+            "code": 3,
+            "msg": "price_incorrect"
         }
-        logger.debug('更新失败,商品已存在')
+        logger.debug('原价低于售价,请重新更新')
     else:
-        count = str(int(data['count'])+int(data['add_count']))
-        sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now() WHERE id=%s" % (
-        data['title'], data['type'], data['price'], count, data['id'])
-        logger.debug(sql)
-        dd = db.update(sql)
-        db.dispose()
-        if dd != 0:
-            # 会员更新成功
+        db = Mysql()
+        is_exist = db.getAll(sql2)
+
+        if(is_exist):
+            # 无法更新为已存在商品
             resp = {
-                "code": 0,
-                "msg": "success"
+                "code": 2,
+                "msg": "phone_is_exist"
             }
-            logger.debug('商品更新成功')
+            logger.debug('更新失败,商品已存在')
         else:
-            # 会员更新失败
-            resp = {
-                "code": 1,
-                "msg": "internal_exceptions"
-            }
-            logger.debug('服务异常,商品更新失败')
+            count = str(int(data['count'])+int(data['add_count']))
+            sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now(),origin_price='%s' WHERE id=%s" % (
+            data['title'], data['type'], data['price'], count, data['id'],data['origin_price'])
+            logger.debug(sql)
+            dd = db.update(sql)
+            db.dispose()
+            if dd != 0:
+                # 会员更新成功
+                resp = {
+                    "code": 0,
+                    "msg": "success"
+                }
+                logger.debug('商品更新成功')
+            else:
+                # 会员更新失败
+                resp = {
+                    "code": 1,
+                    "msg": "internal_exceptions"
+                }
+                logger.debug('服务异常,商品更新失败')
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
@@ -563,7 +577,6 @@ def list_order(req):
     sql = "select c.order_serial_number,d.name,c.phone,c.type,c.order_status as state,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.phone = d.phone  ORDER BY c.order_serial_number desc"
     db = Mysql()
     n_list = []
-    resp = ''
     query_result = db.getAll(sql)
     db.dispose()
     if len(query_result) != 0:
@@ -609,7 +622,6 @@ def add_order(req):
     :param req:
     :return:
     """
-
     logger.debug('订单生成传入参数：' + str(req.POST))
     data = req.POST.copy()
     db = Mysql()
@@ -628,28 +640,45 @@ def add_order(req):
             serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())
             sql = "INSERT INTO vip_order(`phone`, `order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
             data['vip_phone'], serial_num,data['type'], data['vip_notes'])
-            dd = db.insertOne(sql)
-            db.dispose()
-            if dd != 0:
-                resp = {
-                    "code": 0,
-                    "msg": "success"
-                }
-                logger.debug('订单生成成功')
-            else:
-                resp = {
-                    "code": 1,
-                    "msg": "internal_exceptions"
-                }
-                logger.debug('订单生成失败')
+            # dd = db.insertOne(sql)
+            id = db.getAll("SELECT id FROM vip_order WHERE phone='%s';" % (data['vip_phone']))
+            if id:
+                good_list = []
+                for x in data :
+                    if 'good' in x and data[x] != '0':
+                        if x[4:] != '':
+                            good_list.append(x[4:]+'-'+data[x])
+                print (good_list)
+                sql2 = ''
+                for good in good_list:
+                    sql2 = sql2 + "INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(id['id'],good.split('-')[0],good.split('-')[1])
+                print(sql + sql2)
+                dd2 = db.insertMany(sql + sql2)
+                db.dispose()
+                if dd2 == len(good_list):
+
+                    resp = {
+                        "code": 0,
+                        "msg": "success"
+                    }
+                    logger.debug('订单生成成功')
+                else:
+                    resp = {
+                        "code": 1,
+                        "msg": "internal_exceptions"
+                    }
+                    logger.debug('订单生成失败')
+
+
     else:
         pass
 
-
     return HttpResponse(json.dumps(resp), content_type="application/json")
+
 
 def edit_order(req):
     pass
+
 
 def del_order(req):
     pass
