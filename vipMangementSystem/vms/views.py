@@ -640,34 +640,50 @@ def add_order(req):
             serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())
             sql = "INSERT INTO vip_order(`phone`, `order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
             data['vip_phone'], serial_num,data['type'], data['vip_notes'])
-            # dd = db.insertOne(sql)
-            id = db.getAll("SELECT id FROM vip_order WHERE phone='%s';" % (data['vip_phone']))
-            if id:
-                good_list = []
-                for x in data :
-                    if 'good' in x and data[x] != '0':
-                        if x[4:] != '':
-                            good_list.append(x[4:]+'-'+data[x])
-                print (good_list)
-                sql2 = ''
-                for good in good_list:
-                    sql2 = sql2 + "INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(id['id'],good.split('-')[0],good.split('-')[1])
-                print(sql + sql2)
-                dd2 = db.insertMany(sql + sql2)
-                db.dispose()
-                if dd2 == len(good_list):
 
-                    resp = {
-                        "code": 0,
-                        "msg": "success"
-                    }
-                    logger.debug('订单生成成功')
+            good_list = []
+            server_list = []
+            for x in data :
+                if 'good' in x and data[x] != '0':
+                    if x[4:] != '':
+                        good_list.append(x[4:]+'-'+data[x])
+                    else:
+                        logger.debug("未选取任何商品")
+                elif 'server' in x and data[x] != '0':
+                    if x[6:] != '':
+                        server_list.append(x[6:7])
+                    else:
+                        logger.info("未选取任何服务")
                 else:
-                    resp = {
-                        "code": 1,
-                        "msg": "internal_exceptions"
-                    }
-                    logger.debug('订单生成失败')
+                    pass
+            print (good_list)
+            print (server_list)
+            sql2 = ''
+            sql3 = ''
+            for good in good_list:
+                sql2 = sql2 + "INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( (SELECT id FROM vip_order WHERE phone='%s'), '%s', '%s');"%(data['vip_phone'],good.split('-')[0],good.split('-')[1])
+            for server in server_list:
+                sql3 = sql3 + "INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ((SELECT id FROM vip_order WHERE phone='%s'), '%s', '1');"%(data['vip_phone'],server)
+            print(sql + sql2 + sql3)
+            print(len(good_list) + len(server_list) + 1)
+            dd2 = db.insertMany(sql + sql2+ sql3)
+
+            print(dd2)
+            db.dispose()
+
+            if dd2 == len(good_list)+len(server_list)+1:
+
+                resp = {
+                    "code": 0,
+                    "msg": "success"
+                }
+                logger.debug('订单生成成功')
+            else:
+                resp = {
+                    "code": 1,
+                    "msg": "internal_exceptions"
+                }
+                logger.debug('订单生成失败')
 
 
     else:

@@ -33,14 +33,18 @@ layui.define(['table', 'form', 'element'], function(exports){
       ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
       ,{field: 'notes', width: 200, title: '备注',align: 'center'}
       ,{field: 'state', width: 120,title: '订单状态', templet: '#buttonTpl', align: 'center'}
-      ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-system-order'}
+      ,{title: '操作', align: 'center', minWidth:250,fixed: 'right', toolbar: '#table-system-order'}
     ]]
     ,page: true
     ,limit: 10
     ,limits: [10, 15, 20, 25, 30]
     ,text: '对不起，加载出现异常！'
-    ,done: function(){
+    ,done: function(res){
       element.render('progress');
+      data_len = res.data.length;
+      if(data_len == 0){
+        var s = $('.layui-none').html('无订单数据')
+      }
     }
   });
 

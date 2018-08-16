@@ -12,6 +12,10 @@ import Config
 import sys
 from MySQLdb.cursors import DictCursor
 from DBUtils.PooledDB import PooledDB
+import logging
+
+logger = logging.getLogger('django')
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -57,7 +61,7 @@ class Mysql(object):
                               cursorclass=DictCursor)
         return __pool.connection()
 
-        # 针对读操作返回结果集
+    # 针对读操作返回结果集
 
     def _exeCute(self, sql=''):
         try:
@@ -68,7 +72,8 @@ class Mysql(object):
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
             print (error)
 
-            # 针对更新,删除,事务等操作失败时回滚
+
+    # 针对更新,删除,事务等操作失败时回滚
 
     def _exeCuteCommit(self, sql='', arg=None):
         count = 0
@@ -192,8 +197,8 @@ class Mysql(object):
         except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print (error)
-            sys.exit()
+            logger.error (error)
+            #sys.exit()
         return count
 
     def _select(self, table, cond_dict='', order=''):

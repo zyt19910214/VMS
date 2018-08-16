@@ -1,40 +1,37 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : vms
- Source Server Type    : MySQL
- Source Server Version : 50614
- Source Host           : localhost:3306
- Source Schema         : vms
+Source Server         : locallhost
+Source Server Version : 50614
+Source Host           : localhost:3306
+Source Database       : vms
 
- Target Server Type    : MySQL
- Target Server Version : 50614
- File Encoding         : 65001
+Target Server Type    : MYSQL
+Target Server Version : 50614
+File Encoding         : 65001
 
- Date: 13/08/2018 23:09:50
+Date: 2018-08-16 17:48:42
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
 -- Table structure for vip_order
 -- ----------------------------
 DROP TABLE IF EXISTS `vip_order`;
-CREATE TABLE `vip_order`  (
+CREATE TABLE `vip_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `order_serial_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `order_serial_number` varchar(20) NOT NULL,
   `order_status` tinyint(1) NOT NULL,
   `order_category_id` int(11) NOT NULL,
-  `create_time` datetime(0) NOT NULL,
-  `notes` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `lay_value` float(11,1) NOT NULL,
+  `free_value` float(11,1) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of vip_order
 -- ----------------------------
-INSERT INTO `vip_order` VALUES (1, '17629298189', '20180731111111', 1, 1, '2018-07-31 15:28:23', '11');
-
-SET FOREIGN_KEY_CHECKS = 1;

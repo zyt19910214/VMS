@@ -153,7 +153,7 @@ layui.define(['table', 'form'], function(exports){
     }else if(obj.event === 'add'){
       admin.popup({
         title:  '生成订单'
-        ,area: ['800px', '800px']
+        ,area: ['800px', '550px']
         ,id: 'LAY-popup-user-add'
         ,success: function(layero, index){
 
