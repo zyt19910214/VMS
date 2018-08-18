@@ -254,7 +254,7 @@ def list_good(req):
                 "count": len(g_list),
                 "data": g_list[(page - 1) * limit:page * limit]
             }
-            print (g_list[(page - 1) * limit:page * limit])
+            logger.debug(g_list[(page - 1) * limit:page * limit])
         else:
             resp = {
                 "code": 0,
@@ -573,8 +573,8 @@ def del_server(req):
 # 订单系统处理
 def list_order(req):
     data = req.GET.copy()
-    print(data)
-    sql = "select c.order_serial_number,d.name,c.phone,c.type,c.order_status as state,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.phone = d.phone  ORDER BY c.order_serial_number desc"
+    #print(data)
+    sql = "select c.order_serial_number,d.name,c.person_id,d.phone,c.type,c.order_status as state,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.person_id = d.id  ORDER BY c.order_serial_number desc"
     db = Mysql()
     n_list = []
     query_result = db.getAll(sql)
@@ -596,7 +596,7 @@ def list_order(req):
                 x['progress'] = '0%'
             n_list.append(x)
             # print(len(n_list))
-        print(n_list[(page - 1) * limit:page * limit])
+        # print(n_list[(page - 1) * limit:page * limit])
         resp = {
             "code": 0,
             "msg": "",
@@ -626,8 +626,27 @@ def add_order(req):
     data = req.POST.copy()
     db = Mysql()
     resp = ''
+    good_list = []
+    server_list = []
+    sql_list = []
+    for x in data:
+        if 'good' in x and data[x] != '0':
+            if x[4:] != '':
+                good_list.append(x[4:] + '-' + data[x])
+            else:
+                logger.debug("未选取任何商品")
+        elif 'server' in x and data[x] != '0':
+            if x[6:] != '':
+                server_list.append(x[6:7])
+            else:
+                logger.info("未选取任何服务")
+        else:
+            pass
+    logger.info('本次商品清单：'.join(good_list))
+    logger.info('本次服务清单：'.join(server_list))
     if 'lay_value' not in data:
-        is_exist = db.getAll('SELECT * from vip_order where `phone` =\'%s\'' % (data['vip_phone']))
+        num = 1
+        is_exist = db.getAll('SELECT * from vip_order where `person_id` =\'%s\'' % (data['id']))
         if (is_exist):
             # 该会员已存在订单无法继续添加
             resp = {
@@ -638,56 +657,86 @@ def add_order(req):
             db.dispose()
         else:
             serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())
-            sql = "INSERT INTO vip_order(`phone`, `order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
-            data['vip_phone'], serial_num,data['type'], data['vip_notes'])
 
-            good_list = []
-            server_list = []
-            for x in data :
-                if 'good' in x and data[x] != '0':
-                    if x[4:] != '':
-                        good_list.append(x[4:]+'-'+data[x])
-                    else:
-                        logger.debug("未选取任何商品")
-                elif 'server' in x and data[x] != '0':
-                    if x[6:] != '':
-                        server_list.append(x[6:7])
-                    else:
-                        logger.info("未选取任何服务")
+            sql = "INSERT INTO vip_order(`person_id`,`order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
+            data['id'],serial_num,data['type'], data['vip_notes'])
+            dd = db.insertOne(sql)
+            # print (dd)
+            if dd != 0:
+
+                # print (good_list)
+                #print (server_list)
+                for good in good_list:
+                    sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(dd,good.split('-')[0],good.split('-')[1]))
+                for server in server_list:
+                    sql_list.append("INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ('%s', '%s', '1');"%(dd,server))
+                # print (sql_list)
+                # print (len(sql_list))
+
+                dd2 = db.inserGoodServer(num,dd,sql_list)
+
+                logger.info('插入影响行数：'+str(dd2))
+                db.dispose()
+
+                if dd2 == len(sql_list):
+                    resp = {
+                        "code": 0,
+                        "msg": "success"
+                    }
+                    logger.debug('订单生成成功')
                 else:
-                    pass
-            print (good_list)
-            print (server_list)
-            sql2 = ''
-            sql3 = ''
-            for good in good_list:
-                sql2 = sql2 + "INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( (SELECT id FROM vip_order WHERE phone='%s'), '%s', '%s');"%(data['vip_phone'],good.split('-')[0],good.split('-')[1])
-            for server in server_list:
-                sql3 = sql3 + "INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ((SELECT id FROM vip_order WHERE phone='%s'), '%s', '1');"%(data['vip_phone'],server)
-            print(sql + sql2 + sql3)
-            print(len(good_list) + len(server_list) + 1)
-            dd2 = db.insertMany(sql + sql2+ sql3)
-
-            print(dd2)
-            db.dispose()
-
-            if dd2 == len(good_list)+len(server_list)+1:
-
-                resp = {
-                    "code": 0,
-                    "msg": "success"
-                }
-                logger.debug('订单生成成功')
-            else:
-                resp = {
-                    "code": 1,
-                    "msg": "internal_exceptions"
-                }
-                logger.debug('订单生成失败')
-
+                    resp = {
+                        "code": 1,
+                        "msg": "internal_exceptions"
+                    }
+                    logger.debug('订单生成失败')
 
     else:
-        pass
+        num = 2
+        # 查询出主订单的id
+        dd = db.getOne("SELECT id,free_value,lay_value FROM vip_order WHERE person_id ='%s'"%data['id'])
+
+        if dd:
+            # 新增商品的sql语句插入sql_list
+            for good in good_list:
+                sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');" % (
+                    dd['id'], good.split('-')[0], good.split('-')[1]))
+
+            # 新增服务的sql语句插入sql_list
+            for server in server_list:
+                sql_list.append("INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ('%s', '%s', '1');" % (
+                    dd['id'], server))
+
+            # 延时费用和优惠费用的sql语句插入sql_list
+            if  data['free_value'] != '' and data['lay_value'] != '':
+                free = float(dd['free_value']) + float(data['free_value'])
+                lay = float(dd['lay_value']) + float(data['lay_value'])
+                sql_list.append("UPDATE vip_order SET free_value ='%s' ,lay_value ='%s' WHERE id ='%s'"%(free,lay,dd['id']))
+            # print(sql_list)
+            # print(len(sql_list))
+            # 执行新增消费的记录插入，包括延时费用和优惠费用的更新
+            if len(sql_list) != 0:
+                dd2 = db.inserGoodServer(num,dd,sql_list)
+                logger.info('插入影响行数：' + str(dd2))
+                if dd2 == len(sql_list):
+                    resp = {
+                        "code": 0,
+                        "msg": "success"
+                    }
+                    logger.debug('新增消费成功')
+                else:
+                    resp = {
+                        "code": 1,
+                        "msg": "internal_exceptions"
+                    }
+                    logger.debug('新增消费失败')
+            else:
+                resp = {
+                    "code": 3,
+                    "msg": "nothing_is_changed"
+                }
+                logger.debug('新增消费失败')
+            db.dispose()
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 

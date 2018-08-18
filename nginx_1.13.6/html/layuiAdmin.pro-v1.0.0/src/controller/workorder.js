@@ -128,11 +128,11 @@ layui.define(['table', 'form', 'element'], function(exports){
         ,success: function(layero, index){
 
           view(this.id).render('template/new_dd', data).done(function(){
-            //console.log(data);
+            console.log(data);
             form.render(null,'layuiadmin-form-new_dd');
-             $('#vip_name').val(data.vip_name);
-             $('#vip_phone').val(data.vip_phone);
-
+             $('#vip_id').val(data.person_id);
+             $('#vip_name').val(data.name);
+             $('#vip_phone').val (data.phone);
             //获取服务列表接口
              $.ajax({
                url: setter.http+'listServer/',
@@ -227,41 +227,6 @@ layui.define(['table', 'form', 'element'], function(exports){
 
 
           });
-          //监听提交
-  form.on('submit(LAY_new_dd_submit)', function(data){
-    //layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
-    var field = data.field; //获取提交的字段
-    console.log(field);
-    //提交 Ajax 成功后，关闭当前弹层并重载表格
-    $.ajax({
-      url: setter.http+'addOrder/',
-      type: 'POST',
-      data:field,
-      error:function(request){//请求失败之后的操作
-          layer.alert("订单生成失败",{icon: 2});
-      },
-      success:function(data){//请求成功之后的操作
-          if(data['code'] == 0){
-            layer.open( {
-            title: '订单生成',
-            content: '订单生成成功',
-            btn: ['确定'],
-            yes: function(index, layero){
-              layer.close(index);
-            }
-            });
-              //window.location.href='#/app/workorder/list';
-            return false;
-          }else if(data['code'] == 2){
-            layer.alert("该用户存在未结算订单,生成失败!",{icon: 2});
-          }else {
-            layer.alert("订单生成失败!",{icon: 2});
-          }
-
-      }
-
-     });
- });
 
         }
       });

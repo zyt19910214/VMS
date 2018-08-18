@@ -158,8 +158,9 @@ layui.define(['table', 'form'], function(exports){
         ,success: function(layero, index){
 
           view(this.id).render('template/dd', data).done(function(){
-            //console.log(data);
+            console.log(data);
             form.render(null,'layuiadmin-form-dd');
+             $('#vip_id').val(data.id);
              $('#vip_name').val(data.vip_name);
              $('#vip_phone').val(data.vip_phone);
 
@@ -185,6 +186,7 @@ layui.define(['table', 'form'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
+
               data:{"title":"","label":"1"}
               ,error:function(data){
                 layer.msg("获取饮料列表失败");

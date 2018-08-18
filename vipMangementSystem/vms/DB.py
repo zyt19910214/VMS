@@ -14,21 +14,16 @@ from MySQLdb.cursors import DictCursor
 from DBUtils.PooledDB import PooledDB
 import logging
 
-logger = logging.getLogger('django')
-
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
-"""  
-Config是一些数据库的配置文件  
-"""
+logger = logging.getLogger('__name__')
 
 
 class Mysql(object):
     """
     MYSQL数据库对象，负责产生数据库连接 , 此类中的连接采用连接池实现获取连接对象：conn = Mysql.getConn()
             释放连接对象;conn.close()或del conn
+    Config是一些数据库的配置文件
     """
     # 连接池对象
     __pool = None
@@ -40,7 +35,7 @@ class Mysql(object):
             self._cursor = self._conn.cursor()
         except Exception as e:
             error = 'Connect failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print error
+            logger.error(error)
             sys.exit()
 
     @staticmethod
@@ -62,19 +57,16 @@ class Mysql(object):
         return __pool.connection()
 
     # 针对读操作返回结果集
-
     def _exeCute(self, sql=''):
         try:
-            self._cursor.execute(sql)
+            count = self._cursor.execute(sql)
             records = self._cursor.fetchall()
-            return records
+            return count
         except MySQLdb.Error as e:
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print (error)
-
+            logger.error(error)
 
     # 针对更新,删除,事务等操作失败时回滚
-
     def _exeCuteCommit(self, sql='', arg=None):
         count = 0
         try:
@@ -86,7 +78,7 @@ class Mysql(object):
         except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print (error)
+            logger.error(error)
             # sys.exit()
         return count
 
@@ -104,7 +96,7 @@ class Mysql(object):
         sql = sql + sql_mid
         sql = sql + constraint
         sql = sql + ') ENGINE=InnoDB DEFAULT CHARSET=utf8'
-        print '_createTable:' + sql
+        logger.info('_createTable:' + sql)
         self._exeCuteCommit(sql)
 
     def insertOne(self, sql, value=None):
@@ -116,6 +108,17 @@ class Mysql(object):
         """
         self._exeCuteCommit(sql, value)
         return self.__getInsertId()
+
+    def insertMultity(self, sql, value=None):
+        """
+        @summary: 向数据表插入多条条记录
+        @param sql:要插入的ＳＱＬ格式
+        @param value:要插入的记录数据tuple/list
+        @return: insertId 受影响的行数
+        """
+        count = self._exeCuteCommit(sql, value)
+        return count
+
 
     def _insert(self, table, attrs, value):
         """
@@ -129,7 +132,7 @@ class Mysql(object):
         values_sql = ' values(' + value_str + ')'
         sql = 'insert into %s' % table
         sql = sql + attrs_sql + values_sql
-        print '_insert:' + sql
+        logger.info('_insert:' + sql)
         self._exeCuteCommit(sql)
 
     def _insertDic(self, table, attrs):
@@ -142,11 +145,10 @@ class Mysql(object):
         values_sql = ' values(' + value_str + ')'
         sql = 'insert into %s' % table
         sql = sql + attrs_sql + values_sql
-        print '_insert:' + sql
+        logger.info('_insert:' + sql)
         self._exeCuteCommit(sql)
 
-        # 将list转为字符串
-
+    # 将list转为字符串
     def _transferContent(self, content):
         if content is None:
             return None
@@ -170,7 +172,7 @@ class Mysql(object):
         values_sql = ' values(' + ','.join(values_sql) + ')'
         sql = 'insert into %s' % table
         sql = sql + attrs_sql + values_sql
-        print '_insertMany:' + sql
+        logger.info('_insertMany:' + sql)
         try:
             for i in range(0, len(values), 20000):
                 self._cursor.executemany(sql, values[i:i + 20000])
@@ -178,16 +180,17 @@ class Mysql(object):
         except MySQLdb.Error as e:
             self._conn.rollback()
             error = '_insertMany executemany failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            print (error)
+            logger.error(error)
             sys.exit()
 
     def insertMany(self, sql, values=None):
         """
         @summary: 向数据表插入多条记录
-        @param sql:要插入的ＳＱＬ格式
+        @param sql:要插入的SQL格式
         @param values:要插入的记录数据tuple(tuple)/list[list]
         @return: count 受影响的行数
         """
+        count = ''
         try:
             if values is None:
                 count = self._cursor.executemany(sql)
@@ -197,7 +200,7 @@ class Mysql(object):
         except MySQLdb.Error as e:
             self._conn.rollback()
             error = 'MySQL execute failed! ERROR (%s): %s' % (e.args[0], e.args[1])
-            logger.error (error)
+            logger.debug(error)
             #sys.exit()
         return count
 
@@ -326,6 +329,27 @@ class Mysql(object):
             self.end('rollback')
         self._cursor.close()
         self._conn.close()
+
+    def inserGoodServer(self,num,id,multiple_sql):
+        """
+        插入商品和服务
+        @param num: num为1时为主订单，num为2时为新增消费
+        @param id: 主订单id
+        @param multiple_sql:事务要执行的sql的list
+        return: 执行插入的行数
+        """
+        count = 0
+        try:
+            for sql in multiple_sql:
+                result = self._exeCute(sql)
+                count = count + result
+            return count
+        except Exception as e:
+            logger.error(e)
+            self._conn.rollback()
+            if num == 1:
+                sql4 = "DELETE FROM vip_order WHERE id ='%s'" % id
+                self.delete(sql4)
 
     @classmethod
     def getListPerson(cls):

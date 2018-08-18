@@ -10,6 +10,11 @@
 
 <div class="layui-form" action="" lay-filter="layuiadmin-form-dd">
   <div class="layui-form-item">
+    <div class="layui-input-inline">
+      <input type="hidden" id="vip_id" name="id" autocomplete="off" value=""  class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
     <label class="layui-form-label">会员名称</label>
     <div class="layui-input-inline">
       <input type="text" id="vip_name" name="vip_name" autocomplete="off" value=""  class="layui-input" disabled>
@@ -63,14 +68,15 @@
             <a href="javascript:;">
               <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
               <div class="price">{{item.name}}</div>
+
                 <div class="price">
 
-                    <b>￥{{item.price}}</b>
-                    <div class="jiajian" style="display: inline-block;float:right;" count1="{{item.status}}">
+                    <div class="jiajian" style="display: inline-block;" count1="{{item.status}}">
                      <span style="display:none;" >{{item.status}}</span>
-                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jian(event);"><i class="layui-icon layui-icon-left" style="color:white;"></i></a>
-                      <input  name="good{{item.id}}"  readonly="readonly" style="border:0px;outline: none;width:20px;" type="text" value="0" >
-                      <a style="border-radius:3px; background-color:#5FB878;padding: 2px" onclick="jia(event);"><i class="layui-icon layui-icon-right" style="color: white;"></i></a>
+                     <b>￥{{item.price}}</b>
+                      <a class="layui-btn layui-btn-xs " style=" background-color:#5FB878;" onclick="jian(event);">－</a>
+                      <input  name="good{{item.id}}"  readonly="readonly" style="border:0px;outline: none;width:15px;" type="text" value="0" >
+                      <a class="layui-btn layui-btn-xs " style=" background-color:#5FB878;" onclick="jia(event);">＋</a>
                     </div>
 
                 </div>
@@ -194,15 +200,13 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
       },
       success:function(data){//请求成功之后的操作
           if(data['code'] == 0){
-            layer.open( {
-            title: '订单生成',
-            content: '订单生成成功',
-            btn: ['确定'],
-            yes: function(index, layero){
+            var message = "生成订单成功,跳转到订单页面？";
+          //询问框
+          layer.confirm(message, {icon: 3, title:'信息提示'}, function(index){
+              //submitForm();
+              layer.close(index);
               window.location.href='#/app/workorder/list';
-            }
-            },{icon: 1});
-              //window.location.href='#/app/workorder/list';
+          });
             return false;
           }else if(data['code'] == 2){
             layer.alert("订单生成失败,该会员主订单已存在",{icon: 2});
@@ -219,10 +223,11 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
 
 
 function jia(e){
-
-  elm = e.target.parentNode.parentNode;
+  console.log(e.target);
+  elm = e.target.parentNode;
   var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
-  if (count <parseInt(elm.getAttribute("count1"))){
+  console.log(count);
+  if (count < parseInt(elm.getAttribute("count1"))){
     elm.querySelector("input").value = ++count;
 
     elm.setAttribute("count",count);
@@ -232,7 +237,7 @@ function jia(e){
 
 };
 function jian(e){
-  elm = e.target.parentNode.parentNode;
+  elm = e.target.parentNode;
   var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
   elm.querySelector("input").value = count >0 ?--count :count;
   elm.setAttribute("count",count);
