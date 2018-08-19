@@ -28,10 +28,11 @@ layui.define(['table', 'form', 'element'], function(exports){
       ,{field: 'name', width: 100, title: '订单人',align: 'center'}
       ,{field: 'phone', width: 150, title: '手机号',align: 'center'}
       ,{field: 'type', width: 100, title: '订单类型',align: 'center'}
-      ,{field: 'free_value', width: 100, title: '优惠费用',align: 'center'}
+      ,{field: 'all_value', width: 100, title: '总费用',align: 'center'}
       ,{field: 'lay_value', width: 100, title: '延时费用',align: 'center'}
+      ,{field: 'free_value', width: 100, title: '优惠费用',align: 'center'}
       ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
-      ,{field: 'notes', width: 200, title: '备注',align: 'center'}
+      ,{field: 'notes', width: 160, title: '备注',align: 'center'}
       ,{field: 'state', width: 120,title: '订单状态', templet: '#buttonTpl', align: 'center'}
       ,{title: '操作', align: 'center', minWidth:250,fixed: 'right', toolbar: '#table-system-order'}
     ]]
@@ -55,39 +56,49 @@ layui.define(['table', 'form', 'element'], function(exports){
       admin.popup({
         title: '订单信息'
         ,id: 'LAY-popup-workorder-add'
-        ,area: ['800px', '600px']
+        ,area: ['750px', '660px']
         ,success: function(layero, index){
-          // console.log(data);
+          //console.log(data);
           view(this.id).render('app/workorder/listform').done(function(){
 
-            admin.req({
-              url: './json/workorder/dddetail.js'
+            $.ajax({
+              //url: './json/workorder/dddetail.js'
+              url: setter.http+'orderDetail/'
               ,type: 'get'
-              ,data: {}
-              ,done: function(res){
-                console.log(res);
+              ,data: {'order_serial_number':data['order_serial_number']}
+              ,error:function(data){
+                  layer.msg("获取订单详情失败",{icon:2});
+              }
+              ,success: function(res){
+                //console.log(res);
                  form.render(null, 'layuiadmin-form-workorder');
-                  $("#orderid").val(data['orderid']);
-                  $("#attr").val(data['attr']);
-                  $("#type").val(data['type']);
-                  $("#status").val(data['state']);
-                  if(res['end_time']){
-                    $("#time").val(res['end_time']);
+                  $("#orderid").val(res['order_serial_number']);
+                  $("#attr").val(res['name']);
+                  $("#type").val(res['type']);
+                  if(res['state']==0){
+                     $("#status").val('待结账');
+                  }else if(res['state']==1){
+                     $("#status").val('已结账');
                   }else{
-                     $("#time").val(res['start_time']);
+                     $("#status").val('故障');
                   }
+                  $("#time").val(res['start_time']);
+                  $("#end_time").val(res['end_time']);
+
                   $("#money").val(res['money']);
                   $("#jf").val(res['integration']);
                   var server = res.server
                   var good = res.good
                   //console.log(result);
-                  var my_str='';
-                  var my_str2 ='';
+                  var my_str='<table  class="layui-table" lay-size="sm"><th>服务名</th><th>单价</th><th>数量';
+                  var my_str2 ='<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量';
+
                   for (var i=0;i<server.length;i++){
-                      my_str += server[i].name+' x '+server[i].count+'</br>'
+                    my_str += '<tr><td>'+server[i].name+'</td><td>'+server[i].price+'</td><td>'+server[i].server_count+'</td></tr>'
                   }
+                  my_str += '</table>'
                    for (var i=0;i<good.length;i++){
-                      my_str2 += good[i].name+' x '+good[i].count+'</br>'
+                      my_str2 += '<tr><td>'+good[i].name+'</td><td>'+good[i].price+'</td><td>'+good[i].good_count+'</td></tr>'
                   }
                   $("#serverlist").html(my_str)
                   $("#goodlist").html(my_str2)
@@ -101,22 +112,38 @@ layui.define(['table', 'form', 'element'], function(exports){
         }
       });
     }else if(obj.event === 'complete'){
-      admin.req({
-      url: './json/workorder/ddje.js'
-      ,type: 'get'
-      ,data: {}
-      ,done: function(res){
-        layer.open( {
-        title: '订单结算完成',
-        content: res['name']+"订单共消费"+res['money']+",共积分"+res['integration']+"分",
-        btn: ['确定'],
-        yes: function(index, layero){
-            layui.table.reload('LAY-app-workorder'); //重载表格
-            layer.close(index);
-          }
-        });
-      }
-    });
+
+      layer.prompt({
+          formType: 1
+          ,title: '敏感操作，请验证口令'
+          }, function(value, index){
+            if(value =='111111'){
+          layer.close(index);
+          layer.confirm('确定结账吗？', function(index) {
+
+           $.ajax({
+              //url: './json/workorder/ddje.js'
+              url: setter.http+'endOrder/'
+              ,type: 'get'
+              ,data: {'order_serial_number':data['order_serial_number']}
+              ,error:function(data){
+                  layer.msg("订单结算失败",{icon:2});
+              }
+              ,success: function(res){
+                   layer.close(index);
+
+              }
+          });
+
+
+          });
+        }else{
+          layer.close(index);
+          layer.alert('密码错误',{icon:2})
+        }
+
+      });
+
 
 
 
@@ -128,8 +155,8 @@ layui.define(['table', 'form', 'element'], function(exports){
         ,success: function(layero, index){
 
           view(this.id).render('template/new_dd', data).done(function(){
-            console.log(data);
-            form.render(null,'layuiadmin-form-new_dd');
+            //console.log(data);
+            form.render(null,'layuiadmin-form-new-dd');
              $('#vip_id').val(data.person_id);
              $('#vip_name').val(data.name);
              $('#vip_phone').val (data.phone);
@@ -141,7 +168,7 @@ layui.define(['table', 'form', 'element'], function(exports){
                   layer.msg("获取服务列表失败");
                },
                success:function(data){
-                  console.log(data);
+                  //console.log(data);
                   var getTpl = demo.innerHTML
                   ,view = document.getElementById('server');
                   laytpl(getTpl).render(data, function(html){

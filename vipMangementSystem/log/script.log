@@ -1535,3 +1535,486 @@ Traceback (most recent call last):
   File "C:\Python27\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
     raise errorclass, errorvalue
 ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1")
+2018-08-19 11:50:21,244 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 11:50:31,509 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 11:51:52,743 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 11:52:39,762 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 11:57:34,878 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 11:59:26,515 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 12:02:04,934 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view vms.views.order_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-19 12:29:28,006 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 757, in order_detail
+    , "order_serial_number":result['order_serial_number']
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 12:29:57,773 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 757, in order_detail
+    , "order_serial_number":result['order_serial_number']
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 12:31:03,628 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 757, in order_detail
+    , "order_serial_number":str(result['order_serial_number'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 12:31:36,502 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 757, in order_detail
+    , "order_serial_number":"%s"%result['order_serial_number']
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:30:23,612 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 660, in add_order
+    price = db.getOne("SELECT price FROM order_category WHERE id ='%s'")%data['type']
+TypeError: unsupported operand type(s) for %: 'bool' and 'unicode'
+2018-08-19 14:31:08,427 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 660, in add_order
+    price = db.getAll("SELECT price FROM order_category WHERE id ='%s'")%data['type']
+TypeError: unsupported operand type(s) for %: 'list' and 'unicode'
+2018-08-19 14:31:48,438 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 661, in add_order
+    price = db.getAll("SELECT price FROM order_category WHERE id ='%s'")%data['type']
+TypeError: unsupported operand type(s) for %: 'list' and 'unicode'
+2018-08-19 14:32:29,249 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 664, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:33:09,861 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 661, in add_order
+    print(price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:33:32,953 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 663, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],str(price['price']))
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:34:14,507 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 663, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:35:01,867 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 661, in add_order
+    print(price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:35:16,388 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 664, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:37:54,395 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 661, in add_order
+    print(price[1])
+IndexError: tuple index out of range
+2018-08-19 14:38:12,671 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 664, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 14:38:32,351 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 664, in add_order
+    data['id'],serial_num,data['type'], data['vip_notes'],price['price'])
+TypeError: tuple indices must be integers, not unicode
+2018-08-19 15:12:44,595 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:15:06,706 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:15:30,401 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:16:07,836 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:18:07,342 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:18:29,161 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:19:43,530 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 676, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:23:10,835 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 678, in add_order
+    print("UPDATE good SET status = '%s' WHERE id = '%s'")%((int(now_count[0]['status'])-int(good.split('-')[1])),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:26:02,476 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 679, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:27:46,665 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 680, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(int(now_count[0]['status'])-int(good.split('-')[1]),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 15:28:34,006 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 680, in add_order
+    sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'")%(str(left_count),good.split('-')[0])
+TypeError: unsupported operand type(s) for %: 'NoneType' and 'tuple'
+2018-08-19 16:21:04,634 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 778, in order_detail
+    print(good_value)
+NameError: global name 'order_serial_number' is not defined
+2018-08-19 16:33:37,523 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 795, in order_detail
+    for y in server_value:
+TypeError: 'int' object is not iterable
+2018-08-19 16:42:22,437 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 800, in order_detail
+    now_value = float(result['all_value'])+good_value+server_value
+TypeError: float() argument must be a string or a number
+2018-08-19 16:42:24,783 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 800, in order_detail
+    now_value = float(result['all_value'])+good_value+server_value
+TypeError: float() argument must be a string or a number
+2018-08-19 16:42:45,282 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 800, in order_detail
+    now_value = float(result['all_value'])+good_value+server_value
+TypeError: float() argument must be a string or a number
+2018-08-19 18:46:37,845 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 688, in add_order
+    dd['id']))
+TypeError: 'long' object has no attribute '__getitem__'
+2018-08-19 18:48:47,828 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /addOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 712, in add_order
+    "UPDATE vip_order SET all_value = '%s' WHERE id = '%s'" % (str(now_value), dd['id']))
+TypeError: 'long' object has no attribute '__getitem__'
+2018-08-19 19:06:47,108 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 794, in order_detail
+    good_value = good_value + (x['price'] * x['good_count'])
+TypeError: unsupported operand type(s) for *: 'float' and 'Decimal'
+2018-08-19 19:07:24,071 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 819, in order_detail
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+  File "C:\Python27\lib\json\__init__.py", line 244, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python27\lib\json\encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python27\lib\json\encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python27\lib\json\encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: Decimal('4') is not JSON serializable
+2018-08-19 19:08:25,615 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 820, in order_detail
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+  File "C:\Python27\lib\json\__init__.py", line 244, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Python27\lib\json\encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python27\lib\json\encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python27\lib\json\encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: Decimal('4') is not JSON serializable
+2018-08-19 19:17:11,993 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /orderDetail/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/Study/VMS/vipMangementSystem\vms\views.py", line 802, in order_detail
+    x['server_count'] = str(x['server_count'])
+KeyError: u'server_count'

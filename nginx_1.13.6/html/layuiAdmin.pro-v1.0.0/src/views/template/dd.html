@@ -17,14 +17,15 @@
   <div class="layui-form-item">
     <label class="layui-form-label">会员名称</label>
     <div class="layui-input-inline">
-      <input type="text" id="vip_name" name="vip_name" autocomplete="off" value=""  class="layui-input" disabled>
+      <input type="text" id="vip_name" name="vip_name" autocomplete="off" value=""  class="layui-input"  disabled  >
     </div>
-  </div>
-  <div class="layui-form-item">
+
+  <div class="layui-inline">
     <label class="layui-form-label">会员手机号</label>
     <div class="layui-input-inline">
-      <input type="text" id="vip_phone" name="vip_phone" autocomplete="off" value="" class="layui-input" disabled>
+      <input type="text" id="vip_phone" name="vip_phone" autocomplete="off" value="" class="layui-input" disabled  >
     </div>
+  </div>
   </div>
 
   <div class="layui-form-item">
@@ -223,10 +224,10 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
 
 
 function jia(e){
-  console.log(e.target);
+ //console.log(e.target);
   elm = e.target.parentNode;
   var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
-  console.log(count);
+  //console.log(count);
   if (count < parseInt(elm.getAttribute("count1"))){
     elm.querySelector("input").value = ++count;
 

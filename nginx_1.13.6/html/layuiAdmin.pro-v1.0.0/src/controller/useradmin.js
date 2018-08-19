@@ -29,7 +29,7 @@ layui.define(['table', 'form'], function(exports){
       ,{field: 'vip_phone', width: '12%',title: '手机', align:'center'}
        ,{field: 'vip_person_point',width: '10%', title: '积分', sort: true, align:'center'}
       ,{field: 'vip_notes', width: '20%', title: '备注', align:'center'}
-      ,{title: '操作', width: '28%', align:'center', fixed: 'right', toolbar: '#table-useradmin-webuser'}
+      ,{title: '操作', width: '28%',  minWidth:250, align:'center', fixed: 'right', toolbar: '#table-useradmin-webuser'}
     ]]
     ,page: true
     ,done:function (res) {
@@ -71,7 +71,7 @@ layui.define(['table', 'form'], function(exports){
         formType: 1
         ,title: '敏感操作，请验证口令'
       }, function(value, index){
-        if(value =='693582'){
+        if(value =='111111'){
           layer.close(index);
           layer.confirm('确定删除吗？', function(index) {
 

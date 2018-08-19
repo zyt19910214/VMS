@@ -573,9 +573,10 @@ def del_server(req):
 # 订单系统处理
 def list_order(req):
     data = req.GET.copy()
-    #print(data)
-    sql = "select c.order_serial_number,d.name,c.person_id,d.phone,c.type,c.order_status as state,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.person_id = d.id  ORDER BY c.order_serial_number desc"
+    sql = "select c.order_serial_number,d.name,c.person_id,d.phone,c.type,c.order_status as state,all_value,c.lay_value,c.free_value,c.notes from( select a.*,b.name as type from vip_order a INNER JOIN order_category b ON a.order_category_id = b.id order by id) c INNER JOIN person d on c.person_id = d.id  ORDER BY c.order_serial_number desc"
     db = Mysql()
+
+
     n_list = []
     query_result = db.getAll(sql)
     db.dispose()
@@ -657,39 +658,50 @@ def add_order(req):
             db.dispose()
         else:
             serial_num = time.strftime("%Y%m%d%H%M%S", time.localtime())
+            price = db.getAll("SELECT price FROM order_category WHERE id ='%s'"%data['type'])
+            if price:
+                sql = "INSERT INTO vip_order(`person_id`,`order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`all_value`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(), '%s' ,'%s','0','0');" % (
+                data['id'],serial_num,data['type'], data['vip_notes'],price[0]['price'])
+                dd = db.insertOne(sql)
+                # print (dd)
+                if dd != 0:
+                    # print (good_list)
+                    #print (server_list)
+                    for good in good_list:
+                        sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(dd,good.split('-')[0],good.split('-')[1]))
+                        now_count = db.getAll("select status from good WHERE id = '%s'"%(good.split('-')[0]))
+                        print(now_count)
+                        if now_count:
+                            # print (int(now_count[0]['status']))
+                            # print (int(good.split('-')[1]))
+                            left_count = (int(now_count[0]['status'])-int(good.split('-')[1]))
+                            # print("UPDATE good SET status = '%s' WHERE id = '%s'"%(str(left_count),good.split('-')[0]))
+                            sql_list.append("UPDATE good SET status = '%s' WHERE id = '%s'"%(str(left_count),good.split('-')[0]))
+                        else:
+                            return
+                    for server in server_list:
+                        sql_list.append("INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ('%s', '%s', '1');"%(dd,server))
 
-            sql = "INSERT INTO vip_order(`person_id`,`order_serial_number`, `order_status`, `order_category_id`, `create_time`, `notes`,`lay_value`, `free_value`) VALUES ('%s','%s','0', '%s', now(),'%s','0','0');" % (
-            data['id'],serial_num,data['type'], data['vip_notes'])
-            dd = db.insertOne(sql)
-            # print (dd)
-            if dd != 0:
 
-                # print (good_list)
-                #print (server_list)
-                for good in good_list:
-                    sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(dd,good.split('-')[0],good.split('-')[1]))
-                for server in server_list:
-                    sql_list.append("INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ('%s', '%s', '1');"%(dd,server))
-                # print (sql_list)
-                # print (len(sql_list))
 
-                dd2 = db.inserGoodServer(num,dd,sql_list)
+                    # print (sql_list)
+                    # print (len(sql_list))
+                    dd2 = db.inserGoodServer(num,dd,sql_list)
+                    logger.info('插入影响行数：'+str(dd2))
+                    db.dispose()
 
-                logger.info('插入影响行数：'+str(dd2))
-                db.dispose()
-
-                if dd2 == len(sql_list):
-                    resp = {
-                        "code": 0,
-                        "msg": "success"
-                    }
-                    logger.debug('订单生成成功')
-                else:
-                    resp = {
-                        "code": 1,
-                        "msg": "internal_exceptions"
-                    }
-                    logger.debug('订单生成失败')
+                    if dd2 == len(sql_list):
+                        resp = {
+                            "code": 0,
+                            "msg": "success"
+                        }
+                        logger.debug('订单生成成功')
+                    else:
+                        resp = {
+                            "code": 1,
+                            "msg": "internal_exceptions"
+                        }
+                        logger.debug('订单生成失败')
 
     else:
         num = 2
@@ -697,10 +709,20 @@ def add_order(req):
         dd = db.getOne("SELECT id,free_value,lay_value FROM vip_order WHERE person_id ='%s'"%data['id'])
 
         if dd:
-            # 新增商品的sql语句插入sql_list
+
+            # 新增商品的sql语句插入sql_list以及商品消费
             for good in good_list:
                 sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');" % (
                     dd['id'], good.split('-')[0], good.split('-')[1]))
+                now_count = db.getAll("select status from good WHERE id = '%s'" % (good.split('-')[0]))
+                #  print(now_count)
+                if now_count:
+                    left_count = (int(now_count[0]['status']) - int(good.split('-')[1]))
+                    # print("UPDATE good SET status = '%s' WHERE id = '%s'"%(str(left_count),good.split('-')[0]))
+                    sql_list.append(
+                        "UPDATE good SET status = '%s' WHERE id = '%s'" % (str(left_count), good.split('-')[0]))
+                else:
+                    return
 
             # 新增服务的sql语句插入sql_list
             for server in server_list:
@@ -708,10 +730,19 @@ def add_order(req):
                     dd['id'], server))
 
             # 延时费用和优惠费用的sql语句插入sql_list
-            if  data['free_value'] != '' and data['lay_value'] != '':
+            if data['free_value'] == '' and data['lay_value'] == '':
+                pass
+            else:
+                if data['free_value'] == '':
+                    data['free_value'] = 0
+                if data['lay_value'] == '':
+                    data['lay_value'] = 0
                 free = float(dd['free_value']) + float(data['free_value'])
                 lay = float(dd['lay_value']) + float(data['lay_value'])
                 sql_list.append("UPDATE vip_order SET free_value ='%s' ,lay_value ='%s' WHERE id ='%s'"%(free,lay,dd['id']))
+
+
+
             # print(sql_list)
             # print(len(sql_list))
             # 执行新增消费的记录插入，包括延时费用和优惠费用的更新
@@ -741,9 +772,58 @@ def add_order(req):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
-def edit_order(req):
-    pass
+def order_detail(req):
+    logger.debug('订单详情传入参数：' + str(req.GET))
+    data = req.GET.copy()
+    resp = ''
+    db = Mysql()
+    result = db.getOne("SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s' ) a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (data['order_serial_number']))
+    logger.debug(result)
+    if result:
+        good_value_list = db.getAll(
+            "select SUM(a.good_count) as good_count,b.name,b.price from (select good_id,good_count from order_good_item WHERE order_id = '%s'  ) a INNER JOIN good b on a.good_id = b.id GROUP BY a.good_id" %
+            result['id'])
+        server_value_list = db.getAll(
+            "select SUM(server_count) as server_count,b.name,b.price from (select server_id,server_count from order_server_item where order_id = '%s' ) a INNER JOIN server b on a.server_id = b.id GROUP BY a.server_id" %
+            result['id'])
+        # print(good_value_list)
+        good_value = 0
+        server_value = 0
+
+        for x in good_value_list:
+            good_value = good_value + (x['price'] * int(x['good_count']))
+            x['good_count'] = str(x['good_count'])
+
+        logger.debug('商品消费为：' + str(good_value) + '元')
+
+        for y in server_value_list:
+            # print(y)
+            server_value = server_value +(y['price'] * int(y['server_count']) )
+            y['server_count'] = str(y['server_count'])
+        logger.debug('服务消费为：' + str(server_value) + '元')
+        #目前除去优惠和延时费用的总消费价格
+        now_value = float(result['all_value'])+good_value+server_value
+        resp = {
+            "code": 0
+            , "msg": ""
+            , "name": result['name']
+            , "money":str(now_value)
+            , "order_serial_number":result['order_serial_number']
+            , "type":result['type']
+            , "state": result['order_status']
+            , "start_time": str(result['create_time'])
+            , "end_time": str(result['end_time'])
+            , "server":list(server_value_list)
+            , "good": list(good_value_list)
+
+        }
+    return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
-def del_order(req):
-    pass
+def end_order(req):
+    logger.debug('订单详情传入参数：' + str(req.GET))
+    data = req.GET.copy()
+    resp = ''
+
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+
