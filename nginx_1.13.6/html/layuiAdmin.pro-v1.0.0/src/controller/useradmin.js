@@ -91,6 +91,8 @@ layui.define(['table', 'form'], function(exports){
                                     curr: deleteJumpPage(obj)
                                 }
                              });
+                }else if(data['code'] == 2){
+                  layer.alert("会员存在未结算订单，无法删除!",{icon: 2});
                 }else {
                   layer.alert("删除失败!",{icon: 2});
                 }
@@ -293,7 +295,7 @@ layui.define(['table', 'form'], function(exports){
         formType: 1
         ,title: '敏感操作，请验证口令'
       }, function(value, index){
-        if(value =='693582'){
+        if(value =='111111'){
           layer.close(index);
           layer.confirm('确定删除吗？', function(index) {
 
@@ -314,7 +316,10 @@ layui.define(['table', 'form'], function(exports){
                                 }
 
                     });
-                }else {
+                }else if(data['code'] == 2){
+                  layer.alert("会员存在未结算订单，无法删除!",{icon: 2});
+                }else  {
+                  console.log("1111111111111");
                   layer.alert("删除失败!",{icon: 2});
                 }
               }

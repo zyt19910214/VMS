@@ -28,13 +28,13 @@ layui.define(['table', 'form', 'element'], function(exports){
       ,{field: 'name', width: 100, title: '订单人',align: 'center'}
       ,{field: 'phone', width: 150, title: '手机号',align: 'center'}
       ,{field: 'type', width: 100, title: '订单类型',align: 'center'}
-      ,{field: 'all_value', width: 100, title: '总费用',align: 'center'}
-      ,{field: 'lay_value', width: 100, title: '延时费用',align: 'center'}
-      ,{field: 'free_value', width: 100, title: '优惠费用',align: 'center'}
+      ,{field: 'all_value', width: 100, title: '结算费用',align: 'center'}
+      //,{field: 'lay_value', width: 100, title: '延时费用',align: 'center'}
+      //,{field: 'free_value', width: 100, title: '优惠费用',align: 'center'}
       ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
       ,{field: 'notes', width: 160, title: '备注',align: 'center'}
       ,{field: 'state', width: 120,title: '订单状态', templet: '#buttonTpl', align: 'center'}
-      ,{title: '操作', align: 'center', minWidth:250,fixed: 'right', toolbar: '#table-system-order'}
+      ,{title: '操作', align: 'center', minWidth:350,fixed: 'right', toolbar: '#table-system-order'}
     ]]
     ,page: true
     ,limit: 10
@@ -90,7 +90,7 @@ layui.define(['table', 'form', 'element'], function(exports){
                   var server = res.server
                   var good = res.good
                   //console.log(result);
-                  var my_str='<table  class="layui-table" lay-size="sm"><th>服务名</th><th>单价</th><th>数量';
+                  var my_str='<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量';
                   var my_str2 ='<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量';
 
                   for (var i=0;i<server.length;i++){
@@ -130,6 +130,12 @@ layui.define(['table', 'form', 'element'], function(exports){
                   layer.msg("订单结算失败",{icon:2});
               }
               ,success: function(res){
+                 if(res['code'] == 0){
+                  layer.msg("结账成功",{icon:1});
+                  table.reload('LAY-app-workorder');
+                }else{
+                  layer.msg("结账失败，请稍后重试",{icon:2});
+                }
                    layer.close(index);
 
               }
@@ -258,6 +264,43 @@ layui.define(['table', 'form', 'element'], function(exports){
         }
       });
 
+    }else if(obj.event == 'reback'){
+       layer.prompt({
+          formType: 1
+          ,title: '敏感操作，请验证口令'
+          }, function(value, index){
+            if(value =='111111'){
+          layer.close(index);
+          layer.confirm('确定废弃该订单吗？', function(index) {
+
+           $.ajax({
+              //url: './json/workorder/ddje.js'
+              url: setter.http+'delOrder/'
+              ,type: 'get'
+              ,data: {'order_serial_number':data['order_serial_number']}
+              ,error:function(data){
+                  layer.msg("订单废弃失败",{icon:2});
+              }
+              ,success: function(res){
+                if(res['code'] == 0){
+                  layer.msg("订单已废弃",{icon:1});
+                  table.reload('LAY-app-workorder');
+                }else{
+                  layer.msg("订单废弃失败",{icon:2});
+                }
+                layer.close(index);
+
+              }
+          });
+
+
+          });
+        }else{
+          layer.close(index);
+          layer.alert('密码错误',{icon:2})
+        }
+
+      });
     }
   });
 

@@ -37,21 +37,25 @@
         </div>
       </script>
       <script type="text/html" id="buttonTpl">
-        {{#  if(d.state == '1'){ }}
+        {{#  if(d.state == '1' ){ }}
           <button class="layui-btn layui-btn-normal layui-btn-xs">已完成</button>
         {{#  } else if(d.state == '0'){ }}
           <button class="layui-btn layui-btn-warm  layui-btn-xs">待结账</button>
-        {{#  } else{ }}
-          <button class="layui-btn layui-btn-primary layui-btn-xs">处理中</button>
+        {{#  } else if(d.state == '2'){ }}
+          <button class="layui-btn layui-btn-danger layui-btn-xs">已废弃</button>
+        {{#  }else{  }}
+         <button class="layui-btn layui-btn-primary layui-btn-xs">处理中</button>
         {{#  } }}
       </script>
       <script type="text/html" id="table-system-order">
-        {{#  if(d.state == '1'){ }}
+        {{#  if(d.state == '1'   ){ }}
         <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view"><i class="layui-icon layui-icon-about"></i>订单信息</a>
-        {{#  } else if(d.state == '0'){ }}
-          <a class="layui-btn layui-btn- layui-btn-xs" lay-event="new_add"><i class="layui-icon layui-icon-form"></i>新增消费</a>
+        {{#  } else if(d.state == '0' ){ }}
+          <a class="layui-btn layui-btn- layui-btn-xs" lay-event="new_add"><i class="layui-icon layui-icon-edit"></i>新增消费</a>
           <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="complete"><i class="layui-icon layui-icon-form"></i>结账</a>
+          <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="reback"><i class="layui-icon layui-icon-delete"></i>废弃</a>
           <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view"><i class="layui-icon layui-icon-about"></i>订单信息</a>
+
         {{#  } }}
       </script>
     </div>

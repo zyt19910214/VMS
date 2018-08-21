@@ -204,17 +204,15 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
             var message = "生成订单成功,跳转到订单页面？";
           //询问框
           layer.confirm(message, {icon: 3, title:'信息提示'}, function(index){
-              //submitForm();
-              layer.close(index);
+              layer.close(index)
               window.location.href='#/app/workorder/list';
           });
-            return false;
+          layer.closeAll('page');
           }else if(data['code'] == 2){
             layer.alert("订单生成失败,该会员主订单已存在",{icon: 2});
           }else {
             layer.alert("订单生成失败!",{icon: 2});
           }
-
       }
 
      });
