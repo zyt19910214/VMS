@@ -308,9 +308,27 @@ layui.define(['table', 'form','laydate'], function(exports){
             //监听提交
             form.on('submit(layuiadmin-app-com-submit)', function(data){
               var field = data.field; //获取提交的字段
-             layer.alert(JSON.stringify(field));
+              //layer.alert(JSON.stringify(field));、
+
               //提交 Ajax 成功后，关闭当前弹层并重载表格
-              //$.ajax({});
+              $.ajax({
+                url: setter.http+'editServer/',
+                type: 'POST',
+                data: field ,
+                error:function(request){
+                  layer.alert("服务修改失败",{icon: 2});
+                },
+                success:function(data){
+                  if(data['code'] == 0){
+                    layer.msg('服务编辑成功', {icon: 1});
+                    table.reload('LAY-app-content-comm');
+                  }else if(data['code'] == 2){
+                    layer.msg('无变化，无需更新', {icon: 1});
+                  }else {
+                    layer.alert("服务编辑失败!",{icon: 2});
+                  }
+                }
+              });
               layui.table.reload('LAY-app-content-comm'); //重载表格
               layer.close(index); //执行关闭
             });
@@ -375,7 +393,7 @@ layui.define(['table', 'form','laydate'], function(exports){
     },add2: function(othis){
         admin.popup({
           title: '添加服务'
-          ,area: ['550px', '430px']
+          ,area: ['400px', '450px']
           ,id: 'LAY-popup-content-add'
           ,success: function(layero, index){
             view(this.id).render('app/content/serverform').done(function(){

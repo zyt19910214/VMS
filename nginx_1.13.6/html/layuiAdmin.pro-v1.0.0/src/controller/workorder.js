@@ -56,7 +56,7 @@ layui.define(['table', 'form', 'element'], function(exports){
       admin.popup({
         title: '订单信息'
         ,id: 'LAY-popup-workorder-add'
-        ,area: ['750px', '660px']
+        ,area: ['750px', '750px']
         ,success: function(layero, index){
           //console.log(data);
           view(this.id).render('app/workorder/listform').done(function(){
@@ -80,26 +80,41 @@ layui.define(['table', 'form', 'element'], function(exports){
                   }else if(res['state']==1){
                      $("#status").val('已结账');
                   }else{
-                     $("#status").val('故障');
+                     $("#status").val('已废弃');
                   }
                   $("#time").val(res['start_time']);
                   $("#end_time").val(res['end_time']);
-
+                  $("#site_money").val(res['site_money']);
                   $("#money").val(res['money']);
+                  $("#lay_value").val(res['lay_value']);
+                  $("#free_value").val(res['free_value']);
                   $("#jf").val(res['integration']);
                   var server = res.server
                   var good = res.good
                   //console.log(result);
-                  var my_str='<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量';
-                  var my_str2 ='<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量';
 
-                  for (var i=0;i<server.length;i++){
+
+                  if(server.length != 0){
+                   var my_str='<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量</th>';
+                    for (var i=0;i<server.length;i++){
                     my_str += '<tr><td>'+server[i].name+'</td><td>'+server[i].price+'</td><td>'+server[i].server_count+'</td></tr>'
+                    }
+                    my_str += '</table>'
+
+                  }else{
+                    my_str = '<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量</th><tr><td style="font-size:8px;" colspan = "3" align="center">未消费</td></tr></table>'
                   }
-                  my_str += '</table>'
-                   for (var i=0;i<good.length;i++){
+
+                  if(good.length !=0){
+                    var my_str2 ='<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量</th>';
+                     for (var i=0;i<good.length;i++){
                       my_str2 += '<tr><td>'+good[i].name+'</td><td>'+good[i].price+'</td><td>'+good[i].good_count+'</td></tr>'
+                    }
+                    my_str2 += '</table>'
+                  }else{
+                    my_str2 = '<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量</th><tr><td style="font-size:8px;" colspan="3" align="center">未消费</td><tr></table>'
                   }
+
                   $("#serverlist").html(my_str)
                   $("#goodlist").html(my_str2)
 
@@ -160,7 +175,7 @@ layui.define(['table', 'form', 'element'], function(exports){
         ,id: 'LAY-popup-user-add'
         ,success: function(layero, index){
 
-          view(this.id).render('template/new_dd', data).done(function(){
+          view(this.id).render('app/workorder/new_dd', data).done(function(){
             //console.log(data);
             form.render(null,'layuiadmin-form-new-dd');
              $('#vip_id').val(data.person_id);

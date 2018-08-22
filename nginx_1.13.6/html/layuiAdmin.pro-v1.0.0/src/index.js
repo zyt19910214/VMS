@@ -160,8 +160,11 @@ layui.extend({
     } else { //后台框架页面
 
       //强制拦截未登入
+      console.log(setter.interceptor);
       if(setter.interceptor){
+        console.log(layui.data);
         var local = layui.data(setter.tableName);
+        console.log(local);
         if(!local[setter.request.tokenName]){
           return location.hash = '/user/login/redirect='+ encodeURIComponent(pathURL); //跳转到登入页
         }

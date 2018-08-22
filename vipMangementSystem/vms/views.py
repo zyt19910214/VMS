@@ -361,25 +361,25 @@ def edit_good(req):
             # 无法更新为已存在商品
             resp = {
                 "code": 2,
-                "msg": "phone_is_exist"
+                "msg": "good_is_exist"
             }
             logger.debug('更新失败,商品已存在')
         else:
             count = str(int(data['count'])+int(data['add_count']))
             sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now(),origin_price='%s' WHERE id=%s" % (
-            data['title'], data['type'], data['price'], count, data['id'],data['origin_price'])
+            data['title'], data['type'], data['price'], count, data['origin_price'],data['id'])
             logger.debug(sql)
             dd = db.update(sql)
             db.dispose()
             if dd != 0:
-                # 会员更新成功
+                # 商品更新成功
                 resp = {
                     "code": 0,
                     "msg": "success"
                 }
                 logger.debug('商品更新成功')
             else:
-                # 会员更新失败
+                # 商品更新失败
                 resp = {
                     "code": 1,
                     "msg": "internal_exceptions"
@@ -488,14 +488,14 @@ def add_server(req):
         dd = db.insertOne(sql)
         db.dispose()
         if dd != 0:
-            # 会员添加成功
+            # 服务添加成功
             resp = {
                 "code": 0,
                 "msg": "success"
             }
             logger.debug('商品添加成功')
         else:
-            # 会员添加失败
+            # 服务添加失败
             resp = {
                 "code": 1,
                 "msg": "internal_exceptions"
@@ -521,33 +521,42 @@ def edit_server(req):
     is_exist = db.getAll(sql2)
 
     if(is_exist):
-        # 无法更新为已存在商品
+        # 无法更新为已存在服务
         resp = {
             "code": 2,
-            "msg": "phone_is_exist"
+            "msg": "server_is_exist"
         }
         logger.debug('更新失败,商品已存在')
     else:
-        count = str(int(data['count'])+int(data['add_count']))
-        sql = "UPDATE good SET  `name` = '%s',good_category_id= '%s',price='%s',status='%s',uploadtime = now() WHERE id=%s" % (
-        data['title'], data['type'], data['price'], count, data['id'])
-        logger.debug(sql)
-        dd = db.update(sql)
-        db.dispose()
-        if dd != 0:
-            # 会员更新成功
+        result = db.getOne("SELECT * from server where id = '%s'" % data['id'])
+        print(result)
+        if result['name']== data['name'] and float(result['price']) == float(data['price']) and int(result['server_category_id']) == int(data['type']) :
+            # 服务未更改无需更新
             resp = {
-                "code": 0,
-                "msg": "success"
+                "code": 2,
+                "msg": "nothing is changed"
             }
-            logger.debug('商品更新成功')
+            logger.debug('服务异常,服务更新失败')
         else:
-            # 会员更新失败
-            resp = {
-                "code": 1,
-                "msg": "internal_exceptions"
-            }
-            logger.debug('服务异常,商品更新失败')
+            sql = "UPDATE server SET  `name` = '%s',server_category_id= '%s',price='%s' WHERE id='%s'" % (data['name'], data['type'], data['price'],data['id'])
+            logger.debug(sql)
+            dd = db.update(sql)
+            # print(dd)
+            db.dispose()
+            if dd != 0:
+                # 服务更新成功
+                resp = {
+                    "code": 0,
+                    "msg": "success"
+                }
+                logger.debug('服务更新成功')
+            else:
+                # 服务更新失败
+                resp = {
+                    "code": 1,
+                    "msg": "internal_exceptions"
+                }
+                logger.debug('服务异常,服务更新失败')
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
@@ -599,7 +608,7 @@ def list_order(req):
         for x in order_list:
             if x['state'] == 0:
                 x['progress'] = '50%'
-            elif x['state'] == 1:
+            elif x['state'] == 1 or x['state'] ==2:
                 x['progress'] = '100%'
             else:
                 x['progress'] = '0%'
@@ -785,7 +794,7 @@ def order_detail(req):
     data = req.GET.copy()
     resp = ''
     db = Mysql()
-    result = db.getOne("SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s' ) a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (data['order_serial_number']))
+    result = db.getOne("SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s') a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (data['order_serial_number']))
     logger.debug(result)
     if result:
         good_value_list = db.getAll(
@@ -810,13 +819,16 @@ def order_detail(req):
             y['server_count'] = str(y['server_count'])
         logger.debug('服务消费为：' + str(server_value) + '元')
 
-        #目前除去优惠和延时费用的总消费价格
-        now_value = float(result['price'])+good_value+server_value
+        # 目前除去优惠和延时费用的总消费价格
+        now_value = good_value+server_value
         resp = {
             "code": 0
             , "msg": ""
             , "name": result['name']
+            , "site_money": float(result['price'])
             , "money":str(now_value)
+            , "lay_value": result['lay_value']
+            , "free_value": result['free_value']
             , "order_serial_number":result['order_serial_number']
             , "type":result['type']
             , "state": result['order_status']
@@ -826,6 +838,7 @@ def order_detail(req):
             , "good": list(good_value_list)
 
         }
+        db.dispose()
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
@@ -865,7 +878,7 @@ def end_order(req):
         now_value = float(result['price']) + good_value + server_value
 
         sql = "UPDATE vip_order SET all_value = '%s'+lay_value-free_value, order_status=1,end_time=now() where order_serial_number = '%s'"%(now_value,data['order_serial_number'])
-        print(sql)
+        # print(sql)
         count = db.update(sql)
         if count == 1:
             resp = {
@@ -879,14 +892,14 @@ def end_order(req):
                 "msg": "failed"
             }
             logger.debug('结算失败')
-
+        db.dispose()
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
 def del_order(req):
     logger.debug('订单废弃传入参数：' + str(req.GET))
     data = req.GET.copy()
-    sql = "UPDATE vip_order SET order_status = 2,end_time=now() WHERE order_serial_number = '%s'"%data['order_serial_number']
+    sql = "UPDATE vip_order SET order_status = 2,all_value = '0',end_time=now() WHERE order_serial_number = '%s'"%data['order_serial_number']
     db = Mysql()
     count = db.update(sql)
     if count == 1:
@@ -900,4 +913,18 @@ def del_order(req):
             "code": 1,
             "msg": "internal_exceptions"
         }
+    db.dispose()
     return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def manager_login(req):
+    print(req.GET)
+    resp = {
+        "code": 0
+        ,"msg": "登入成功"
+        ,"data": {
+        "access_token": "c262e61cd13ad99fc650e6908c7e5e65b63d2f32185ecfed6b801ee3fbdd5c0a"
+    }
+    }
+    return HttpResponse(json.dumps(resp), content_type="application/json")
+

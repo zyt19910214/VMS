@@ -159,7 +159,7 @@ layui.define(['table', 'form'], function(exports){
         ,id: 'LAY-popup-user-add'
         ,success: function(layero, index){
 
-          view(this.id).render('template/dd', data).done(function(){
+          view(this.id).render('app/workorder/dd', data).done(function(){
             console.log(data);
             form.render(null,'layuiadmin-form-dd');
              $('#vip_id').val(data.id);

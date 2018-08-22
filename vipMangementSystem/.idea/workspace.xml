@@ -2,7 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/vipMangementSystem/settings.py" />
-    <bookmark url="file://$PROJECT_DIR$/vms/views.py" line="781" />
+    <bookmark url="file://$PROJECT_DIR$/vms/views.py" line="798" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72075786-97d6-4674-a7a3-274001ddbd2a" name="默认的" comment="" />
@@ -44,100 +44,57 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vms/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="871" column="26" lean-forward="true" selection-start-line="871" selection-start-column="26" selection-end-line="871" selection-end-column="26" />
+            <state relative-caret-position="240">
+              <caret line="920" column="15" lean-forward="false" selection-start-line="920" selection-start-column="15" selection-end-line="920" selection-end-column="15" />
               <folding>
-                <element signature="e#24#61#0" expanded="true" />
                 <element signature="e#407#3036#0" expanded="false" />
                 <element signature="e#3068#4292#0" expanded="false" />
+                <element signature="e#4324#5140#0" expanded="false" />
                 <element signature="e#5173#6436#0" expanded="false" />
                 <element signature="e#6472#8699#0" expanded="false" />
                 <element signature="e#8725#10225#0" expanded="false" />
-                <element signature="e#10252#11855#0" expanded="false" />
-                <element signature="e#11881#12443#0" expanded="false" />
-                <element signature="e#12481#14264#0" expanded="false" />
-                <element signature="e#14292#15345#0" expanded="false" />
-                <element signature="e#15374#16626#0" expanded="false" />
-                <element signature="e#16654#17217#0" expanded="false" />
-                <marker date="1534854364032" expanded="true" signature="496:715" ph="SELECT a.id,... person" />
-                <marker date="1534854364032" expanded="true" signature="857:1098" ph="SELECT a.id,... *" />
-                <marker date="1534854364032" expanded="true" signature="987:1028" ph="select * FRO... person" />
-                <marker date="1534854364032" expanded="true" signature="1183:1423" ph="SELECT a.id,... *" />
-                <marker date="1534854364032" expanded="true" signature="1313:1353" ph="select * FRO... person" />
-                <marker date="1534854364032" expanded="true" signature="1510:1767" ph="SELECT a.id,... *" />
-                <marker date="1534854364032" expanded="true" signature="1640:1697" ph="select * FRO... person" />
-                <marker date="1534854364032" expanded="true" signature="3340:3380" ph="SELECT * fro... person" />
-                <marker date="1534854364032" expanded="true" signature="3589:3725" ph="INSERT INTO person... " />
-                <marker date="1534854364032" expanded="true" signature="4459:4498" ph="DELETE FROM " />
-                <marker date="1534854364032" expanded="true" signature="4551:4619" ph="select * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="5442:5495" ph="SELECT * fro... person" />
-                <marker date="1534854364032" expanded="true" signature="5769:5859" ph="UPDATE perso... " />
-                <marker date="1534854364032" expanded="true" signature="6559:6677" ph="select a.*,b... good" />
-                <marker date="1534854364032" expanded="true" signature="6857:7011" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="6890:6926" ph="select * fro... good" />
-                <marker date="1534854364032" expanded="true" signature="7094:7265" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="7127:7145" ph="select * fro... good" />
-                <marker date="1534854364032" expanded="true" signature="7162:7205" ph="select * fro... good_category" />
-                <marker date="1534854364032" expanded="true" signature="7347:7536" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="7380:7416" ph="select * fro... good" />
-                <marker date="1534854364032" expanded="true" signature="7433:7476" ph="select * fro... good_category" />
-                <marker date="1534854364032" expanded="true" signature="9091:9130" ph="SELECT * fro... good" />
-                <marker date="1534854364032" expanded="true" signature="9440:9579" ph="INSERT INTO `good`... " />
-                <marker date="1534854364032" expanded="true" signature="10411:10463" ph="SELECT * fro... good" />
-                <marker date="1534854364032" expanded="true" signature="11057:11180" ph="UPDATE good " />
-                <marker date="1534854364032" expanded="true" signature="12037:12070" ph="DELETE FROM " />
-                <marker date="1534854364032" expanded="true" signature="12568:12679" ph="select a.*,b... server" />
-                <marker date="1534854364032" expanded="true" signature="12875:13020" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="12908:12946" ph="select * fro... server" />
-                <marker date="1534854364032" expanded="true" signature="13110:13272" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="13143:13163" ph="select * fro... server" />
-                <marker date="1534854364032" expanded="true" signature="13180:13225" ph="select * fro... server_category" />
-                <marker date="1534854364032" expanded="true" signature="13361:13541" ph="select a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="13394:13432" ph="select * fro... server" />
-                <marker date="1534854364032" expanded="true" signature="13449:13494" ph="select * fro... server_category" />
-                <marker date="1534854364032" expanded="true" signature="14459:14500" ph="SELECT * fro... server" />
-                <marker date="1534854364032" expanded="true" signature="14708:14795" ph="INSERT INTO `server`... " />
-                <marker date="1534854364032" expanded="true" signature="15533:15587" ph="SELECT * fro... server" />
-                <marker date="1534854364032" expanded="true" signature="15939:16044" ph="UPDATE good " />
-                <marker date="1534854364032" expanded="true" signature="16809:16844" ph="DELETE FROM " />
-                <marker date="1534854364032" expanded="true" signature="17287:17617" ph="select c.ord... *" />
-                <marker date="1534854364032" expanded="true" signature="17423:17535" ph="select a.*,b... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19497:19540" ph="SELECT * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19497:19544" ph="SELECT * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19497:19566" ph="SELECT * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19497:19567" ph="SELECT * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19497:19578" ph="SELECT * fro... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="19936:19983" ph="SELECT price... order_category" />
-                <marker date="1534854364032" expanded="true" signature="20041:20235" ph="INSERT INTO vip_order... " />
-                <marker date="1534854364032" expanded="true" signature="20542:20636" ph="INSERT INTO `order_good_item`... " />
-                <marker date="1534854364032" expanded="true" signature="20726:20765" ph="select statu... good" />
-                <marker date="1534854364032" expanded="true" signature="21230:21275" ph="UPDATE good " />
-                <marker date="1534854364032" expanded="true" signature="21452:21557" ph="INSERT INTO `vms`.`order_server_item`... " />
-                <marker date="1534854364032" expanded="true" signature="22273:22340" ph="SELECT id,fr... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="22273:22341" ph="SELECT id,fr... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="22273:22361" ph="SELECT id,fr... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="22273:22374" ph="SELECT id,fr... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="22501:22595" ph="INSERT INTO `order_good_item`... " />
-                <marker date="1534854364032" expanded="true" signature="22712:22751" ph="select statu... good" />
-                <marker date="1534854364032" expanded="true" signature="23108:23153" ph="UPDATE good " />
-                <marker date="1534854364032" expanded="true" signature="23353:23458" ph="INSERT INTO `vms`.`order_server_item`... " />
-                <marker date="1534854364032" expanded="true" signature="24007:24076" ph="UPDATE vip_o... " />
-                <marker date="1534854364032" expanded="true" signature="25197:25436" ph="SELECT c.*,d... *" />
-                <marker date="1534854364032" expanded="true" signature="25238:25374" ph="SELECT a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="25270:25328" ph="SELECT * FRO... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="25562:25752" ph="select SUM(a... good_id" />
-                <marker date="1534854364032" expanded="true" signature="25622:25690" ph="select good_... order_good_item" />
-                <marker date="1534854364032" expanded="true" signature="25834:26037" ph="select SUM(s... server_id" />
-                <marker date="1534854364032" expanded="true" signature="25896:25970" ph="select serve... order_server_item" />
-                <marker date="1534854364032" expanded="true" signature="27433:27672" ph="SELECT c.*,d... *" />
-                <marker date="1534854364032" expanded="true" signature="27474:27610" ph="SELECT a.*,b... *" />
-                <marker date="1534854364032" expanded="true" signature="27506:27564" ph="SELECT * FRO... vip_order" />
-                <marker date="1534854364032" expanded="true" signature="27807:27997" ph="select SUM(a... good_id" />
-                <marker date="1534854364032" expanded="true" signature="27867:27935" ph="select good_... order_good_item" />
-                <marker date="1534854364032" expanded="true" signature="28079:28282" ph="select SUM(s... server_id" />
-                <marker date="1534854364032" expanded="true" signature="28141:28215" ph="select serve... order_server_item" />
-                <marker date="1534854364032" expanded="true" signature="28977:29099" ph="UPDATE vip_o... " />
-                <marker date="1534854364032" expanded="true" signature="29663:29748" ph="UPDATE vip_o... " />
+                <element signature="e#11880#12442#0" expanded="false" />
+                <element signature="e#27896#30172#0" expanded="false" />
+                <element signature="e#30199#30772#0" expanded="false" />
+                <marker date="1534910563653" expanded="true" signature="10411:10463" ph="SELECT * fro... good" />
+                <marker date="1534910563653" expanded="true" signature="11056:11179" ph="UPDATE good... " />
+                <marker date="1534910563653" expanded="true" signature="12567:12678" ph="select a.*,b... server" />
+                <marker date="1534910563653" expanded="true" signature="12874:13019" ph="select a.*,b... *" />
+                <marker date="1534910563653" expanded="true" signature="12907:12945" ph="select * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="13109:13271" ph="select a.*,b... *" />
+                <marker date="1534910563653" expanded="true" signature="13142:13162" ph="select * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="13179:13224" ph="select * fro... server_category" />
+                <marker date="1534910563653" expanded="true" signature="13360:13540" ph="select a.*,b... *" />
+                <marker date="1534910563653" expanded="true" signature="13393:13431" ph="select * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="13448:13493" ph="select * fro... server_category" />
+                <marker date="1534910563653" expanded="true" signature="14458:14499" ph="SELECT * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="14707:14794" ph="INSERT INTO `server`... " />
+                <marker date="1534910563653" expanded="true" signature="15532:15586" ph="SELECT * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="15889:15925" ph="SELECT * fro... server" />
+                <marker date="1534910563653" expanded="true" signature="16319:16397" ph="UPDATE good... " />
+                <marker date="1534910563653" expanded="true" signature="16319:16401" ph="UPDATE server... " />
+                <marker date="1534910563653" expanded="true" signature="17238:17273" ph="DELETE FROM server... " />
+                <marker date="1534910563653" expanded="true" signature="17716:18046" ph="select c.ord... *" />
+                <marker date="1534910563653" expanded="true" signature="17852:17964" ph="select a.*,b... vip_order" />
+                <marker date="1534910563653" expanded="true" signature="19944:20013" ph="SELECT * fro... vip_order" />
+                <marker date="1534910563653" expanded="true" signature="20488:20682" ph="INSERT INTO vip_order... " />
+                <marker date="1534910563653" expanded="true" signature="20989:21083" ph="INSERT INTO `order_good_item`... " />
+                <marker date="1534910563653" expanded="true" signature="21173:21212" ph="select statu... good" />
+                <marker date="1534910563653" expanded="true" signature="21677:21722" ph="UPDATE good... " />
+                <marker date="1534910563653" expanded="true" signature="21899:22004" ph="INSERT INTO `vms`.`order_server_item`... " />
+                <marker date="1534910563653" expanded="true" signature="22720:22808" ph="SELECT id,fr... vip_order" />
+                <marker date="1534910563653" expanded="true" signature="22948:23042" ph="INSERT INTO `order_good_item`... " />
+                <marker date="1534910563653" expanded="true" signature="23159:23198" ph="select statu... good" />
+                <marker date="1534910563653" expanded="true" signature="23555:23600" ph="UPDATE good... " />
+                <marker date="1534910563653" expanded="true" signature="23800:23905" ph="INSERT INTO `vms`.`order_server_item`... " />
+                <marker date="1534910563653" expanded="true" signature="24454:24523" ph="UPDATE vip_order... " />
+                <marker date="1534910563653" expanded="true" signature="25644:25882" ph="SELECT c.*,d... *" />
+                <marker date="1534910563653" expanded="true" signature="25685:25820" ph="SELECT a.*,b... *" />
+                <marker date="1534910563653" expanded="true" signature="25717:25775" ph="SELECT * FRO... vip_order" />
+                <marker date="1534910563653" expanded="true" signature="26008:26198" ph="select SUM(a... good_id" />
+                <marker date="1534910563653" expanded="true" signature="26068:26136" ph="select good_... order_good_item" />
+                <marker date="1534910563653" expanded="true" signature="26280:26483" ph="select SUM(s... server_id" />
+                <marker date="1534910563653" expanded="true" signature="26342:26416" ph="select serve... order_server_item" />
               </folding>
             </state>
           </provider>
@@ -146,11 +103,10 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="51" column="41" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+            <state relative-caret-position="735">
+              <caret line="54" column="19" lean-forward="false" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
               <folding>
                 <element signature="e#652#684#0" expanded="true" />
-                <marker date="1534842570816" expanded="true" signature="2380:2433" ph="..." />
               </folding>
             </state>
           </provider>
@@ -159,16 +115,9 @@
       <file leaf-file-name="DB.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vms/DB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="73" column="44" lean-forward="false" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="44" />
-              <folding>
-                <marker date="1534766482477" expanded="true" signature="4038:4050" ph="insert into missing_value... " />
-                <marker date="1534766482477" expanded="true" signature="4529:4541" ph="insert into missing_value... " />
-                <marker date="1534766482477" expanded="true" signature="5403:5415" ph="insert into missing_value... " />
-                <marker date="1534766482477" expanded="true" signature="6998:7020" ph="select * fro... missing_value" />
-                <marker date="1534766482477" expanded="true" signature="10608:10644" ph="DELETE FROM " />
-                <marker date="1534766482477" expanded="true" signature="10746:10964" ph="SELECT a.id,... person" />
-              </folding>
+            <state relative-caret-position="5502">
+              <caret line="267" column="18" lean-forward="false" selection-start-line="267" selection-start-column="12" selection-end-line="267" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -267,7 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -289,7 +238,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,6 +286,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="vipMangementSystem" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -397,34 +347,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2713816" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4456522" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37828946" sideWeight="0.5136157" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12526652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45326087" sideWeight="0.49573562" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28289473" sideWeight="0.48638427" order="15" side_tool="false" content_ui="combo" x="20" y="676" width="1914" height="1034" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3728261" sideWeight="0.48638427" order="15" side_tool="false" content_ui="combo" x="20" y="676" width="1914" height="1034" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22761194" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12526652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.5043478" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="数据库" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18923241" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="文档" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="434" height="856" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -443,18 +393,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="64" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vms/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vms/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -674,128 +617,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/logging/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vms/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="73" column="44" lean-forward="false" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="44" />
-          <folding>
-            <marker date="1534766482477" expanded="true" signature="4038:4050" ph="insert into missing_value... " />
-            <marker date="1534766482477" expanded="true" signature="4529:4541" ph="insert into missing_value... " />
-            <marker date="1534766482477" expanded="true" signature="5403:5415" ph="insert into missing_value... " />
-            <marker date="1534766482477" expanded="true" signature="6998:7020" ph="select * fro... missing_value" />
-            <marker date="1534766482477" expanded="true" signature="10608:10644" ph="DELETE FROM " />
-            <marker date="1534766482477" expanded="true" signature="10746:10964" ph="SELECT a.id,... person" />
-          </folding>
+        <state relative-caret-position="5502">
+          <caret line="267" column="18" lean-forward="false" selection-start-line="267" selection-start-column="12" selection-end-line="267" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vipMangementSystem/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="51" column="41" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        <state relative-caret-position="735">
+          <caret line="54" column="19" lean-forward="false" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
           <folding>
             <element signature="e#652#684#0" expanded="true" />
-            <marker date="1534842570816" expanded="true" signature="2380:2433" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="871" column="26" lean-forward="true" selection-start-line="871" selection-start-column="26" selection-end-line="871" selection-end-column="26" />
+        <state relative-caret-position="240">
+          <caret line="920" column="15" lean-forward="false" selection-start-line="920" selection-start-column="15" selection-end-line="920" selection-end-column="15" />
           <folding>
-            <element signature="e#24#61#0" expanded="true" />
             <element signature="e#407#3036#0" expanded="false" />
             <element signature="e#3068#4292#0" expanded="false" />
+            <element signature="e#4324#5140#0" expanded="false" />
             <element signature="e#5173#6436#0" expanded="false" />
             <element signature="e#6472#8699#0" expanded="false" />
             <element signature="e#8725#10225#0" expanded="false" />
-            <element signature="e#10252#11855#0" expanded="false" />
-            <element signature="e#11881#12443#0" expanded="false" />
-            <element signature="e#12481#14264#0" expanded="false" />
-            <element signature="e#14292#15345#0" expanded="false" />
-            <element signature="e#15374#16626#0" expanded="false" />
-            <element signature="e#16654#17217#0" expanded="false" />
-            <marker date="1534854364032" expanded="true" signature="496:715" ph="SELECT a.id,... person" />
-            <marker date="1534854364032" expanded="true" signature="857:1098" ph="SELECT a.id,... *" />
-            <marker date="1534854364032" expanded="true" signature="987:1028" ph="select * FRO... person" />
-            <marker date="1534854364032" expanded="true" signature="1183:1423" ph="SELECT a.id,... *" />
-            <marker date="1534854364032" expanded="true" signature="1313:1353" ph="select * FRO... person" />
-            <marker date="1534854364032" expanded="true" signature="1510:1767" ph="SELECT a.id,... *" />
-            <marker date="1534854364032" expanded="true" signature="1640:1697" ph="select * FRO... person" />
-            <marker date="1534854364032" expanded="true" signature="3340:3380" ph="SELECT * fro... person" />
-            <marker date="1534854364032" expanded="true" signature="3589:3725" ph="INSERT INTO person... " />
-            <marker date="1534854364032" expanded="true" signature="4459:4498" ph="DELETE FROM " />
-            <marker date="1534854364032" expanded="true" signature="4551:4619" ph="select * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="5442:5495" ph="SELECT * fro... person" />
-            <marker date="1534854364032" expanded="true" signature="5769:5859" ph="UPDATE perso... " />
-            <marker date="1534854364032" expanded="true" signature="6559:6677" ph="select a.*,b... good" />
-            <marker date="1534854364032" expanded="true" signature="6857:7011" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="6890:6926" ph="select * fro... good" />
-            <marker date="1534854364032" expanded="true" signature="7094:7265" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="7127:7145" ph="select * fro... good" />
-            <marker date="1534854364032" expanded="true" signature="7162:7205" ph="select * fro... good_category" />
-            <marker date="1534854364032" expanded="true" signature="7347:7536" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="7380:7416" ph="select * fro... good" />
-            <marker date="1534854364032" expanded="true" signature="7433:7476" ph="select * fro... good_category" />
-            <marker date="1534854364032" expanded="true" signature="9091:9130" ph="SELECT * fro... good" />
-            <marker date="1534854364032" expanded="true" signature="9440:9579" ph="INSERT INTO `good`... " />
-            <marker date="1534854364032" expanded="true" signature="10411:10463" ph="SELECT * fro... good" />
-            <marker date="1534854364032" expanded="true" signature="11057:11180" ph="UPDATE good " />
-            <marker date="1534854364032" expanded="true" signature="12037:12070" ph="DELETE FROM " />
-            <marker date="1534854364032" expanded="true" signature="12568:12679" ph="select a.*,b... server" />
-            <marker date="1534854364032" expanded="true" signature="12875:13020" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="12908:12946" ph="select * fro... server" />
-            <marker date="1534854364032" expanded="true" signature="13110:13272" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="13143:13163" ph="select * fro... server" />
-            <marker date="1534854364032" expanded="true" signature="13180:13225" ph="select * fro... server_category" />
-            <marker date="1534854364032" expanded="true" signature="13361:13541" ph="select a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="13394:13432" ph="select * fro... server" />
-            <marker date="1534854364032" expanded="true" signature="13449:13494" ph="select * fro... server_category" />
-            <marker date="1534854364032" expanded="true" signature="14459:14500" ph="SELECT * fro... server" />
-            <marker date="1534854364032" expanded="true" signature="14708:14795" ph="INSERT INTO `server`... " />
-            <marker date="1534854364032" expanded="true" signature="15533:15587" ph="SELECT * fro... server" />
-            <marker date="1534854364032" expanded="true" signature="15939:16044" ph="UPDATE good " />
-            <marker date="1534854364032" expanded="true" signature="16809:16844" ph="DELETE FROM " />
-            <marker date="1534854364032" expanded="true" signature="17287:17617" ph="select c.ord... *" />
-            <marker date="1534854364032" expanded="true" signature="17423:17535" ph="select a.*,b... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19497:19540" ph="SELECT * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19497:19544" ph="SELECT * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19497:19566" ph="SELECT * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19497:19567" ph="SELECT * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19497:19578" ph="SELECT * fro... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="19936:19983" ph="SELECT price... order_category" />
-            <marker date="1534854364032" expanded="true" signature="20041:20235" ph="INSERT INTO vip_order... " />
-            <marker date="1534854364032" expanded="true" signature="20542:20636" ph="INSERT INTO `order_good_item`... " />
-            <marker date="1534854364032" expanded="true" signature="20726:20765" ph="select statu... good" />
-            <marker date="1534854364032" expanded="true" signature="21230:21275" ph="UPDATE good " />
-            <marker date="1534854364032" expanded="true" signature="21452:21557" ph="INSERT INTO `vms`.`order_server_item`... " />
-            <marker date="1534854364032" expanded="true" signature="22273:22340" ph="SELECT id,fr... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="22273:22341" ph="SELECT id,fr... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="22273:22361" ph="SELECT id,fr... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="22273:22374" ph="SELECT id,fr... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="22501:22595" ph="INSERT INTO `order_good_item`... " />
-            <marker date="1534854364032" expanded="true" signature="22712:22751" ph="select statu... good" />
-            <marker date="1534854364032" expanded="true" signature="23108:23153" ph="UPDATE good " />
-            <marker date="1534854364032" expanded="true" signature="23353:23458" ph="INSERT INTO `vms`.`order_server_item`... " />
-            <marker date="1534854364032" expanded="true" signature="24007:24076" ph="UPDATE vip_o... " />
-            <marker date="1534854364032" expanded="true" signature="25197:25436" ph="SELECT c.*,d... *" />
-            <marker date="1534854364032" expanded="true" signature="25238:25374" ph="SELECT a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="25270:25328" ph="SELECT * FRO... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="25562:25752" ph="select SUM(a... good_id" />
-            <marker date="1534854364032" expanded="true" signature="25622:25690" ph="select good_... order_good_item" />
-            <marker date="1534854364032" expanded="true" signature="25834:26037" ph="select SUM(s... server_id" />
-            <marker date="1534854364032" expanded="true" signature="25896:25970" ph="select serve... order_server_item" />
-            <marker date="1534854364032" expanded="true" signature="27433:27672" ph="SELECT c.*,d... *" />
-            <marker date="1534854364032" expanded="true" signature="27474:27610" ph="SELECT a.*,b... *" />
-            <marker date="1534854364032" expanded="true" signature="27506:27564" ph="SELECT * FRO... vip_order" />
-            <marker date="1534854364032" expanded="true" signature="27807:27997" ph="select SUM(a... good_id" />
-            <marker date="1534854364032" expanded="true" signature="27867:27935" ph="select good_... order_good_item" />
-            <marker date="1534854364032" expanded="true" signature="28079:28282" ph="select SUM(s... server_id" />
-            <marker date="1534854364032" expanded="true" signature="28141:28215" ph="select serve... order_server_item" />
-            <marker date="1534854364032" expanded="true" signature="28977:29099" ph="UPDATE vip_o... " />
-            <marker date="1534854364032" expanded="true" signature="29663:29748" ph="UPDATE vip_o... " />
+            <element signature="e#11880#12442#0" expanded="false" />
+            <element signature="e#27896#30172#0" expanded="false" />
+            <element signature="e#30199#30772#0" expanded="false" />
+            <marker date="1534910563653" expanded="true" signature="10411:10463" ph="SELECT * fro... good" />
+            <marker date="1534910563653" expanded="true" signature="11056:11179" ph="UPDATE good... " />
+            <marker date="1534910563653" expanded="true" signature="12567:12678" ph="select a.*,b... server" />
+            <marker date="1534910563653" expanded="true" signature="12874:13019" ph="select a.*,b... *" />
+            <marker date="1534910563653" expanded="true" signature="12907:12945" ph="select * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="13109:13271" ph="select a.*,b... *" />
+            <marker date="1534910563653" expanded="true" signature="13142:13162" ph="select * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="13179:13224" ph="select * fro... server_category" />
+            <marker date="1534910563653" expanded="true" signature="13360:13540" ph="select a.*,b... *" />
+            <marker date="1534910563653" expanded="true" signature="13393:13431" ph="select * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="13448:13493" ph="select * fro... server_category" />
+            <marker date="1534910563653" expanded="true" signature="14458:14499" ph="SELECT * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="14707:14794" ph="INSERT INTO `server`... " />
+            <marker date="1534910563653" expanded="true" signature="15532:15586" ph="SELECT * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="15889:15925" ph="SELECT * fro... server" />
+            <marker date="1534910563653" expanded="true" signature="16319:16397" ph="UPDATE good... " />
+            <marker date="1534910563653" expanded="true" signature="16319:16401" ph="UPDATE server... " />
+            <marker date="1534910563653" expanded="true" signature="17238:17273" ph="DELETE FROM server... " />
+            <marker date="1534910563653" expanded="true" signature="17716:18046" ph="select c.ord... *" />
+            <marker date="1534910563653" expanded="true" signature="17852:17964" ph="select a.*,b... vip_order" />
+            <marker date="1534910563653" expanded="true" signature="19944:20013" ph="SELECT * fro... vip_order" />
+            <marker date="1534910563653" expanded="true" signature="20488:20682" ph="INSERT INTO vip_order... " />
+            <marker date="1534910563653" expanded="true" signature="20989:21083" ph="INSERT INTO `order_good_item`... " />
+            <marker date="1534910563653" expanded="true" signature="21173:21212" ph="select statu... good" />
+            <marker date="1534910563653" expanded="true" signature="21677:21722" ph="UPDATE good... " />
+            <marker date="1534910563653" expanded="true" signature="21899:22004" ph="INSERT INTO `vms`.`order_server_item`... " />
+            <marker date="1534910563653" expanded="true" signature="22720:22808" ph="SELECT id,fr... vip_order" />
+            <marker date="1534910563653" expanded="true" signature="22948:23042" ph="INSERT INTO `order_good_item`... " />
+            <marker date="1534910563653" expanded="true" signature="23159:23198" ph="select statu... good" />
+            <marker date="1534910563653" expanded="true" signature="23555:23600" ph="UPDATE good... " />
+            <marker date="1534910563653" expanded="true" signature="23800:23905" ph="INSERT INTO `vms`.`order_server_item`... " />
+            <marker date="1534910563653" expanded="true" signature="24454:24523" ph="UPDATE vip_order... " />
+            <marker date="1534910563653" expanded="true" signature="25644:25882" ph="SELECT c.*,d... *" />
+            <marker date="1534910563653" expanded="true" signature="25685:25820" ph="SELECT a.*,b... *" />
+            <marker date="1534910563653" expanded="true" signature="25717:25775" ph="SELECT * FRO... vip_order" />
+            <marker date="1534910563653" expanded="true" signature="26008:26198" ph="select SUM(a... good_id" />
+            <marker date="1534910563653" expanded="true" signature="26068:26136" ph="select good_... order_good_item" />
+            <marker date="1534910563653" expanded="true" signature="26280:26483" ph="select SUM(s... server_id" />
+            <marker date="1534910563653" expanded="true" signature="26342:26416" ph="select serve... order_server_item" />
           </folding>
         </state>
       </provider>
