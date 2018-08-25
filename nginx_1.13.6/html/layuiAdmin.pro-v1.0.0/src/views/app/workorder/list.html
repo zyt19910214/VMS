@@ -76,7 +76,8 @@ layui.use('workorder', layui.factory('workorder')).use(['admin', 'workorder', 't
 
     //执行重载
     table.reload('LAY-app-workorder', {
-      where: field
+      where: field,
+      page:1
     });
   });
 });

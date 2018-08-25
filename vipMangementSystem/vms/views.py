@@ -24,27 +24,25 @@ def list_vip_person(req):
     """
     data = req.GET.copy()
     sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
-          ' b.point AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc'
+          ' sum(b.point) AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc'
 
     if 'phone' in  data:
         phone = data['phone']
         sex = data['sex']
         if phone != '' and sex == '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `phone`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
             phone)
         elif phone == '' and sex != '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
                 sex)
         elif phone != '' and sex != '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, b.point AS vip_person_point from (select * FROM person   WHERE `phone`='%s' AND `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  ORDER BY a.id desc" % (
+            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s' AND `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
                 phone,sex)
         else:
             pass
 
     db = Mysql()
-
     n_list = []
-    resp = ''
     query_result = db.getAll(sql)
     db.dispose()
     # print (len(query_result))
@@ -927,4 +925,8 @@ def manager_login(req):
     }
     }
     return HttpResponse(json.dumps(resp), content_type="application/json")
+
+
+def chart_waite_handle(req):
+    pass
 

@@ -56,7 +56,8 @@ layui.define(['table', 'form','laydate'], function(exports){
 
       //执行重载
       table.reload('LAY-app-content-list', {
-        where: field
+        where: field,
+        page:1
       });
     });
 
@@ -343,7 +344,8 @@ layui.define(['table', 'form','laydate'], function(exports){
 
     //执行重载
     table.reload('LAY-app-content-comm', {
-      where: field
+      where: field,
+      page:1
     });
   });
 

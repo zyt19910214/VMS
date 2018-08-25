@@ -51,11 +51,19 @@ layui.define(['table', 'form'], function(exports){
     var field = data.field;
     console.log(field);
 
-
-
     //执行重载
     table.reload('LAY-user-manage', {
-      where: field
+      where: field,
+      page:1,
+      done:function(res,curr,count){
+        console.log(res);
+
+        //得到当前页码
+        console.log(curr);
+
+        //得到数据总量
+        console.log(count);
+      }
     });
 
   });

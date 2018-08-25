@@ -55,22 +55,9 @@
     }]
   }, {
     "name": "senior"
-    ,"title": "运维分析"
+    ,"title": "报表分析"
     ,"icon": "layui-icon-senior"
-    ,"list": [{
-      "name": "echarts"
-      ,"title": "报表"
-      ,"list": [{
-        "name": "line"
-        ,"title": "折线图"
-      },{
-        "name": "bar"
-        ,"title": "柱状图"
-      },{
-        "name": "map"
-        ,"title": "地图"
-      }]
-    }]
+   ,"jump": "senior/echarts"
   }, {
     "name": "set"
     ,"title": "设置"
