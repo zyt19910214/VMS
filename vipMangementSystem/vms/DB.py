@@ -351,6 +351,22 @@ class Mysql(object):
                 sql4 = "DELETE FROM vip_order WHERE id ='%s'" % id
                 self.delete(sql4)
 
+    def excuteManysql(self, multiple_sql):
+        """
+        插入多个sql语句，事务控制
+        @param multiple_sql:事务要执行的sql的list
+        return: 执行插入的行数
+        """
+        count = 0
+        try:
+            for sql in multiple_sql:
+                result = self._exeCute(sql)
+                count = count + result
+            return count
+        except Exception as e:
+            logger.error(e)
+            self._conn.rollback()
+
     @classmethod
     def getListPerson(cls):
         sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \

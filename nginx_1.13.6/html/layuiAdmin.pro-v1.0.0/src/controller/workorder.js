@@ -91,9 +91,9 @@ layui.define(['table', 'form', 'element'], function(exports){
                   $("#lay_value").val(res['lay_value']);
                   $("#free_value").val(res['free_value']);
                   $("#jf").val(res['integration']);
-                  point = '<div class="layui-form-item">目前可用积分为：'+res['valid_point']+'分</div>'
-                  $("#point").html(point);
-                  $("#point_type").attr("style","display:none;")
+             /*     point = '<div class="layui-form-item">目前可用积分为：'+res['valid_point']+'分</div>'
+                  $("#point").html(point);*/
+                  $("#all").attr("style","display:none;")
 
                   var server = res.server
                   var good = res.good
@@ -211,8 +211,10 @@ layui.define(['table', 'form', 'element'], function(exports){
 
                   $("#serverlist").html(my_str);
                   $("#goodlist").html(my_str2);
-
-                  form.on('radio(gis)', function(data){
+                  if(res['valid_point'] == 0){
+                      $("#point_type").attr("style","display:none;")
+                    }else{
+                      form.on('radio(gis)', function(data){
                     layer.msg('请在下方文本框中输入本次使用的积分');
                     $("#my_point").attr('style',"display:inline;width:250px;");
                     $("#my_point").attr('lay-verify',"required");
@@ -229,6 +231,9 @@ layui.define(['table', 'form', 'element'], function(exports){
                      $("#my_point").removeAttr('lay-verify')
 
                   });
+
+                    }
+
 
               }
             });

@@ -113,3 +113,106 @@ Traceback (most recent call last):
     raise errorclass, errorvalue
 ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== '1'' at line 1")
 2018-08-22 11:55:38,953 [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-08-30 22:37:46,418 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /listVipPerson/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 46, in list_vip_person
+    query_result = db.getAll(sql)
+  File "D:\Study\VMS\vipMangementSystem\vms\DB.py", line 247, in getAll
+    count = self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 661, in tough_method
+    raise error  # reraise the original error again
+OperationalError: (1582, "Incorrect parameter count in the call to native function 'isnull'")
+2018-08-31 00:01:11,118 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 872, in end_order
+    sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point)))
+TypeError: float() argument must be a string or a number
+2018-08-31 00:02:25,996 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 873, in end_order
+    sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point)))
+TypeError: float() argument must be a string or a number
+2018-08-31 00:14:50,502 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 876, in end_order
+    all_money-float(point), data['lay_value'], data['free_value'], data['orderid'])
+TypeError: float() argument must be a string or a number
+2018-08-31 00:16:15,135 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 876, in end_order
+    (all_money-float(point)), data['lay_value'], data['free_value'], data['orderid'])
+TypeError: float() argument must be a string or a number
+2018-08-31 00:19:15,496 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 873, in end_order
+    sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point)))
+TypeError: float() argument must be a string or a number
+2018-08-31 00:21:44,667 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 873, in end_order
+    sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point)))
+TypeError: float() argument must be a string or a number
+2018-08-31 00:51:59,441 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 873, in end_order
+    sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point['valid_point'])))
+TypeError: float() argument must be a string or a number
+2018-08-31 00:53:36,305 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /endOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 877, in end_order
+    offset_point = float(point['valid_point']) / 10
+TypeError: 'int' object has no attribute '__getitem__'

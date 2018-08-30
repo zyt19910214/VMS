@@ -797,7 +797,9 @@ def order_detail(req):
     result = db.getOne("SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s') a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (data['order_serial_number']))
     logger.debug(result)
     if result:
-        valid_point = db.getOne("select sum(point) as valid_point from point_detail where person_id = 2")['valid_point']
+        valid_point = db.getOne("select sum(point) as valid_point from point_detail where person_id = '%s'"%result['person_id'])['valid_point']
+        if not valid_point:
+            valid_point = 0
         logger.debug(valid_point)
         good_value_list = db.getAll(
             "select SUM(a.good_count) as good_count,b.name,b.price from (select good_id,good_count from order_good_item WHERE order_id = '%s'  ) a INNER JOIN good b on a.good_id = b.id GROUP BY a.good_id" %
@@ -853,6 +855,8 @@ def end_order(req):
     result = db.getOne(
         "SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s' ) a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (
         data['orderid']))
+    point = db.getOne("select SUM(point) as valid_point from point_detail where person_id ='%s'"%result['person_id'])
+    print(point)
     logger.debug(result)
     if result:
         if data['free_value'] == '':
@@ -860,10 +864,45 @@ def end_order(req):
         if data['lay_value'] == '':
             data['lay_value'] = 0
         all_money = float(data['site_money'])+ float(data['money'])+float(data['lay_value'])-float(data['free_value'])
-        sql = "UPDATE vip_order SET all_value = '%s',lay_value ='%s',free_value='%s' order_status=1,end_time=now() where order_serial_number = '%s'"%(all_money,data['lay_value'],data['free_value'],data['orderid'])
+        sql_list = []
+        offset_point = 0
+
+        if data['type'] == '1':
+
+            if point['valid_point']:
+                sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());"%(result['person_id'],result['id'],str(0-float(point['valid_point'])))
+                sql_list.append(sql2)
+                offset_point = float(point['valid_point']) / 10
+            else:
+                point = 0
+
+
+        elif data['type'] == '2':
+            pass
+        elif data['type'] == '3':
+            offset_point = float(data['my_point'])/10
+            sql2 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 1,'%s', now());" % (
+            result['person_id'], result['id'], str(0 - float(data['my_point'])))
+            sql_list.append(sql2)
+        else:
+            resp = {
+                "code": 1,
+                "msg": "failed"
+            }
+            logger.debug('结算失败')
+            return HttpResponse(json.dumps(resp), content_type="application/json")
+        sql = "UPDATE vip_order SET all_value = '%s',lay_value ='%s',free_value='%s', point_offset='%s',order_status=1,end_time=now() where order_serial_number = '%s'" % (
+            all_money - offset_point, data['lay_value'], data['free_value'], offset_point, data['orderid'])
+        sql3 = "INSERT INTO `vms`.`point_detail`( `person_id`, `order_id`, `type`, `point`, `create_time`) VALUES ('%s', '%s', 0,'%s', now());" % (
+            result['person_id'], result['id'], all_money - offset_point)
+        sql_list.append(sql)
+        sql_list.append(sql3)
+        print(sql_list)
+        count = db.excuteManysql(sql_list)
         # print(sql)
-        count = db.update(sql)
-        if count == 1:
+        # count = db.update(sql)
+        print(count)
+        if count == len(sql_list):
             resp = {
                 "code": 0,
                 "msg": "success"
