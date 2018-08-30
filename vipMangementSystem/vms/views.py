@@ -81,8 +81,12 @@ def list_vip_person(req):
             "data": n_list
         }
     logger.debug('【VIP人员接口数据】：' + json.dumps(resp))
-
-    return HttpResponse(json.dumps(resp), content_type="application/json")
+    response = HttpResponse(json.dumps(resp), content_type="application/json")
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+    return response
 
 
 def add_vip_person(req):
@@ -660,7 +664,7 @@ def add_order(req):
             pass
     logger.info('本次商品清单：'.join(good_list))
     logger.info('本次服务清单：'.join(server_list))
-    if 'lay_value' not in data:
+    if 'new_dd' not in data:
         num = 1
         is_exist = db.getAll("SELECT * from vip_order where `person_id` ='%s'  and order_status = 0  " % (data['id']))
         if (is_exist):
@@ -744,19 +748,17 @@ def add_order(req):
                 sql_list.append("INSERT INTO `vms`.`order_server_item` ( `order_id`, `server_id`, `server_count`) VALUES ('%s', '%s', '1');" % (
                     dd['id'], server))
 
-            # 延时费用和优惠费用的sql语句插入sql_list
-            if data['free_value'] == '' and data['lay_value'] == '':
-                pass
-            else:
-                if data['free_value'] == '':
-                    data['free_value'] = 0
-                if data['lay_value'] == '':
-                    data['lay_value'] = 0
-                free = float(dd['free_value']) + float(data['free_value'])
-                lay = float(dd['lay_value']) + float(data['lay_value'])
-                sql_list.append("UPDATE vip_order SET free_value ='%s' ,lay_value ='%s' WHERE id ='%s'"%(free,lay,dd['id']))
-
-
+            # # 延时费用和优惠费用的sql语句插入sql_list
+            # if data['free_value'] == '' and data['lay_value'] == '':
+            #     pass
+            # else:
+            #     if data['free_value'] == '':
+            #         data['free_value'] = 0
+            #     if data['lay_value'] == '':
+            #         data['lay_value'] = 0
+            #     free = float(dd['free_value']) + float(data['free_value'])
+            #     lay = float(dd['lay_value']) + float(data['lay_value'])
+            #     sql_list.append("UPDATE vip_order SET free_value ='%s' ,lay_value ='%s' WHERE id ='%s'"%(free,lay,dd['id']))
 
             # print(sql_list)
             # print(len(sql_list))
@@ -795,6 +797,8 @@ def order_detail(req):
     result = db.getOne("SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s') a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (data['order_serial_number']))
     logger.debug(result)
     if result:
+        valid_point = db.getOne("select sum(point) as valid_point from point_detail where person_id = 2")['valid_point']
+        logger.debug(valid_point)
         good_value_list = db.getAll(
             "select SUM(a.good_count) as good_count,b.name,b.price from (select good_id,good_count from order_good_item WHERE order_id = '%s'  ) a INNER JOIN good b on a.good_id = b.id GROUP BY a.good_id" %
             result['id'])
@@ -823,6 +827,7 @@ def order_detail(req):
             "code": 0
             , "msg": ""
             , "name": result['name']
+            , "valid_point":valid_point
             , "site_money": float(result['price'])
             , "money":str(now_value)
             , "lay_value": result['lay_value']
@@ -841,41 +846,21 @@ def order_detail(req):
 
 
 def end_order(req):
-    logger.debug('结账传入参数：' + str(req.GET))
-    data = req.GET.copy()
+    logger.debug('结账传入参数：' + str(req.POST))
+    data = req.POST.copy()
     resp = ''
     db = Mysql()
     result = db.getOne(
         "SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s' ) a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (
-        data['order_serial_number']))
+        data['orderid']))
     logger.debug(result)
     if result:
-        good_value_list = db.getAll(
-            "select SUM(a.good_count) as good_count,b.name,b.price from (select good_id,good_count from order_good_item WHERE order_id = '%s'  ) a INNER JOIN good b on a.good_id = b.id GROUP BY a.good_id" %
-            result['id'])
-        server_value_list = db.getAll(
-            "select SUM(server_count) as server_count,b.name,b.price from (select server_id,server_count from order_server_item where order_id = '%s' ) a INNER JOIN server b on a.server_id = b.id GROUP BY a.server_id" %
-            result['id'])
-        # print(good_value_list)
-        good_value = 0
-        server_value = 0
-
-        for x in good_value_list:
-            good_value = good_value + (x['price'] * int(x['good_count']))
-            x['good_count'] = str(x['good_count'])
-
-        logger.debug('商品消费为：' + str(good_value) + '元')
-
-        for y in server_value_list:
-            # print(y)
-            server_value = server_value + (y['price'] * int(y['server_count']))
-            y['server_count'] = str(y['server_count'])
-        logger.debug('服务消费为：' + str(server_value) + '元')
-
-        # 目前除去优惠和延时费用的总消费价格
-        now_value = float(result['price']) + good_value + server_value
-
-        sql = "UPDATE vip_order SET all_value = '%s'+lay_value-free_value, order_status=1,end_time=now() where order_serial_number = '%s'"%(now_value,data['order_serial_number'])
+        if data['free_value'] == '':
+            data['free_value'] = 0
+        if data['lay_value'] == '':
+            data['lay_value'] = 0
+        all_money = float(data['site_money'])+ float(data['money'])+float(data['lay_value'])-float(data['free_value'])
+        sql = "UPDATE vip_order SET all_value = '%s',lay_value ='%s',free_value='%s' order_status=1,end_time=now() where order_serial_number = '%s'"%(all_money,data['lay_value'],data['free_value'],data['orderid'])
         # print(sql)
         count = db.update(sql)
         if count == 1:
@@ -891,6 +876,12 @@ def end_order(req):
             }
             logger.debug('结算失败')
         db.dispose()
+    else:
+        resp = {
+            "code": 1,
+            "msg": "failed"
+        }
+        logger.debug('结算失败')
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 

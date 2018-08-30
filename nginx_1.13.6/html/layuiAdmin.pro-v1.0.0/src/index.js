@@ -1,7 +1,6 @@
 /**
 
  @Name：layuiAdmin 主入口
- @Author：贤心
  @Site：http://www.layui.com/admin/
  @License：LPPL
 
@@ -160,7 +159,7 @@ layui.extend({
     } else { //后台框架页面
 
       //强制拦截未登入
-      console.log(setter.interceptor);
+      //console.log(setter.interceptor);
       if(setter.interceptor){
         //console.log(layui.data);
         var local = layui.data(setter.tableName);

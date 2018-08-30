@@ -218,7 +218,7 @@ class Mysql(object):
         consql = consql + ' 1=1 '
         sql = 'select * from %s where ' % table
         sql = sql + consql + order
-        print '_select:' + sql
+        # print '_select:' + sql
         return self._exeCute(sql)
 
     def __getInsertId(self):

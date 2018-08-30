@@ -15,6 +15,7 @@ layui.define(['table', 'form', 'element'], function(exports){
   ,setter = layui.setter
   ,view = layui.view
   ,table = layui.table
+  ,slider = layui.slider
   ,form = layui.form
   ,element = layui.element;
 
@@ -49,6 +50,8 @@ layui.define(['table', 'form', 'element'], function(exports){
     }
   });
 
+
+
   //监听工具条
   table.on('tool(LAY-app-workorder)', function(obj){
     var data = obj.data;
@@ -60,7 +63,6 @@ layui.define(['table', 'form', 'element'], function(exports){
         ,success: function(layero, index){
           //console.log(data);
           view(this.id).render('app/workorder/listform').done(function(){
-
             $.ajax({
               //url: './json/workorder/dddetail.js'
               url: setter.http+'orderDetail/'
@@ -89,6 +91,10 @@ layui.define(['table', 'form', 'element'], function(exports){
                   $("#lay_value").val(res['lay_value']);
                   $("#free_value").val(res['free_value']);
                   $("#jf").val(res['integration']);
+                  point = '<div class="layui-form-item">目前可用积分为：'+res['valid_point']+'分</div>'
+                  $("#point").html(point);
+                  $("#point_type").attr("style","display:none;")
+
                   var server = res.server
                   var good = res.good
                   //console.log(result);
@@ -118,8 +124,11 @@ layui.define(['table', 'form', 'element'], function(exports){
                   $("#serverlist").html(my_str)
                   $("#goodlist").html(my_str2)
 
+
               }
             });
+
+
             form.on('submit(LAY-app-workorder-submit)', function(data){
               layer.close(index)
             });
@@ -134,13 +143,103 @@ layui.define(['table', 'form', 'element'], function(exports){
           }, function(value, index){
             if(value =='111111'){
           layer.close(index);
-          layer.confirm('确定结账吗？', function(index) {
+        admin.popup({
+        title: '订单信息'
+        ,id: 'LAY-popup-workorder-add'
+        ,area: ['750px', '750px']
+        ,success: function(layero, index){
+          //console.log(data);
+          view(this.id).render('app/workorder/listform').done(function(){
 
-           $.ajax({
-              //url: './json/workorder/ddje.js'
-              url: setter.http+'endOrder/'
+            $.ajax({
+              //url: './json/workorder/dddetail.js'
+              url: setter.http+'orderDetail/'
               ,type: 'get'
               ,data: {'order_serial_number':data['order_serial_number']}
+              ,error:function(data){
+                  layer.msg("获取订单详情失败",{icon:2});
+              }
+              ,success: function(res){
+                //console.log(res);
+                 form.render(null, 'layuiadmin-form-workorder');
+
+                  $("#orderid").val(res['order_serial_number']);
+                  $("#attr").val(res['name']);
+                  $("#type").val(res['type']);
+                  if(res['state']==0){
+                     $("#status").val('待结账');
+                  }else if(res['state']==1){
+                     $("#status").val('已结账');
+                  }else{
+                     $("#status").val('已废弃');
+                  }
+                  $("#time").val(res['start_time']);
+                  $("#end_time").val(res['end_time']);
+                  $("#site_money").val(res['site_money']);
+                  $("#money").val(res['money']);
+                  $("#lay_value").removeAttr('disabled');
+                  $("#free_value").removeAttr('disabled');
+                  $("#jf").val(res['integration']);
+                  $("#end").val("结账");
+                  point = '<div >目前可用积分为：'+res['valid_point']+'分</div>'
+                  $("#point").html(point);
+                  var server = res.server
+                  var good = res.good
+                  //console.log(result);
+
+
+                  if(server.length != 0){
+                   var my_str='<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量</th>';
+                    for (var i=0;i<server.length;i++){
+                    my_str += '<tr><td>'+server[i].name+'</td><td>'+server[i].price+'</td><td>'+server[i].server_count+'</td></tr>'
+                    }
+                    my_str += '</table>'
+
+                  }else{
+                    my_str = '<table  class="layui-table" lay-size="sm" align="center"><th>服务名</th><th>单价</th><th>数量</th><tr><td style="font-size:8px;" colspan = "3" align="center">未消费</td></tr></table>'
+                  }
+
+                  if(good.length !=0){
+                    var my_str2 ='<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量</th>';
+                     for (var i=0;i<good.length;i++){
+                      my_str2 += '<tr><td>'+good[i].name+'</td><td>'+good[i].price+'</td><td>'+good[i].good_count+'</td></tr>'
+                    }
+                    my_str2 += '</table>'
+                  }else{
+                    my_str2 = '<table  class="layui-table" lay-size="sm"><th>商品名</th><th>单价</th><th>数量</th><tr><td style="font-size:8px;" colspan="3" align="center">未消费</td><tr></table>'
+                  }
+
+                  $("#serverlist").html(my_str);
+                  $("#goodlist").html(my_str2);
+
+                  form.on('radio(gis)', function(data){
+                    layer.msg('请在下方文本框中输入本次使用的积分');
+                    $("#my_point").attr('style',"display:inline;width:250px;");
+                    $("#my_point").attr('lay-verify',"required");
+
+                  });
+                    form.on('radio(gis1)', function(data){
+                    $("#my_point").attr("style","display:none;")
+                    $("#my_point").removeAttr('lay-verify')
+
+
+                  });
+                    form.on('radio(gis2)', function(data){
+                    $("#my_point").attr("style","display:none;")
+                     $("#my_point").removeAttr('lay-verify')
+
+                  });
+
+              }
+            });
+
+            form.on('submit(LAY-app-workorder-submit)', function(res){
+              console.log(data);
+              $.ajax({
+              //url: './json/workorder/ddje.js'
+              url: setter.http+'endOrder/'
+              ,type: 'post'
+              ,data: res.field
               ,error:function(data){
                   layer.msg("订单结算失败",{icon:2});
               }
@@ -156,8 +255,13 @@ layui.define(['table', 'form', 'element'], function(exports){
               }
           });
 
-
+            });
           });
+        }
+      });
+
+
+
         }else{
           layer.close(index);
           layer.alert('密码错误',{icon:2})
