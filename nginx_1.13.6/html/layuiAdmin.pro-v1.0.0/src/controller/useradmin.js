@@ -21,6 +21,9 @@ layui.define(['table', 'form'], function(exports){
     elem: '#LAY-user-manage'
    ,url: setter.http+'listVipPerson/'
    //,url: './json/useradmin/webuser.js' //模拟接口
+   ,where: {
+    access_token: layui.data('layuiAdmin').access_token
+  }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field: 'id', width: '8%', title: '会员ID', sort: true, align:'center'}
@@ -351,12 +354,15 @@ layui.define(['table', 'form'], function(exports){
 
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
-              // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
               var field = data.field; //获取提交的字段
               //console.log(field);
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: setter.http+'addVipPerson/',
+                 headers: {
+                      Accept: "application/json; charset=utf-8",
+                      access_token: ""+layui.data('layuiAdmin').access_token
+                 },
                 type: 'POST',
                 data:field,
                 error:function(request){//请求失败之后的操作
