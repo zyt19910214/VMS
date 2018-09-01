@@ -48,6 +48,10 @@ layui.define(['laytpl', 'layer'], function(exports){
     });
 
     //跳转到登入页
+
+    layer.msg('登录超时，请重新登录！',
+    {offset: '15px',icon: 2,time: 2000
+    });
     location.hash = '/user/login';
   };
 

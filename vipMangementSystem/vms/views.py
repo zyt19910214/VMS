@@ -13,7 +13,8 @@ import time
 import random
 
 logger = logging.getLogger('django')
-
+from JWT import JWT
+jwt = JWT()
 
 # 会员增删改查
 def list_vip_person(req):
@@ -22,71 +23,81 @@ def list_vip_person(req):
     :param req:
     :return:
     """
-    data = req.GET.copy()
-    sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
-          ' sum(b.point) AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc'
 
-    if 'phone' in  data:
-        phone = data['phone']
-        sex = data['sex']
-        if phone != '' and sex == '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
-            phone)
-        elif phone == '' and sex != '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
-                sex)
-        elif phone != '' and sex != '2':
-            sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s' AND `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
-                phone,sex)
-        else:
-            pass
+    if jwt.verify_bearer_token(req.GET.get('access_token')):
+        data = req.GET.copy()
+        sql = 'SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex,' \
+              ' sum(b.point) AS vip_person_point FROM person a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc'
 
-    db = Mysql()
-    n_list = []
-    query_result = db.getAll(sql)
-    db.dispose()
-    # print (len(query_result))
-    if len(query_result)!=0:
-        person_list = list(query_result)
-
-        # print(len(person_list))
-        # print req.GET
-        limit = int(req.GET['limit'])
-        page = int(req.GET['page'])
-
-        for x in person_list:
-            if x['vip_person_point'] is None:
-                x['vip_person_point'] = 0
-            if x['vip_sex'] == 0:
-                x['vip_sex'] = '女'
-            elif x['vip_sex'] == 1:
-                x['vip_sex'] = '男'
+        if 'phone' in  data:
+            phone = data['phone']
+            sex = data['sex']
+            if phone != '' and sex == '2':
+                sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
+                phone)
+            elif phone == '' and sex != '2':
+                sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id  and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
+                    sex)
+            elif phone != '' and sex != '2':
+                sql = "SELECT a.id, a.`name` AS vip_name, a.phone AS vip_phone, a.note AS vip_notes, a.sex AS vip_sex, sum(b.point) AS vip_person_point from (select * FROM person   WHERE `phone`='%s' AND `sex` ='%s') a LEFT JOIN point_detail b ON a.id = b.person_id and b.type =0 GROUP BY a.id ORDER BY a.id desc" % (
+                    phone,sex)
             else:
-                x['vip_sex'] = '未知'
-            n_list.append(x)
-            # print(len(n_list))
-            # print(len(n_list[(page - 1) * limit:page * limit]))
-        resp = {
-            "code": 0,
-            "msg": "",
-            "count": len(n_list),
-            "data": n_list[(page - 1) * limit:page * limit]
-        }
-    else:
+                pass
 
+        db = Mysql()
+        n_list = []
+        query_result = db.getAll(sql)
+        db.dispose()
+        # print (len(query_result))
+        if len(query_result)!=0:
+            person_list = list(query_result)
+
+            # print(len(person_list))
+            # print req.GET
+            limit = int(req.GET['limit'])
+            page = int(req.GET['page'])
+
+            for x in person_list:
+                if x['vip_person_point'] is None:
+                    x['vip_person_point'] = 0
+                if x['vip_sex'] == 0:
+                    x['vip_sex'] = '女'
+                elif x['vip_sex'] == 1:
+                    x['vip_sex'] = '男'
+                else:
+                    x['vip_sex'] = '未知'
+                n_list.append(x)
+                # print(len(n_list))
+                # print(len(n_list[(page - 1) * limit:page * limit]))
+            resp = {
+                "code": 0,
+                "msg": "",
+                "count": len(n_list),
+                "data": n_list[(page - 1) * limit:page * limit]
+            }
+        else:
+
+            resp = {
+                "code": 0,
+                "msg": "",
+                "count": 0,
+                "data": n_list
+            }
+        logger.debug('【VIP人员接口数据】：' + json.dumps(resp))
+        response = HttpResponse(json.dumps(resp), content_type="application/json")
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+        response["Access-Control-Max-Age"] = "1000"
+        response["Access-Control-Allow-Headers"] = "*"
+        return response
+    else:
         resp = {
-            "code": 0,
-            "msg": "",
-            "count": 0,
-            "data": n_list
+                "code": 1001,
+                "msg": "",
+                "count": 0,
+                "data": []
         }
-    logger.debug('【VIP人员接口数据】：' + json.dumps(resp))
-    response = HttpResponse(json.dumps(resp), content_type="application/json")
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "*"
-    return response
+        return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
 def add_vip_person(req):
@@ -531,7 +542,7 @@ def edit_server(req):
         logger.debug('更新失败,商品已存在')
     else:
         result = db.getOne("SELECT * from server where id = '%s'" % data['id'])
-        print(result)
+        # print(result)
         if result['name']== data['name'] and float(result['price']) == float(data['price']) and int(result['server_category_id']) == int(data['type']) :
             # 服务未更改无需更新
             resp = {
@@ -689,7 +700,7 @@ def add_order(req):
                 for good in good_list:
                     sql_list.append("INSERT INTO `order_good_item`( `order_id`, `good_id`, `good_count`) VALUES ( '%s', '%s', '%s');"%(dd,good.split('-')[0],good.split('-')[1]))
                     now_count = db.getAll("select status from good WHERE id = '%s'"%(good.split('-')[0]))
-                    print(now_count)
+                    # print(now_count)
                     if now_count:
                         # print (int(now_count[0]['status']))
                         # print (int(good.split('-')[1]))
@@ -856,7 +867,7 @@ def end_order(req):
         "SELECT c.*,d.name as type,d.price FROM ((SELECT a.*,b.name,b.phone FROM( SELECT * FROM vip_order WHERE `order_serial_number` = '%s' ) a INNER JOIN person b ON a.person_id = b.id)) c INNER JOIN order_category d ON c.order_category_id = d.id " % (
         data['orderid']))
     point = db.getOne("select SUM(point) as valid_point from point_detail where person_id ='%s'"%result['person_id'])
-    print(point)
+    # print(point)
     logger.debug(result)
     if result:
         if data['free_value'] == '':
@@ -897,11 +908,11 @@ def end_order(req):
             result['person_id'], result['id'], all_money - offset_point)
         sql_list.append(sql)
         sql_list.append(sql3)
-        print(sql_list)
+        # print(sql_list)
         count = db.excuteManysql(sql_list)
         # print(sql)
         # count = db.update(sql)
-        print(count)
+        # print(count)
         if count == len(sql_list):
             resp = {
                 "code": 0,
@@ -946,17 +957,73 @@ def del_order(req):
 
 
 def manager_login(req):
-    print(req.GET)
+    """
+    管理者账号登录
+    :param req:
+    :return:
+    """
+    resp = ''
+    username = req.GET.get('username')
+    password = req.GET.get('password')
+    sql = "SELECT username,`password` from manager where username ='%s' and password='%s'"%(username,password)
+    db = Mysql()
+    result = db.getAll(sql)
+    if result:
+        access_token = jwt.create_token(username)
+        in_result = db.insertOne(
+            "INSERT INTO `vms`.`t_token`(`token`, `time`) VALUES ('%s', now());" % access_token)
+        if in_result:
+            # print(access_token)
+            resp = {
+                "code": 0
+                , "msg": "登入成功"
+                , "data": {
+                    "access_token": access_token
+                }
+            }
+            return HttpResponse(json.dumps(resp), content_type="application/json")
     resp = {
-        "code": 0
-        ,"msg": "登入成功"
-        ,"data": {
-        "access_token": "c262e61cd13ad99fc650e6908c7e5e65b63d2f32185ecfed6b801ee3fbdd5c0a"
+        "code": 1
+        , "msg": "登入失败"
+        , "data": {
         }
     }
+
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
+def manager_logout(req):
+    """
+    管理者账号退出登录
+    :param req:
+    :return:
+    """
+    token = req.GET.get('access_token')
+    db = Mysql()
+    result = db.getAll("select * from t_token where token = '%s'"%token)
+    if result:
+        if db.delete("DELETE FROM t_token where token = '%s'"%token):
+            resp = {
+                "code": 0
+                , "msg": "退出成功"
+                , "data": {
+                }
+            }
+        else:
+            resp = {
+                "code": 1
+                , "msg": "数据库异常，退出失败"
+                , "data": {
+                }
+            }
+    else:
+        resp = {
+            "code": 1
+            , "msg": "退出失败"
+            , "data": {
+            }
+        }
+    return HttpResponse(json.dumps(resp), content_type="application/json")
 def chart_waite_handle(req):
     pass
 

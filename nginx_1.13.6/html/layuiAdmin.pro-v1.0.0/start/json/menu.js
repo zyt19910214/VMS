@@ -19,19 +19,6 @@
       ,"title": "通讯录"
       ,"jump": "template/addresslist"
     }]
-  },{
-    "name": "template"
-    ,"title": "登录注册"
-    ,"icon": "layui-icon-template"
-    ,"list": [{
-      "name": "reg"
-      ,"title": "注册"
-      ,"jump": "user/reg"
-    },{
-      "name": "login"
-      ,"title": "登入"
-      ,"jump": "user/login"
-    }]
   }, {
     "name": "app"
     ,"title": "营销"

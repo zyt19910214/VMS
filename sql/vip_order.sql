@@ -11,7 +11,7 @@
  Target Server Version : 50614
  File Encoding         : 65001
 
- Date: 19/08/2018 19:20:43
+ Date: 01/09/2018 18:20:18
 */
 
 SET NAMES utf8mb4;
@@ -33,18 +33,19 @@ CREATE TABLE `vip_order`  (
   `all_value` float(10, 1) NULL DEFAULT NULL,
   `lay_value` float(10, 1) NULL DEFAULT NULL,
   `free_value` float(10, 1) NULL DEFAULT NULL,
+  `point_offset` float(10, 1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vip_order
 -- ----------------------------
-INSERT INTO `vip_order` VALUES (34, 71, '20180819005022', 0, 3, '2018-08-19 00:50:22', NULL, '', 521.0, 323.0, 53.0);
-INSERT INTO `vip_order` VALUES (35, 37, '20180819012236', 1, 3, '2018-08-19 01:22:36', '2018-08-19 13:24:12', '', 521.0, 10.0, 10.0);
-INSERT INTO `vip_order` VALUES (36, 30, '20180819143855', 0, 4, '2018-08-19 14:38:55', NULL, '', 88.0, 1.0, 1.0);
-INSERT INTO `vip_order` VALUES (49, 31, '20180819152929', 0, 3, '2018-08-19 15:29:29', NULL, '', 521.0, 0.0, 0.0);
-INSERT INTO `vip_order` VALUES (50, 34, '20180819153005', 0, 1, '2018-08-19 15:30:05', NULL, '', 299.0, 0.0, 0.0);
-INSERT INTO `vip_order` VALUES (51, 26, '20180819153021', 0, 1, '2018-08-19 15:30:21', NULL, '', 299.0, 27.0, 25.0);
-INSERT INTO `vip_order` VALUES (56, 1, '20180819185800', 0, 5, '2018-08-19 18:58:00', NULL, '', 300.0, 0.0, 0.0);
+INSERT INTO `vip_order` VALUES (79, 72, '20180831005128', 1, 3, '2018-08-31 00:51:28', '2018-08-31 00:54:37', '', 555.0, 10.0, 0.0, 0.0);
+INSERT INTO `vip_order` VALUES (80, 72, '20180831005453', 1, 4, '2018-08-31 00:54:53', '2018-08-31 00:55:05', '', 32.5, 0.0, 0.0, 55.5);
+INSERT INTO `vip_order` VALUES (81, 37, '20180831010021', 1, 5, '2018-08-31 01:00:21', '2018-08-31 01:01:24', '', 312.0, 0.0, 0.0, 0.0);
+INSERT INTO `vip_order` VALUES (82, 37, '20180831010149', 1, 1, '2018-08-31 01:01:49', '2018-08-31 01:02:16', '', 299.0, 0.0, 0.0, 0.0);
+INSERT INTO `vip_order` VALUES (83, 72, '20180901131640', 1, 1, '2018-09-01 13:16:40', '2018-09-01 13:16:52', '', 299.0, 0.0, 0.0, 0.0);
+INSERT INTO `vip_order` VALUES (84, 72, '20180901131718', 2, 1, '2018-09-01 13:17:18', '2018-09-01 13:17:30', '', 0.0, 0.0, 0.0, NULL);
+INSERT INTO `vip_order` VALUES (85, 72, '20180901131737', 0, 1, '2018-09-01 13:17:37', NULL, '', NULL, 0.0, 0.0, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

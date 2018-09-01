@@ -18,7 +18,7 @@ layui.define(function(exports){
 
   //退出
   admin.events.logout = function(){
-    //执行退出接口
+    /*//执行退出接口
     admin.req({
       url: './json/user/logout.js'
       ,type: 'get'
@@ -28,9 +28,25 @@ layui.define(function(exports){
         //清空本地记录的 token，并跳转到登入页
         admin.exit();
       }
+    });*/
+    //执行退出接口执行退出接口
+     $.ajax({
+       url: setter.http+'managerLogout/',
+       type: 'GET',
+       data: {access_token: layui.data('layuiAdmin').access_token},
+       error:function(res){
+          layer.msg("异常,退出失败！");
+       },
+       success:function(res){
+        if(res['code'] == '0'){
+           admin.exit();
+         }else{
+          layer.msg("异常,退出失败！");
+         }
+        }
     });
-  };
 
+  };
 
   //对外暴露的接口
   exports('common', {});

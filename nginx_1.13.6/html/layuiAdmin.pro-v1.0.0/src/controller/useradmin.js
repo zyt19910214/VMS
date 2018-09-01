@@ -36,6 +36,10 @@ layui.define(['table', 'form'], function(exports){
     ]]
     ,page: true
     ,done:function (res) {
+      if(res['code'] == '1001'){
+
+        admin.exit();
+      }
       data_len = res.data.length;
       if(data_len == 0){
         var s = $('.layui-none').html('无会员数据')

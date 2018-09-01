@@ -33,6 +33,7 @@ from vms.views import order_detail as views_order_detail
 from vms.views import end_order as views_end_order
 from vms.views import del_order as views_del_order
 from vms.views import manager_login as views_manager_login
+from vms.views import manager_logout as views_manager_logout
 urlpatterns = [
 
     url(r'^listVipPerson/$',views_list_vip_person),
@@ -53,6 +54,7 @@ urlpatterns = [
     url(r'^endOrder/$', views_end_order),
     url(r'^delOrder/$', views_del_order),
     url(r'^managerLogin/$', views_manager_login),
+    url(r'^managerLogout/$',views_manager_logout),
 
 
 
