@@ -181,6 +181,7 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
   form.on('submit(LAY_new_dd_submit)', function(data){
     // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
     var field = data.field; //获取提交的字段
+    field['access_token'] = layui.data('layuiAdmin').access_token
     //console.log(field);
     //提交 Ajax 成功后，关闭当前弹层并重载表格
     $.ajax({
@@ -193,12 +194,14 @@ layui.use(['form','laytpl','layedit', 'laydate'], function(){
       success:function(data){//请求成功之后的操作
           if(data['code'] == 0){
             //console.log("s");
-            layer.alert("新增消费生成成功",{icon: 1});
+            layer.msg("新增消费生成成功",{icon: 1});
              layui.table.reload('LAY-app-workorder'); //重载表格
             return false;
           }else if (data['code'] ==3) {
             layer.alert("无新增内容,未生效",{icon: 2});
-          }else{
+          }else if(data['code']=='1001'){
+            admin.exit();
+          }else {
             layer.alert("新增消费失败!",{icon: 2});
           }
 

@@ -26,6 +26,9 @@ layui.define(['table', 'form','laydate'], function(exports){
     elem: '#LAY-app-content-list'
     ,url: setter.http+'listGood/'
     //,url: './json/content/good.js' //模拟接口
+   ,where: {
+      access_token: layui.data('layuiAdmin').access_token
+    }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field: 'id', width: 100, title: '商品ID', sort: true, align: 'center'}
@@ -81,7 +84,7 @@ layui.define(['table', 'form','laydate'], function(exports){
         //  mycars.push(checkData[i]['id'])
         // }
         dic['checkData'] = l.toString()
-
+         dic['access_token'] = layui.data('layuiAdmin').access_token
 
         layer.confirm('确定删除吗？', function(index) {
           $.ajax({
@@ -100,6 +103,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                                 }
                   });
 
+                }else if(data['code'] == '1001') {
+                  admin.exit();
                 }else {
                   layer.alert("商品删除失败!",{icon: 2});
                 }
@@ -122,6 +127,7 @@ layui.define(['table', 'form','laydate'], function(exports){
               //监听提交
               form.on('submit(layuiadmin-app-form-submit)', function(data){
                 var field = data.field; //获取提交的字段
+                field['access_token'] = layui.data('layuiAdmin').access_token
                 //layer.alert(JSON.stringify(field));
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 $.ajax({
@@ -139,6 +145,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                         layer.alert("商品已存在,添加失败!",{icon: 2});
                       }else if(data['code'] == 3) {
                         layer.alert("售价低于原价,添加失败!",{icon: 2});
+                      }else if(data['code'] == '1001'){
+                        admin.exit();
                       }else{
                         layer.alert("商品添加失败!",{icon: 2});
                       }
@@ -167,6 +175,7 @@ layui.define(['table', 'form','laydate'], function(exports){
     if(obj.event === 'del'){
       var dic ={};
       dic['checkData'] =data['id']
+       dic['access_token'] = layui.data('layuiAdmin').access_token
       layer.confirm('确定删除此商品？', function(index){
             $.ajax({
              url: setter.http+'delGood/',
@@ -184,6 +193,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                                     curr: deleteJumpPage(obj)
                                 }
                              });
+                }else if(data['code'] == '1001') {
+                  admin.exit();
                 }else {
                   layer.alert("商品删除失败!",{icon: 2});
                 }
@@ -203,7 +214,8 @@ layui.define(['table', 'form','laydate'], function(exports){
 
             //监听提交
             form.on('submit(layuiadmin-app-form-submit)', function(data){
-              var field = data.field; //获取提交的字段a
+              var field = data.field; //获取提交的字段
+              field['access_token'] = layui.data('layuiAdmin').access_token
               //layer.alert(JSON.stringify(field));
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               if(parseInt(field['add_count'])<0){
@@ -224,6 +236,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                       layer.alert("商品已存在,更新失败!",{icon: 2});
                     }else if(data['code'] == 3){
                       layer.alert("售价低于原价,请重新更新!",{icon: 2});
+                    }else if(data['code']== '1001'){
+                      admin.exit();
                     }else {
                       layer.alert("更新失败!",{icon: 2});
                     }
@@ -245,6 +259,9 @@ layui.define(['table', 'form','laydate'], function(exports){
     elem: '#LAY-app-content-comm'
     ,url: setter.http+'listServer/'
     //,url: './json/content/server.js' //模拟接口
+    ,where: {
+      access_token: layui.data('layuiAdmin').access_token
+    }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field: 'id', width: 100, title: '服务ID', sort: true}
@@ -271,6 +288,7 @@ layui.define(['table', 'form','laydate'], function(exports){
     if(obj.event === 'del'){
       var dic ={};
       dic['checkData'] =data['id']
+       dic['access_token'] = layui.data('layuiAdmin').access_token
       layer.confirm('确定删除此服务？', function(index){
         $.ajax({
              url: setter.http+'delServer/',
@@ -288,6 +306,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                                     curr: deleteJumpPage(obj)
                                 }
                              });
+                }else if(data['code'] == '1001') {
+                  admin.exit();
                 }else {
                   layer.alert("服务删除失败!",{icon: 2});
                 }
@@ -309,7 +329,8 @@ layui.define(['table', 'form','laydate'], function(exports){
             //监听提交
             form.on('submit(layuiadmin-app-com-submit)', function(data){
               var field = data.field; //获取提交的字段
-              //layer.alert(JSON.stringify(field));、
+              field['access_token'] = layui.data('layuiAdmin').access_token
+              //layer.alert(JSON.stringify(field));
 
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
@@ -325,6 +346,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                     table.reload('LAY-app-content-comm');
                   }else if(data['code'] == 2){
                     layer.msg('无变化，无需更新', {icon: 1});
+                  }else if(data['code'] == '1001') {
+                    admin.exit();
                   }else {
                     layer.alert("服务编辑失败!",{icon: 2});
                   }
@@ -367,7 +390,7 @@ layui.define(['table', 'form','laydate'], function(exports){
         var dic ={};
 
         dic['checkData'] = l.toString()
-
+        dic['access_token'] = layui.data('layuiAdmin').access_token
       layer.confirm('确定删除吗？', function(index) {
 
          $.ajax({
@@ -386,6 +409,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                                 }
                   });
 
+                }else if(data['code'] == '1001'){
+                  admin.exit();
                 }else {
                   layer.alert("服务删除失败!",{icon: 2});
                 }
@@ -405,6 +430,7 @@ layui.define(['table', 'form','laydate'], function(exports){
               form.on('submit(layuiadmin-app-com-submit)', function(data){
                 var field = data.field; //获取提交的字段
                 //layer.alert(JSON.stringify(field));
+                field['access_token'] = layui.data('layuiAdmin').access_token
                 $.ajax({
                   url: setter.http+'addServer/',
                   type: 'POST',
@@ -418,6 +444,8 @@ layui.define(['table', 'form','laydate'], function(exports){
                         table.reload('LAY-app-content-comm'); //重载表格
                       }else if(data['code'] == 2){
                         layer.alert("服务已存在,添加失败!",{icon: 2});
+                      }else if(data['code'] == '1001') {
+                        admin.exit();
                       }else {
                         layer.alert("服务添加失败!",{icon: 2});
                       }

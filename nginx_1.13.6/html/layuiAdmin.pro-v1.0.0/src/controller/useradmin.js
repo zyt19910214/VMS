@@ -63,13 +63,12 @@ layui.define(['table', 'form'], function(exports){
       where: field,
       page:1,
       done:function(res,curr,count){
-        console.log(res);
+         data_len = res.data.length;
+      if(data_len == 0){
+        var s = $('.layui-none').html('未查询到会员数据')
 
-        //得到当前页码
-        console.log(curr);
+      }
 
-        //得到数据总量
-        console.log(count);
       }
     });
 
@@ -82,6 +81,7 @@ layui.define(['table', 'form'], function(exports){
     if(obj.event === 'del'){
       var dic ={};
       dic['checkData'] =data['id']
+      dic['access_token'] = layui.data('layuiAdmin').access_token
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
@@ -108,6 +108,9 @@ layui.define(['table', 'form'], function(exports){
                              });
                 }else if(data['code'] == 2){
                   layer.alert("会员存在未结算订单，无法删除!",{icon: 2});
+                }else if(data['code'] == '1001') {
+
+                 admin.exit()
                 }else {
                   layer.alert("删除失败!",{icon: 2});
                 }
@@ -140,7 +143,7 @@ layui.define(['table', 'form'], function(exports){
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               var field = data.field; //获取提交的字段
-
+              field['access_token'] = layui.data('layuiAdmin').access_token
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: setter.http+'editVipPerson/',
@@ -155,6 +158,9 @@ layui.define(['table', 'form'], function(exports){
                       table.reload('LAY-user-manage'); //重载表格
                     }else if(data['code'] == 2){
                       layer.alert("手机号已存在,更新失败!",{icon: 2});
+                    }else if(data['code'] == '1001') {
+                      layer.close(index); //执行关闭
+                      admin.exit()
                     }else {
                       layer.alert("更新失败!",{icon: 2});
                     }
@@ -185,17 +191,25 @@ layui.define(['table', 'form'], function(exports){
              $.ajax({
                url: setter.http+'listServer/',
                type: 'GET',
+               data:{'access_token':layui.data('layuiAdmin').access_token},
                error:function(data){
                   layer.msg("获取服务列表失败");
                },
                success:function(data){
-                  console.log(data);
-                  var getTpl = demo.innerHTML
-                  ,view = document.getElementById('server');
-                  laytpl(getTpl).render(data, function(html){
-                    view.innerHTML = html;
-                  });
-                  form.render('checkbox');
+                  //console.log(data);
+                  if(data['code'] == 0){
+                    var getTpl = demo.innerHTML
+                    ,view = document.getElementById('server');
+                    laytpl(getTpl).render(data, function(html){
+                      view.innerHTML = html;
+                    });
+                    form.render('checkbox');
+                  }else if(data['code'] == '1001'){
+                    layer.close(index); //执行关闭
+                    admin.exit();
+                  }else{
+
+                  }
                 }
             });
 
@@ -203,18 +217,24 @@ layui.define(['table', 'form'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-
-              data:{"title":"","label":"1"}
+              data:{"title":"","label":"1",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取饮料列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('drink');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('drink');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    layer.close(index); //执行关闭
+                    admin.exit();
+                  }else{
+
+                }
               }
             });
 
@@ -222,17 +242,24 @@ layui.define(['table', 'form'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"2"}
+              data:{"title":"","label":"2",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取酒水列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('wine');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('wine');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    layer.close(index); //执行关闭
+                    admin.exit();
+                  }else{
+
+                }
               }
             });
 
@@ -240,17 +267,25 @@ layui.define(['table', 'form'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"3"}
+              data:{"title":"","label":"3",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取简餐列表失败");
               },
               success:function(data){
-                //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('snack');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+               //console.log(data);
+                if(data['code'] == 0){
+
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('snack');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    layer.close(index); //执行关闭
+                    admin.exit();
+                }else{
+
+                }
               }
             });
 
@@ -258,17 +293,25 @@ layui.define(['table', 'form'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"4"}
+              data:{"title":"","label":"4",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取火锅列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('hot_pot');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('hot_pot');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    layer.close(index); //执行关闭
+                    admin.exit();
+                }else{
+
+                }
               }
             });
 
@@ -305,7 +348,7 @@ layui.define(['table', 'form'], function(exports){
       //  mycars.push(checkData[i]['id'])
       // }
       dic['checkData'] = l.toString()
-
+      dic['access_token'] = layui.data('layuiAdmin').access_token
       layer.prompt({
         formType: 1
         ,title: '敏感操作，请验证口令'
@@ -333,8 +376,11 @@ layui.define(['table', 'form'], function(exports){
                     });
                 }else if(data['code'] == 2){
                   layer.alert("会员存在未结算订单，无法删除!",{icon: 2});
+                }else if(data['code'] == '1001') {
+
+                 admin.exit()
                 }else  {
-                  console.log("1111111111111");
+
                   layer.alert("删除失败!",{icon: 2});
                 }
               }
@@ -359,16 +405,14 @@ layui.define(['table', 'form'], function(exports){
             //监听提交
             form.on('submit(LAY-user-front-submit)', function(data){
               var field = data.field; //获取提交的字段
+              field['access_token'] = layui.data('layuiAdmin').access_token
               //console.log(field);
               //提交 Ajax 成功后，关闭当前弹层并重载表格
               $.ajax({
                 url: setter.http+'addVipPerson/',
-                 headers: {
-                      Accept: "application/json; charset=utf-8",
-                      access_token: ""+layui.data('layuiAdmin').access_token
-                 },
                 type: 'POST',
                 data:field,
+
                 error:function(request){//请求失败之后的操作
                     layer.alert("添加失败",{icon: 2});
                 },
@@ -378,6 +422,8 @@ layui.define(['table', 'form'], function(exports){
                       table.reload('LAY-user-manage'); //重载表格
                     }else if(data['code'] == 2){
                       layer.alert("手机号已存在,添加失败!",{icon: 2});
+                    }else if(data['code'] == '1001'){
+                      admin.exit()
                     }else {
                       layer.alert("添加失败!",{icon: 2});
                     }

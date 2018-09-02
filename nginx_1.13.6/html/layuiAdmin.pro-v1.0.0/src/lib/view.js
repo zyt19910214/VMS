@@ -46,6 +46,8 @@ layui.define(['laytpl', 'layer'], function(exports){
       key: setter.request.tokenName
       ,remove: true
     });
+    //关闭所有弹窗
+    layer.closeAll();
 
     //跳转到登入页
 

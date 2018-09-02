@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 from vms.views import list_vip_person as views_list_vip_person
 from vms.views import add_vip_person as views_add_vip_person
 from vms.views import del_vip_person as views_del_vip_person
@@ -34,9 +33,11 @@ from vms.views import end_order as views_end_order
 from vms.views import del_order as views_del_order
 from vms.views import manager_login as views_manager_login
 from vms.views import manager_logout as views_manager_logout
+from vms.views import get_now_login_name as views_get_now_login_name
+from vms.views import change_assword as views_change_assword
 urlpatterns = [
 
-    url(r'^listVipPerson/$',views_list_vip_person),
+    url(r'^listVipPerson/$', views_list_vip_person),
     url(r'^addVipPerson/$', views_add_vip_person),
     url(r'^delVipPerson/$', views_del_vip_person),
     url(r'^editVipPerson/$', views_edit_vip_person),
@@ -54,7 +55,11 @@ urlpatterns = [
     url(r'^endOrder/$', views_end_order),
     url(r'^delOrder/$', views_del_order),
     url(r'^managerLogin/$', views_manager_login),
-    url(r'^managerLogout/$',views_manager_logout),
+    url(r'^managerLogout/$', views_manager_logout),
+    url(r'^nowLogin/$', views_get_now_login_name),
+    url(r'^changePassword/$', views_change_assword),
+
+
 
 
 

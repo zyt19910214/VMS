@@ -86,7 +86,7 @@ layui.use(['admin', 'form', 'user'], function(){
   //请求登入接口
      $.ajax({
        url: setter.http+'managerLogin/',
-       type: 'GET',
+       type: 'POST',
        data: obj.field,
        error:function(res){
           layer.msg("异常,登录失败！");
@@ -104,8 +104,8 @@ layui.use(['admin', 'form', 'user'], function(){
           layer.msg('登录成功', {
             offset: '15px'
             ,icon: 1
-            ,time: 1000
-          }, function(){
+            ,time: 300
+          },function(){
             location.hash = search.redirect ? decodeURIComponent(search.redirect) : '/';
           });
         }else{

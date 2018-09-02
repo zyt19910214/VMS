@@ -23,10 +23,13 @@ layui.define(['table', 'form', 'element'], function(exports){
      elem: '#LAY-app-workorder'
      ,url: setter.http+'listOrder/'
     //,url: './json/workorder/demo.js' //模拟接口
+    ,where: {
+      access_token: layui.data('layuiAdmin').access_token
+    }
     ,cols: [[
       {type: 'numbers', fixed: 'left'}
       ,{field: 'order_serial_number', width: 150, title: '订单号', sort: true,align: 'center'}
-      ,{field: 'name', width: 100, title: '订单人',align: 'center'}
+      ,{field: 'name', width: 150, title: '订单人',align: 'center'}
       ,{field: 'phone', width: 150, title: '手机号',align: 'center'}
       ,{field: 'type', width: 100, title: '订单类型',align: 'center'}
       ,{field: 'all_value', width: 100, title: '结算费用',align: 'center'}
@@ -44,9 +47,14 @@ layui.define(['table', 'form', 'element'], function(exports){
     ,done: function(res){
       element.render('progress');
       data_len = res.data.length;
-      if(data_len == 0){
+      if (res['code'] == '1001'){
+        admin.exit();
+      }else{
+        if(data_len == 0){
         var s = $('.layui-none').html('无订单数据')
       }
+      }
+
     }
   });
 
@@ -67,12 +75,13 @@ layui.define(['table', 'form', 'element'], function(exports){
               //url: './json/workorder/dddetail.js'
               url: setter.http+'orderDetail/'
               ,type: 'get'
-              ,data: {'order_serial_number':data['order_serial_number']}
+              ,data: {'order_serial_number':data['order_serial_number'],'access_token': layui.data('layuiAdmin').access_token}
               ,error:function(data){
                   layer.msg("获取订单详情失败",{icon:2});
               }
               ,success: function(res){
-                //console.log(res);
+                if(res['code'] == 0){
+                   //console.log(res);
                  form.render(null, 'layuiadmin-form-workorder');
                   $("#orderid").val(res['order_serial_number']);
                   $("#attr").val(res['name']);
@@ -124,6 +133,12 @@ layui.define(['table', 'form', 'element'], function(exports){
                   $("#serverlist").html(my_str)
                   $("#goodlist").html(my_str2)
 
+                }else if(res['code'] == '1001'){
+                  admin.exit();
+                }else{
+
+                }
+
 
               }
             });
@@ -155,13 +170,14 @@ layui.define(['table', 'form', 'element'], function(exports){
               //url: './json/workorder/dddetail.js'
               url: setter.http+'orderDetail/'
               ,type: 'get'
-              ,data: {'order_serial_number':data['order_serial_number']}
+              ,data: {'order_serial_number':data['order_serial_number'],'access_token': layui.data('layuiAdmin').access_token}
               ,error:function(data){
                   layer.msg("获取订单详情失败",{icon:2});
               }
               ,success: function(res){
                 //console.log(res);
-                 form.render(null, 'layuiadmin-form-workorder');
+                if(res['code'] == 0){
+                  form.render(null, 'layuiadmin-form-workorder');
 
                   $("#orderid").val(res['order_serial_number']);
                   $("#attr").val(res['name']);
@@ -218,6 +234,7 @@ layui.define(['table', 'form', 'element'], function(exports){
                     layer.msg('请在下方文本框中输入本次使用的积分');
                     $("#my_point").attr('style',"display:inline;width:250px;");
                     $("#my_point").attr('lay-verify',"required");
+                    $("#my_point").attr('placeholder',"可用积分取整到10位数");
 
                   });
                     form.on('radio(gis1)', function(data){
@@ -233,6 +250,13 @@ layui.define(['table', 'form', 'element'], function(exports){
                   });
 
                     }
+                  }else if(res['code'] == '1001'){
+
+                    admin.exit();
+                  }else {
+
+                  }
+
 
 
               }
@@ -240,11 +264,13 @@ layui.define(['table', 'form', 'element'], function(exports){
 
             form.on('submit(LAY-app-workorder-submit)', function(res){
               console.log(data);
+              field = res.field
+              field['access_token'] = layui.data('layuiAdmin').access_token
               $.ajax({
               //url: './json/workorder/ddje.js'
               url: setter.http+'endOrder/'
               ,type: 'post'
-              ,data: res.field
+              ,data: field
               ,error:function(data){
                   layer.msg("订单结算失败",{icon:2});
               }
@@ -252,9 +278,14 @@ layui.define(['table', 'form', 'element'], function(exports){
                  if(res['code'] == 0){
                   layer.msg("结账成功",{icon:1});
                   table.reload('LAY-app-workorder');
-                }else{
+                }else if(res['code'] == '1001'){
+                  admin.exit();
+                }else if(res['code'] == 2) {
+                  layer.msg("可用积分不足",{icon:2});
+                }else {
                   layer.msg("结账失败，请稍后重试",{icon:2});
                 }
+
                    layer.close(index);
 
               }
@@ -294,35 +325,47 @@ layui.define(['table', 'form', 'element'], function(exports){
              $.ajax({
                url: setter.http+'listServer/',
                type: 'GET',
+               data:{'access_token':layui.data('layuiAdmin').access_token},
                error:function(data){
                   layer.msg("获取服务列表失败");
                },
                success:function(data){
                   //console.log(data);
-                  var getTpl = demo.innerHTML
-                  ,view = document.getElementById('server');
-                  laytpl(getTpl).render(data, function(html){
-                    view.innerHTML = html;
-                  });
-                  form.render('checkbox');
+                  if(data['code'] == 0){
+                    var getTpl = demo.innerHTML
+                    ,view = document.getElementById('server');
+                    laytpl(getTpl).render(data, function(html){
+                      view.innerHTML = html;
+                    });
+                    form.render('checkbox');
+                  }else if(data['code'] == '1001'){
+                    admin.exit();
+                  }else{
+
+                  }
                 }
             });
-
-            //获取饮料列表接口
+//获取饮料列表接口
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"1"}
+              data:{"title":"","label":"1",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取饮料列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('drink');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('drink');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    admin.exit();
+                  }else{
+
+                }
               }
             });
 
@@ -330,17 +373,23 @@ layui.define(['table', 'form', 'element'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"2"}
+              data:{"title":"","label":"2",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取酒水列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('wine');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('wine');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    admin.exit();
+                  }else{
+
+                }
               }
             });
 
@@ -348,17 +397,24 @@ layui.define(['table', 'form', 'element'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"3"}
+              data:{"title":"","label":"3",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取简餐列表失败");
               },
               success:function(data){
-                //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('snack');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+               //console.log(data);
+                if(data['code'] == 0){
+
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('snack');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    admin.exit();
+                }else{
+
+                }
               }
             });
 
@@ -366,19 +422,27 @@ layui.define(['table', 'form', 'element'], function(exports){
             $.ajax({
               url: setter.http+'listGood/',
               type: 'GET',
-              data:{"title":"","label":"4"}
+              data:{"title":"","label":"4",'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                 layer.msg("获取火锅列表失败");
               },
               success:function(data){
                 //console.log(data);
-                var getTpl = demo2.innerHTML
-                ,view = document.getElementById('hot_pot');
-                laytpl(getTpl).render(data, function(html){
-                  view.innerHTML = html;
-                });
+
+                if(data['code'] == 0){
+                  var getTpl = demo2.innerHTML
+                  ,view = document.getElementById('hot_pot');
+                  laytpl(getTpl).render(data, function(html){
+                    view.innerHTML = html;
+                  });
+                }else if(data['code'] == '1001'){
+                    admin.exit();
+                }else{
+
+                }
               }
             });
+
 
 
 
@@ -401,7 +465,7 @@ layui.define(['table', 'form', 'element'], function(exports){
               //url: './json/workorder/ddje.js'
               url: setter.http+'delOrder/'
               ,type: 'get'
-              ,data: {'order_serial_number':data['order_serial_number']}
+              ,data: {'order_serial_number':data['order_serial_number'],'access_token':layui.data('layuiAdmin').access_token}
               ,error:function(data){
                   layer.msg("订单废弃失败",{icon:2});
               }
@@ -409,6 +473,8 @@ layui.define(['table', 'form', 'element'], function(exports){
                 if(res['code'] == 0){
                   layer.msg("订单已废弃",{icon:1});
                   table.reload('LAY-app-workorder');
+                }else if(res['code'] == '1001'){
+                  admin.exit();
                 }else{
                   layer.msg("订单废弃失败",{icon:2});
                 }

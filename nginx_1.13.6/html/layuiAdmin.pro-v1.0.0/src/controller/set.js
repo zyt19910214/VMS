@@ -134,18 +134,35 @@ layui.define(['form', 'upload'], function(exports){
 
   //设置密码
   form.on('submit(setmypass)', function(obj){
-    layer.msg(JSON.stringify(obj.field));
+    //layer.msg(JSON.stringify(obj.field));
+    console.log(JSON.stringify(obj.field));
+    field = obj.field
+    field['access_token'] = layui.data('layuiAdmin').access_token
+      $.ajax({
+             url: setter.http+'changePassword/',
+             type: 'POST',
+             data: field ,
+             error:function(request){
+                layer.msg("修改密码失败",{icon: 2});
+             },
+             success:function(data){
+                if(data['code'] == 0){
+                  layer.msg('修改成功,请重新登录', {icon: 1 ,time: 500},function(){
+                   admin.exit()
+                  });
 
-    //提交修改
-    /*
-    admin.req({
-      url: ''
-      ,data: obj.field
-      ,success: function(){
+                }else if(data['code'] == '1001') {
+                  admin.exit()
+                }else if (data['code'] == 2){
 
-      }
-    });
-    */
+                  layer.msg("旧密码错误,修改失败！",{icon: 2});
+                }else  {
+
+                  layer.msg("密码修改失败!",{icon: 2});
+                }
+              }
+            });
+
     return false;
   });
 
