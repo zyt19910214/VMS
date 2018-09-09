@@ -955,17 +955,38 @@ def end_order(req):
 
 @jwt.verify_bearer_token()
 def del_order(req):
+    """
+    废弃订单，将订单状态修改为2，此单消费货物返还。
+    :param req:
+    :return:
+    """
     logger.debug('订单废弃传入参数：' + str(req.GET))
     data = req.GET.copy()
+    sql_list = []
     sql = "UPDATE vip_order SET order_status = 2,all_value = '0',end_time=now() WHERE order_serial_number = '%s'"%data['order_serial_number']
+    sql2 = "select a.good_id,a.good_count from order_good_item a  INNER JOIN vip_order b ON a.order_id = b.id and b. order_serial_number = '%s'" %data['order_serial_number']
     db = Mysql()
-    count = db.update(sql)
-    if count == 1:
-        resp = {
-            "code": 0,
-            "msg": "success"
-        }
-        logger.debug('订单废弃成功')
+    result = db.getAll(sql2)
+    # print(result)
+    if result:
+        for x in result:
+            good_id = x['good_id']
+            good_count = int(x['good_count'])
+            sql_list.append("UPDATE good SET status = status+'%d' WHERE id = '%s'"%(good_count,good_id))
+        sql_list.append(sql)
+        count = db.excuteManysql(sql_list)
+        # print(count)
+        if count == 1+len(result):
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('订单废弃成功')
+        else:
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
     else:
         resp ={
             "code": 1,

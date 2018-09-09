@@ -1,0 +1,143 @@
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space15">
+     <div class="layui-col-md8">
+      <div class="layui-row layui-col-space15">
+
+          <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">快捷方式</div>
+            <div class="layui-card-body">
+
+              <div class="layui-carousel layadmin-carousel layadmin-shortcut">
+                <div carousel-item>
+                  <ul class="layui-row layui-col-space10">
+
+                      <li class="layui-col-xs3">
+                        <a lay-href="senior/echarts">
+                          <i class="layui-icon layui-icon-chart"></i>
+                          <cite>报表</cite>
+                        </a>
+                      </li>
+                       <li class="layui-col-xs3">
+                        <a lay-href="user/user/list">
+                          <i class="layui-icon layui-icon-user"></i>
+                          <cite>用户</cite>
+                        </a>
+                      </li>
+
+                      <li class="layui-col-xs3">
+                        <a lay-href="app/workorder/list">
+                          <i class="layui-icon layui-icon-survey"></i>
+                          <cite>订单</cite>
+                        </a>
+                      </li>
+
+                      <li class="layui-col-xs3">
+                        <a lay-href="set/user/info">
+                          <i class="layui-icon layui-icon-set"></i>
+                          <cite>我的资料</cite>
+                        </a>
+                      </li>
+
+                    </ul>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+          <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">待办事项</div>
+            <div class="layui-card-body">
+
+              <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                <div carousel-item>·
+                  <ul class="layui-row layui-col-space10">
+                    <li class="layui-col-xs6">
+                      <a lay-href="app/workorder/list" class="layadmin-backlog-body">
+                        <h3>待结账</h3>
+                        <p><cite>3</cite></p>
+                      </a>
+                    </li>
+                    <li class="layui-col-xs6">
+                      <a lay-href="app/content/list" class="layadmin-backlog-body">
+                        <h3>待上货</h3>
+                        <p><cite>1</cite></p>
+                      </a>
+                    </li>
+
+
+                    <li class="layui-col-xs6">
+                      <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                        <h3>待发货</h3>
+                        <p><cite>20</cite></p>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">成交订单折线图</div>
+        <div class="layui-card-body">
+
+          <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-normline">
+            <div carousel-item id="LAY-index-normline">
+              <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+  </div>
+  </div>
+  <div class="layui-col-md4">
+
+    <div class="layui-card">
+            <div class="layui-card-header">宣传标语</div>
+            <div class="layui-card-body">
+              <div class="layui-carousel layadmin-carousel layadmin-news" data-autoplay="true" data-anim="fade" lay-filter="news">
+                <div carousel-item>
+                  <div><a  class="layui-bg-red">放下手机，与朋友共享欢乐。</a></div>
+                  <div><a class="layui-bg-green">我们提供更多的是众乐乐，而不是独乐乐。</a></div>
+                  <div><a class="layui-bg-blue">mothanty给你的将不仅仅是快乐，还有感动。</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <div class="layui-card">
+        <div class="layui-card-header">
+          团队寄语
+          <i class="layui-icon layui-icon-tips" lay-tips="More Than Party" lay-offset="5"></i>
+        </div>
+        <div class="layui-card-body layui-text layadmin-text">
+          <p>年轻最大的敌人不是折腾，而是错过。</p>
+          <p>革命尚未成功，同志仍需努力。</p>
+          <p>Mothanty桌游轰趴馆，加油。</p>
+          <p >--------------------------武通,张鹏哲,温娜,张运通</p>
+        </div>
+      </div>
+  </div>
+
+      </div>
+
+
+
+</div>
+
+
+
+<script>
+layui.use('senior', layui.factory('senior'));
+</script>
+

@@ -1,0 +1,84 @@
+
+
+<title>订单系统</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>营销</cite></a>
+    <a><cite>订单系统</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="app-content-workorder">
+      <div class="layui-form-item">
+
+        <div class="layui-inline">
+          <label class="layui-form-label">订单人</label>
+          <div class="layui-input-block">
+            <input type="text" name="phone" placeholder="请输入" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-inline">
+          <button class="layui-btn layuiadmin-btn-order" lay-submit lay-filter="LAY-app-order-search">
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="layui-card-body">
+      <table id="LAY-app-workorder" lay-filter="LAY-app-workorder"></table>
+      <script type="text/html" id="progressTpl">
+        <div class="layui-progress layuiadmin-order-progress" lay-filter="progress-"+ {{ d.orderid }} +"">
+          <div class="layui-progress-bar layui-bg-blue" lay-percent= {{ d.progress }}></div>
+        </div>
+      </script>
+      <script type="text/html" id="buttonTpl">
+        {{#  if(d.state == '1' ){ }}
+          <button class="layui-btn layui-btn-normal layui-btn-xs">已完成</button>
+        {{#  } else if(d.state == '0'){ }}
+          <button class="layui-btn layui-btn-warm  layui-btn-xs">待结账</button>
+        {{#  } else if(d.state == '2'){ }}
+          <button class="layui-btn layui-btn-danger layui-btn-xs">已废弃</button>
+        {{#  }else{  }}
+         <button class="layui-btn layui-btn-primary layui-btn-xs">处理中</button>
+        {{#  } }}
+      </script>
+      <script type="text/html" id="table-system-order">
+        {{#  if(d.state == '1'   ){ }}
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view"><i class="layui-icon layui-icon-about"></i>订单信息</a>
+        {{#  } else if(d.state == '0' ){ }}
+          <a class="layui-btn layui-btn- layui-btn-xs" lay-event="new_add"><i class="layui-icon layui-icon-edit"></i>新增消费</a>
+          <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="complete"><i class="layui-icon layui-icon-form"></i>结账</a>
+          <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="reback"><i class="layui-icon layui-icon-delete"></i>废弃</a>
+          <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view"><i class="layui-icon layui-icon-about"></i>订单信息</a>
+
+        {{#  } }}
+      </script>
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use('workorder', layui.factory('workorder')).use(['admin', 'workorder', 'table'], function(){
+  var $ = layui.$
+  ,form = layui.form
+  ,table = layui.table;
+
+  form.render(null, 'app-content-workorder');
+
+  //监听搜索
+  form.on('submit(LAY-app-order-search)', function(data){
+    var field = data.field;
+
+    //执行重载
+    table.reload('LAY-app-workorder', {
+      where: field,
+      page:1
+    });
+  });
+});
+</script>

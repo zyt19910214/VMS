@@ -1263,3 +1263,17 @@ Traceback (most recent call last):
   File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 661, in tough_method
     raise error  # reraise the original error again
 OperationalError: (1054, "Unknown column 'password' in 'where clause'")
+2018-09-09 17:21:14,526 [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /delOrder/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\VMS\vipMangementSystem\vms\JWT.py", line 77, in __deco
+    return func(request, *para, **kw)
+  File "D:\Study\VMS\vipMangementSystem\vms\views.py", line 973, in del_order
+    if count == 1:
+NameError: global name 'count' is not defined
+2018-09-09 17:31:33,161 [base:get_response] [WARNING]- Not Found: /favicon.ico

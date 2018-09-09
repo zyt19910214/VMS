@@ -58,13 +58,6 @@ class JWT(object):
                 if token is not None:
                     try:
                         payload = jwt.decode(token, 'mothanty', algorithms=['HS256'])
-                        result = db.getAll(
-                            "select * from t_token where token = '%s' and DATE_SUB(now(), INTERVAL 1 HOUR)<time" % token)
-                        if payload:
-                            if result:
-                                db.update("UPDATE t_token set time = now()  WHERE token ='%s'" % token)
-                                print (func.__name__ + '方法token校验--成功')
-                                return func(request, *para, **kw)
                     except Exception as e:
                         db.delete("DELETE FROM t_token WHERE token='%s'" % token)
                         print(e)
@@ -75,6 +68,14 @@ class JWT(object):
                             "data": []
                         }
                         return HttpResponse(json.dumps(resp), content_type="application/json")
+                    result = db.getAll(
+                        "select * from t_token where token = '%s' and DATE_SUB(now(), INTERVAL 1 HOUR)<time" % token)
+                    if payload:
+                        if result:
+                            db.update("UPDATE t_token set time = now()  WHERE token ='%s'" % token)
+                            print (func.__name__ + '方法token校验--成功')
+                            return func(request, *para, **kw)
+
                 print (func.__name__ + '方法token校验--失败')
                 db.delete("DELETE FROM t_token WHERE token='%s'" % token)
                 resp = {

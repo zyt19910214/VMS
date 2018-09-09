@@ -1,0 +1,249 @@
+
+
+<blockquote class="layui-elem-quote layui-text">
+ 注意: 同一会员只能存在一个未完成订单
+ </blockquote>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>订单信息</legend>
+</fieldset>
+
+<div class="layui-form" action="" lay-filter="layuiadmin-form-dd">
+  <div class="layui-form-item">
+    <div class="layui-input-inline">
+      <input type="hidden" id="vip_id" name="id" autocomplete="off" value=""  class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">会员名称</label>
+    <div class="layui-input-inline">
+      <input type="text" id="vip_name" name="vip_name" autocomplete="off" value=""  class="layui-input"  disabled  >
+    </div>
+
+  <div class="layui-inline">
+    <label class="layui-form-label">会员手机号</label>
+    <div class="layui-input-inline">
+      <input type="text" id="vip_phone" name="vip_phone" autocomplete="off" value="" class="layui-input" disabled  >
+    </div>
+  </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">订单类型</label>
+      <input type="radio" name="type" value="1" title="299轰趴" checked>
+      <input type="radio" name="type" value="2" title="399轰趴" >
+      <input type="radio" name="type" value="3" title="521轰趴" >
+      <input type="radio" name="type" value="4" title="麻将" >
+      <input type="radio" name="type" value="5" title="狼人杀包场" >
+  </div>
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend >订单详情</legend>
+</fieldset>
+
+
+<script id="demo" type="text/html"  >
+  {{#  layui.each(d.data, function(index, item){   }}
+     <div  class="cmdlist-container"  style="float:left;" >
+            <img src="{{ layui.setter.base }}style/res/template/portrait.png" style="width:100px;margin-left:30px;margin-top:20px;"/>
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+                  <input type="checkbox" name="server{{item.id}}" lay-skin="primary" title="{{item.name}}" lay-filter='ddw'  >
+                <div class="price">
+                    <b>￥{{item.price}}</b>
+                </div>
+              </div>
+    </div>
+  {{#  }); }}
+  {{#  if(d.data.length === 0){ }}
+  无数据
+  {{#  } }}
+</script>
+
+<script id="demo2" type="text/html"  >
+  {{#  layui.each(d.data, function(index, item){   }}
+    <div class="cmdlist-container" style="float:left;">
+
+                <img src="{{ layui.setter.base }}style/res/template/good{{item.id}}.png" style="width:100px;margin-left:30px;margin-top:20px;">
+
+            <a href="javascript:;">
+              <div class="cmdlist-text" style="margin-left:1.875rem/* 30px */">
+              <div class="price">{{item.name}}</div>
+
+                <div class="price">
+
+                    <div class="jiajian" style="display: inline-block;" count1="{{item.status}}">
+                     <span style="display:none;" >{{item.status}}</span>
+                     <b>￥{{item.price}}</b>
+                      <a class="layui-btn layui-btn-xs " style=" background-color:#5FB878;" onclick="jian(event);">－</a>
+                      <input  name="good{{item.id}}"  readonly="readonly" style="border:0px;outline: none;width:15px;" type="text" value="0" >
+                      <a class="layui-btn layui-btn-xs " style=" background-color:#5FB878;" onclick="jia(event);">＋</a>
+                    </div>
+
+                </div>
+              </div>
+            </a>
+
+  </div>
+  {{#  }); }}
+  {{#  if(d.data.length === 0){ }}
+    无数据
+  {{#  } }}
+</script>
+
+<div class="layui-tab">
+   <ul class="layui-tab-title" style="margin-left:35px;">
+    <li class="layui-this">饮料</li>
+    <li >酒水</li>
+    <li >简餐</li>
+    <li >火锅</li>
+    <li >服务</li>
+
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show" ><div id="drink" style="text-align:center;vertical-align:middle;"></div></div>
+    <div class="layui-tab-item"><div id="wine" style="text-align:center;vertical-align:middle;"></div></div>
+    <div class="layui-tab-item"><div id="snack" style="text-align:center;vertical-align:middle;"></div></div>
+    <div class="layui-tab-item"><div id="hot_pot" style="text-align:center;vertical-align:middle;"></div></div>
+    <div class="layui-tab-item"><div id="server" style="text-align:center;vertical-align:middle;"></div></div>
+  </div>
+  <div style="margin-top: 10px;clear:both;padding:20px"></div >
+</div>
+
+
+
+
+
+  <div class="layui-form-item layui-form-text" >
+    <label class="layui-form-label">订单备注</label>
+    <div class="layui-input-block">
+      <textarea name="vip_notes" placeholder="备注" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <!--<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">编辑器</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+    </div>
+  </div>-->
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="LAY_dd_submit">立即提交</button>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<script>
+layui.use(['form','laytpl','layedit', 'laydate'], function(){
+  var form = layui.form
+  , $ = layui.$
+  ,setter = layui.setter
+  ,admin = layui.admin
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate
+  ,laytpl  = layui.laytpl;
+
+
+  //订单日期
+  laydate.render({
+    elem: '#date'
+    ,type: 'datetime'
+    ,value: new Date()
+
+  });
+
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  form.on('checkbox(ddw)', function(data){
+     //console.log(data.elem); //得到checkbox原始DOM对象
+     //console.log(data.elem.checked); //是否被选中，true或者false
+  });
+
+//监听提交
+  form.on('submit(LAY_dd_submit)', function(data){
+    // layer.alert(JSON.stringify(data.field), { title: '最终的提交信息' })
+    var field = data.field; //获取提交的字段
+    field['access_token'] = layui.data('layuiAdmin').access_token
+    //console.log(field);
+    //提交 Ajax 成功后，关闭当前弹层并重载表格
+    $.ajax({
+      url: setter.http+'addOrder/',
+      type: 'POST',
+      data:field,
+      error:function(request){//请求失败之后的操作
+          layer.alert("订单生成失败",{icon: 2});
+      },
+      success:function(data){//请求成功之后的操作
+          if(data['code'] == 0){
+            var message = "生成订单成功,跳转到订单页面？";
+          //询问框
+          layer.confirm(message, {icon: 3, title:'信息提示'}, function(index){
+              layer.close(index)
+              window.location.href='#/app/workorder/list';
+          });
+          layer.closeAll('page');
+          }else if(data['code'] == 2){
+            layer.alert("订单生成失败,该会员主订单已存在",{icon: 2});
+          }else if(data['code'] == '1001') {
+            admin.exit();
+          }else  {
+            layer.alert("订单生成失败!",{icon: 2});
+          }
+      }
+
+     });
+ });
+});
+
+
+
+function jia(e){
+ //console.log(e.target);
+  elm = e.target.parentNode;
+  var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
+  //console.log(count);
+  if (count < parseInt(elm.getAttribute("count1"))){
+    elm.querySelector("input").value = ++count;
+
+    elm.setAttribute("count",count);
+  }else{
+    layer.msg("商品不足",{icon:5,time: 800});
+  }
+
+};
+function jian(e){
+  elm = e.target.parentNode;
+  var count =  parseInt(elm.getAttribute("count") ? elm.getAttribute("count"):0);
+  elm.querySelector("input").value = count >0 ?--count :count;
+  elm.setAttribute("count",count);
+
+};
+</script>

@@ -1,0 +1,132 @@
+
+
+<form class="layui-form" lay-filter="layuiadmin-form-workorder" id="layuiadmin-form-workorder" style="padding: 20px 30px 0 0;">
+  <div style="padding: 20px; background-color: #F2F2F2;">
+
+  <div class="layui-row layui-col-space15">
+
+    <div class="layui-col-md6">
+  <div class="layui-form-item">
+    <label class="layui-form-label">订单号</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="orderid" name="orderid" placeholder="" autocomplete="off" class="layui-input" disabled >
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">订单人</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="attr" name="attr"  placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>  <div class="layui-form-item">
+    <label class="layui-form-label">订单类型</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="type" name="type"  placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">订单状态</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="status" name="status" placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">创建时间</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="time" name="time" placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+ <div class="layui-form-item">
+    <label class="layui-form-label">结束时间</label>
+    <div class="layui-input-inline" style="width:180px;" >
+      <input type="text" id="end_time" name="end_time" placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">套餐费用</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="site_money" name="site_money" placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">消费金额</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="money" name="money" placeholder="" autocomplete="off" class="layui-input" disabled>
+    </div>
+  </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">延时费用</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="lay_value" name="lay_value" placeholder="" autocomplete="off" class="layui-input" lay-verify="required"  disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">优惠费用</label>
+    <div class="layui-input-inline" style="width:180px;">
+      <input type="text" id="free_value" name="free_value" placeholder="" autocomplete="off" class="layui-input"  lay-verify="required"  value="0" disabled>
+    </div>
+  </div>
+
+
+
+
+  </div>
+
+
+ <div class="layui-col-md6">
+
+
+      <div class="layui-card" >
+        <div class="layui-card-header">服务列表</div>
+        <div id="serverlist" class="layui-card-body" >
+
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md6">
+      <div class="layui-card">
+        <div class="layui-card-header">商品列表</div>
+        <div id="goodlist" class="layui-card-body" >
+
+        </div>
+      </div>
+
+     <div class="layui-card" id="all">
+       <div id="point" class="layui-card-header"></div>
+       <div class="layui-card-body" id="point_type">
+       <div class="layui-form-item"  style="margin-left:15px;"  >
+
+            <input type="radio" name="type" value="1" title="使用全部积分" checked lay-filter="gis1">
+            <input type="radio" name="type" value="2" title="不使用积分" lay-filter="gis2" >
+            <div class="layui-input-inline ">
+            <input type="radio" name="type" value="3" title="自定义使用积分" lay-filter="gis"  >
+            </div>
+             <div class="layui-input-inline " >
+            <input type="text" id="my_point" name="my_point" placeholder="请输入自定义积分"  autocomplete="off" class="layui-input"      value="" style="width:250px;display:none;" >
+            </div>
+       </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+
+    <div class="layui-input-inline " style="float: right;">
+      <input type="button" id="end" lay-submit lay-filter="LAY-app-workorder-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+
+
+</form>
+
+<script>
+layui.use(['index', 'form'], function(){
+  var $ = layui.$
+  ,form = layui.form;
+
+});
+
+</script>
