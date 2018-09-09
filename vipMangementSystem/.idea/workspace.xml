@@ -3,7 +3,7 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/vipMangementSystem/settings.py" />
     <bookmark url="file://$PROJECT_DIR$/vms/views.py" line="826" />
-    <bookmark url="file://$PROJECT_DIR$/vms/views.py" line="1084" />
+    <bookmark url="file://$PROJECT_DIR$/vms/views.py" line="1092" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72075786-97d6-4674-a7a3-274001ddbd2a" name="默认的" comment="" />
@@ -45,93 +45,93 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vms/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="967" column="16" lean-forward="false" selection-start-line="967" selection-start-column="16" selection-end-line="967" selection-end-column="16" />
+            <state relative-caret-position="151">
+              <caret line="992" column="20" lean-forward="true" selection-start-line="992" selection-start-column="20" selection-end-line="992" selection-end-column="20" />
               <folding>
                 <element signature="e#24#61#0" expanded="true" />
-                <marker date="1536487451902" expanded="true" signature="585:836" ph="SELECT a.id,... person" />
-                <marker date="1536487451902" expanded="true" signature="978:1251" ph="SELECT a.id,... *" />
-                <marker date="1536487451902" expanded="true" signature="1113:1154" ph="select * FRO... person" />
-                <marker date="1536487451902" expanded="true" signature="1336:1609" ph="SELECT a.id,... *" />
-                <marker date="1536487451902" expanded="true" signature="1471:1511" ph="select * FRO... person" />
-                <marker date="1536487451902" expanded="true" signature="1696:1985" ph="SELECT a.id,... *" />
-                <marker date="1536487451902" expanded="true" signature="1831:1888" ph="select * FRO... person" />
-                <marker date="1536487451902" expanded="true" signature="3810:3850" ph="SELECT * fro... person" />
-                <marker date="1536487451902" expanded="true" signature="4059:4195" ph="INSERT INTO person... " />
-                <marker date="1536487451902" expanded="true" signature="4956:4995" ph="DELETE FROM vms.person... " />
-                <marker date="1536487451902" expanded="true" signature="5048:5116" ph="select * fro... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="5966:6019" ph="SELECT * fro... person" />
-                <marker date="1536487451902" expanded="true" signature="6293:6383" ph="UPDATE person... " />
-                <marker date="1536487451902" expanded="true" signature="7110:7228" ph="select a.*,b... good" />
-                <marker date="1536487451902" expanded="true" signature="7408:7562" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="7441:7477" ph="select * fro... good" />
-                <marker date="1536487451902" expanded="true" signature="7645:7816" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="7678:7696" ph="select * fro... good" />
-                <marker date="1536487451902" expanded="true" signature="7713:7756" ph="select * fro... good_category" />
-                <marker date="1536487451902" expanded="true" signature="7898:8087" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="7931:7967" ph="select * fro... good" />
-                <marker date="1536487451902" expanded="true" signature="7984:8027" ph="select * fro... good_category" />
-                <marker date="1536487451902" expanded="true" signature="9669:9708" ph="SELECT * fro... good" />
-                <marker date="1536487451902" expanded="true" signature="10018:10157" ph="INSERT INTO `good`... " />
-                <marker date="1536487451902" expanded="true" signature="11016:11068" ph="SELECT * fro... good" />
-                <marker date="1536487451902" expanded="true" signature="11661:11784" ph="UPDATE good... " />
-                <marker date="1536487451902" expanded="true" signature="12668:12701" ph="DELETE FROM good... " />
-                <marker date="1536487451902" expanded="true" signature="13226:13337" ph="select a.*,b... server" />
-                <marker date="1536487451902" expanded="true" signature="13533:13678" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="13566:13604" ph="select * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="13768:13930" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="13801:13821" ph="select * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="13838:13883" ph="select * fro... server_category" />
-                <marker date="1536487451902" expanded="true" signature="14019:14199" ph="select a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="14052:14090" ph="select * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="14107:14152" ph="select * fro... server_category" />
-                <marker date="1536487451902" expanded="true" signature="15144:15185" ph="SELECT * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="15393:15480" ph="INSERT INTO `server`... " />
-                <marker date="1536487451902" expanded="true" signature="16245:16299" ph="SELECT * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="16602:16638" ph="SELECT * fro... server" />
-                <marker date="1536487451902" expanded="true" signature="17034:17116" ph="UPDATE server... " />
-                <marker date="1536487451902" expanded="true" signature="17980:18015" ph="DELETE FROM server... " />
-                <marker date="1536487451902" expanded="true" signature="18485:18815" ph="select c.ord... *" />
-                <marker date="1536487451902" expanded="true" signature="18621:18733" ph="select a.*,b... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="20737:20806" ph="SELECT * fro... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="21281:21475" ph="INSERT INTO vip_order... " />
-                <marker date="1536487451902" expanded="true" signature="21782:21876" ph="INSERT INTO `order_good_item`... " />
-                <marker date="1536487451902" expanded="true" signature="21966:22005" ph="select statu... good" />
-                <marker date="1536487451902" expanded="true" signature="22472:22517" ph="UPDATE good... " />
-                <marker date="1536487451902" expanded="true" signature="22694:22799" ph="INSERT INTO `vms`.`order_server_item`... " />
-                <marker date="1536487451902" expanded="true" signature="23515:23603" ph="SELECT id,fr... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="23743:23837" ph="INSERT INTO `order_good_item`... " />
-                <marker date="1536487451902" expanded="true" signature="23954:23993" ph="select statu... good" />
-                <marker date="1536487451902" expanded="true" signature="24350:24395" ph="UPDATE good... " />
-                <marker date="1536487451902" expanded="true" signature="24595:24700" ph="INSERT INTO `vms`.`order_server_item`... " />
-                <marker date="1536487451902" expanded="true" signature="26486:26724" ph="SELECT c.*,d... *" />
-                <marker date="1536487451902" expanded="true" signature="26527:26662" ph="SELECT a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="26559:26617" ph="SELECT * FRO... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="26833:26906" ph="select sum(p... point_detail" />
-                <marker date="1536487451902" expanded="true" signature="27084:27274" ph="select SUM(a... good_id" />
-                <marker date="1536487451902" expanded="true" signature="27144:27212" ph="select good_... order_good_item" />
-                <marker date="1536487451902" expanded="true" signature="27356:27559" ph="select SUM(s... server_id" />
-                <marker date="1536487451902" expanded="true" signature="27418:27492" ph="select serve... order_server_item" />
-                <marker date="1536487451902" expanded="true" signature="29170:29409" ph="SELECT c.*,d... *" />
-                <marker date="1536487451902" expanded="true" signature="29211:29347" ph="SELECT a.*,b... *" />
-                <marker date="1536487451902" expanded="true" signature="29243:29301" ph="SELECT * FRO... vip_order" />
-                <marker date="1536487451902" expanded="true" signature="29465:29537" ph="select SUM(p... point_detail" />
-                <marker date="1536487451902" expanded="true" signature="30022:30147" ph="INSERT INTO `vms`.`point_detail`... " />
-                <marker date="1536487451902" expanded="true" signature="30628:30753" ph="INSERT INTO `vms`.`point_detail`... " />
-                <marker date="1536487451902" expanded="true" signature="31393:31544" ph="UPDATE vip_order... " />
-                <marker date="1536487451902" expanded="true" signature="31674:31799" ph="INSERT INTO `vms`.`point_detail`... " />
-                <marker date="1536487451902" expanded="true" signature="32824:32925" ph="UPDATE vip_order... " />
-                <marker date="1536487451902" expanded="true" signature="32967:33098" ph="select a.goo... order_good_item" />
-                <marker date="1536487451902" expanded="true" signature="33345:33397" ph="UPDATE good... " />
-                <marker date="1536487451902" expanded="true" signature="34182:34203" ph="SELECT usern... manager" />
-                <marker date="1536487451902" expanded="true" signature="34182:34242" ph="SELECT usern... manager" />
-                <marker date="1536487451902" expanded="true" signature="34422:34502" ph="INSERT INTO `vms`.`t_token`... " />
-                <marker date="1536487451902" expanded="true" signature="34422:34503" ph="INSERT INTO `vms`.`t_token`... " />
-                <marker date="1536487451902" expanded="true" signature="35198:35238" ph="select * fro... t_token" />
-                <marker date="1536487451902" expanded="true" signature="35284:35296" ph="DELETE FROM vms.... " />
-                <marker date="1536487451902" expanded="true" signature="35284:35322" ph="DELETE FROM t_token... " />
-                <marker date="1536487451902" expanded="true" signature="36252:36361" ph="SELECT user_... t_token" />
-                <marker date="1536487451902" expanded="true" signature="36432:36483" ph="UPDATE manager... " />
+                <marker date="1536498929162" expanded="true" signature="585:836" ph="SELECT a.id,... person" />
+                <marker date="1536498929162" expanded="true" signature="978:1251" ph="SELECT a.id,... *" />
+                <marker date="1536498929162" expanded="true" signature="1113:1154" ph="select * FRO... person" />
+                <marker date="1536498929162" expanded="true" signature="1336:1609" ph="SELECT a.id,... *" />
+                <marker date="1536498929162" expanded="true" signature="1471:1511" ph="select * FRO... person" />
+                <marker date="1536498929162" expanded="true" signature="1696:1985" ph="SELECT a.id,... *" />
+                <marker date="1536498929162" expanded="true" signature="1831:1888" ph="select * FRO... person" />
+                <marker date="1536498929162" expanded="true" signature="3810:3850" ph="SELECT * fro... person" />
+                <marker date="1536498929162" expanded="true" signature="4059:4195" ph="INSERT INTO person... " />
+                <marker date="1536498929162" expanded="true" signature="4956:4995" ph="DELETE FROM vms.person... " />
+                <marker date="1536498929162" expanded="true" signature="5048:5116" ph="select * fro... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="5966:6019" ph="SELECT * fro... person" />
+                <marker date="1536498929162" expanded="true" signature="6293:6383" ph="UPDATE person... " />
+                <marker date="1536498929162" expanded="true" signature="7110:7228" ph="select a.*,b... good" />
+                <marker date="1536498929162" expanded="true" signature="7408:7562" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="7441:7477" ph="select * fro... good" />
+                <marker date="1536498929162" expanded="true" signature="7645:7816" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="7678:7696" ph="select * fro... good" />
+                <marker date="1536498929162" expanded="true" signature="7713:7756" ph="select * fro... good_category" />
+                <marker date="1536498929162" expanded="true" signature="7898:8087" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="7931:7967" ph="select * fro... good" />
+                <marker date="1536498929162" expanded="true" signature="7984:8027" ph="select * fro... good_category" />
+                <marker date="1536498929162" expanded="true" signature="9669:9708" ph="SELECT * fro... good" />
+                <marker date="1536498929162" expanded="true" signature="10018:10157" ph="INSERT INTO `good`... " />
+                <marker date="1536498929162" expanded="true" signature="11016:11068" ph="SELECT * fro... good" />
+                <marker date="1536498929162" expanded="true" signature="11661:11784" ph="UPDATE good... " />
+                <marker date="1536498929162" expanded="true" signature="12668:12701" ph="DELETE FROM good... " />
+                <marker date="1536498929162" expanded="true" signature="13226:13337" ph="select a.*,b... server" />
+                <marker date="1536498929162" expanded="true" signature="13533:13678" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="13566:13604" ph="select * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="13768:13930" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="13801:13821" ph="select * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="13838:13883" ph="select * fro... server_category" />
+                <marker date="1536498929162" expanded="true" signature="14019:14199" ph="select a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="14052:14090" ph="select * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="14107:14152" ph="select * fro... server_category" />
+                <marker date="1536498929162" expanded="true" signature="15144:15185" ph="SELECT * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="15393:15480" ph="INSERT INTO `server`... " />
+                <marker date="1536498929162" expanded="true" signature="16245:16299" ph="SELECT * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="16602:16638" ph="SELECT * fro... server" />
+                <marker date="1536498929162" expanded="true" signature="17034:17116" ph="UPDATE server... " />
+                <marker date="1536498929162" expanded="true" signature="17980:18015" ph="DELETE FROM server... " />
+                <marker date="1536498929162" expanded="true" signature="18485:18815" ph="select c.ord... *" />
+                <marker date="1536498929162" expanded="true" signature="18621:18733" ph="select a.*,b... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="20737:20806" ph="SELECT * fro... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="21281:21475" ph="INSERT INTO vip_order... " />
+                <marker date="1536498929162" expanded="true" signature="21782:21876" ph="INSERT INTO `order_good_item`... " />
+                <marker date="1536498929162" expanded="true" signature="21966:22005" ph="select statu... good" />
+                <marker date="1536498929162" expanded="true" signature="22472:22517" ph="UPDATE good... " />
+                <marker date="1536498929162" expanded="true" signature="22694:22799" ph="INSERT INTO `vms`.`order_server_item`... " />
+                <marker date="1536498929162" expanded="true" signature="23515:23603" ph="SELECT id,fr... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="23743:23837" ph="INSERT INTO `order_good_item`... " />
+                <marker date="1536498929162" expanded="true" signature="23954:23993" ph="select statu... good" />
+                <marker date="1536498929162" expanded="true" signature="24350:24395" ph="UPDATE good... " />
+                <marker date="1536498929162" expanded="true" signature="24595:24700" ph="INSERT INTO `vms`.`order_server_item`... " />
+                <marker date="1536498929162" expanded="true" signature="26486:26724" ph="SELECT c.*,d... *" />
+                <marker date="1536498929162" expanded="true" signature="26527:26662" ph="SELECT a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="26559:26617" ph="SELECT * FRO... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="26833:26906" ph="select sum(p... point_detail" />
+                <marker date="1536498929162" expanded="true" signature="27084:27274" ph="select SUM(a... good_id" />
+                <marker date="1536498929162" expanded="true" signature="27144:27212" ph="select good_... order_good_item" />
+                <marker date="1536498929162" expanded="true" signature="27356:27559" ph="select SUM(s... server_id" />
+                <marker date="1536498929162" expanded="true" signature="27418:27492" ph="select serve... order_server_item" />
+                <marker date="1536498929162" expanded="true" signature="29170:29409" ph="SELECT c.*,d... *" />
+                <marker date="1536498929162" expanded="true" signature="29211:29347" ph="SELECT a.*,b... *" />
+                <marker date="1536498929162" expanded="true" signature="29243:29301" ph="SELECT * FRO... vip_order" />
+                <marker date="1536498929162" expanded="true" signature="29465:29537" ph="select SUM(p... point_detail" />
+                <marker date="1536498929162" expanded="true" signature="30022:30147" ph="INSERT INTO `vms`.`point_detail`... " />
+                <marker date="1536498929162" expanded="true" signature="30628:30753" ph="INSERT INTO `vms`.`point_detail`... " />
+                <marker date="1536498929162" expanded="true" signature="31393:31544" ph="UPDATE vip_order... " />
+                <marker date="1536498929162" expanded="true" signature="31674:31799" ph="INSERT INTO `vms`.`point_detail`... " />
+                <marker date="1536498929162" expanded="true" signature="32824:32925" ph="UPDATE vip_order... " />
+                <marker date="1536498929162" expanded="true" signature="32967:33098" ph="select a.goo... order_good_item" />
+                <marker date="1536498929162" expanded="true" signature="33345:33397" ph="UPDATE good... " />
+                <marker date="1536498929162" expanded="true" signature="34397:34418" ph="SELECT usern... manager" />
+                <marker date="1536498929162" expanded="true" signature="34397:34457" ph="SELECT usern... manager" />
+                <marker date="1536498929162" expanded="true" signature="34637:34717" ph="INSERT INTO `vms`.`t_token`... " />
+                <marker date="1536498929162" expanded="true" signature="34637:34718" ph="INSERT INTO `vms`.`t_token`... " />
+                <marker date="1536498929162" expanded="true" signature="35413:35453" ph="select * fro... t_token" />
+                <marker date="1536498929162" expanded="true" signature="35499:35511" ph="DELETE FROM vms.... " />
+                <marker date="1536498929162" expanded="true" signature="35499:35537" ph="DELETE FROM t_token... " />
+                <marker date="1536498929162" expanded="true" signature="36467:36576" ph="SELECT user_... t_token" />
+                <marker date="1536498929162" expanded="true" signature="36647:36698" ph="UPDATE manager... " />
               </folding>
             </state>
           </provider>
@@ -150,7 +150,7 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
+            <state relative-caret-position="21">
               <caret line="152" column="13" lean-forward="false" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="13" />
               <folding />
             </state>
@@ -160,8 +160,8 @@
       <file leaf-file-name="DB.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vms/DB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="353" column="8" lean-forward="false" selection-start-line="353" selection-start-column="8" selection-end-line="353" selection-end-column="8" />
+            <state relative-caret-position="-5">
+              <caret line="238" column="8" lean-forward="false" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
               <folding>
                 <marker date="1535641049186" expanded="true" signature="4038:4050" ph="insert into missing_value... " />
                 <marker date="1535641049186" expanded="true" signature="4529:4541" ph="insert into missing_value... " />
@@ -207,7 +207,7 @@
       <file leaf-file-name="JWT.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vms/JWT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
+            <state relative-caret-position="1218">
               <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
               <folding>
                 <element signature="e#134#144#0" expanded="true" />
@@ -335,8 +335,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -490,7 +490,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.49573562" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45326087" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37065217" sideWeight="0.48638427" order="15" side_tool="false" content_ui="combo" x="20" y="676" width="1914" height="1034" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28784648" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29104477" sideWeight="0.49565217" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12526652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -739,15 +739,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#404#461#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vms/JWT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
+        <state relative-caret-position="1218">
           <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
           <folding>
             <element signature="e#134#144#0" expanded="true" />
@@ -764,8 +761,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vms/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="353" column="8" lean-forward="false" selection-start-line="353" selection-start-column="8" selection-end-line="353" selection-end-column="8" />
+        <state relative-caret-position="-5">
+          <caret line="238" column="8" lean-forward="false" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
           <folding>
             <marker date="1535641049186" expanded="true" signature="4038:4050" ph="insert into missing_value... " />
             <marker date="1535641049186" expanded="true" signature="4529:4541" ph="insert into missing_value... " />
@@ -779,7 +776,7 @@
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
+        <state relative-caret-position="21">
           <caret line="152" column="13" lean-forward="false" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="13" />
           <folding />
         </state>
@@ -795,93 +792,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="967" column="16" lean-forward="false" selection-start-line="967" selection-start-column="16" selection-end-line="967" selection-end-column="16" />
+        <state relative-caret-position="151">
+          <caret line="992" column="20" lean-forward="true" selection-start-line="992" selection-start-column="20" selection-end-line="992" selection-end-column="20" />
           <folding>
             <element signature="e#24#61#0" expanded="true" />
-            <marker date="1536487451902" expanded="true" signature="585:836" ph="SELECT a.id,... person" />
-            <marker date="1536487451902" expanded="true" signature="978:1251" ph="SELECT a.id,... *" />
-            <marker date="1536487451902" expanded="true" signature="1113:1154" ph="select * FRO... person" />
-            <marker date="1536487451902" expanded="true" signature="1336:1609" ph="SELECT a.id,... *" />
-            <marker date="1536487451902" expanded="true" signature="1471:1511" ph="select * FRO... person" />
-            <marker date="1536487451902" expanded="true" signature="1696:1985" ph="SELECT a.id,... *" />
-            <marker date="1536487451902" expanded="true" signature="1831:1888" ph="select * FRO... person" />
-            <marker date="1536487451902" expanded="true" signature="3810:3850" ph="SELECT * fro... person" />
-            <marker date="1536487451902" expanded="true" signature="4059:4195" ph="INSERT INTO person... " />
-            <marker date="1536487451902" expanded="true" signature="4956:4995" ph="DELETE FROM vms.person... " />
-            <marker date="1536487451902" expanded="true" signature="5048:5116" ph="select * fro... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="5966:6019" ph="SELECT * fro... person" />
-            <marker date="1536487451902" expanded="true" signature="6293:6383" ph="UPDATE person... " />
-            <marker date="1536487451902" expanded="true" signature="7110:7228" ph="select a.*,b... good" />
-            <marker date="1536487451902" expanded="true" signature="7408:7562" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="7441:7477" ph="select * fro... good" />
-            <marker date="1536487451902" expanded="true" signature="7645:7816" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="7678:7696" ph="select * fro... good" />
-            <marker date="1536487451902" expanded="true" signature="7713:7756" ph="select * fro... good_category" />
-            <marker date="1536487451902" expanded="true" signature="7898:8087" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="7931:7967" ph="select * fro... good" />
-            <marker date="1536487451902" expanded="true" signature="7984:8027" ph="select * fro... good_category" />
-            <marker date="1536487451902" expanded="true" signature="9669:9708" ph="SELECT * fro... good" />
-            <marker date="1536487451902" expanded="true" signature="10018:10157" ph="INSERT INTO `good`... " />
-            <marker date="1536487451902" expanded="true" signature="11016:11068" ph="SELECT * fro... good" />
-            <marker date="1536487451902" expanded="true" signature="11661:11784" ph="UPDATE good... " />
-            <marker date="1536487451902" expanded="true" signature="12668:12701" ph="DELETE FROM good... " />
-            <marker date="1536487451902" expanded="true" signature="13226:13337" ph="select a.*,b... server" />
-            <marker date="1536487451902" expanded="true" signature="13533:13678" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="13566:13604" ph="select * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="13768:13930" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="13801:13821" ph="select * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="13838:13883" ph="select * fro... server_category" />
-            <marker date="1536487451902" expanded="true" signature="14019:14199" ph="select a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="14052:14090" ph="select * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="14107:14152" ph="select * fro... server_category" />
-            <marker date="1536487451902" expanded="true" signature="15144:15185" ph="SELECT * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="15393:15480" ph="INSERT INTO `server`... " />
-            <marker date="1536487451902" expanded="true" signature="16245:16299" ph="SELECT * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="16602:16638" ph="SELECT * fro... server" />
-            <marker date="1536487451902" expanded="true" signature="17034:17116" ph="UPDATE server... " />
-            <marker date="1536487451902" expanded="true" signature="17980:18015" ph="DELETE FROM server... " />
-            <marker date="1536487451902" expanded="true" signature="18485:18815" ph="select c.ord... *" />
-            <marker date="1536487451902" expanded="true" signature="18621:18733" ph="select a.*,b... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="20737:20806" ph="SELECT * fro... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="21281:21475" ph="INSERT INTO vip_order... " />
-            <marker date="1536487451902" expanded="true" signature="21782:21876" ph="INSERT INTO `order_good_item`... " />
-            <marker date="1536487451902" expanded="true" signature="21966:22005" ph="select statu... good" />
-            <marker date="1536487451902" expanded="true" signature="22472:22517" ph="UPDATE good... " />
-            <marker date="1536487451902" expanded="true" signature="22694:22799" ph="INSERT INTO `vms`.`order_server_item`... " />
-            <marker date="1536487451902" expanded="true" signature="23515:23603" ph="SELECT id,fr... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="23743:23837" ph="INSERT INTO `order_good_item`... " />
-            <marker date="1536487451902" expanded="true" signature="23954:23993" ph="select statu... good" />
-            <marker date="1536487451902" expanded="true" signature="24350:24395" ph="UPDATE good... " />
-            <marker date="1536487451902" expanded="true" signature="24595:24700" ph="INSERT INTO `vms`.`order_server_item`... " />
-            <marker date="1536487451902" expanded="true" signature="26486:26724" ph="SELECT c.*,d... *" />
-            <marker date="1536487451902" expanded="true" signature="26527:26662" ph="SELECT a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="26559:26617" ph="SELECT * FRO... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="26833:26906" ph="select sum(p... point_detail" />
-            <marker date="1536487451902" expanded="true" signature="27084:27274" ph="select SUM(a... good_id" />
-            <marker date="1536487451902" expanded="true" signature="27144:27212" ph="select good_... order_good_item" />
-            <marker date="1536487451902" expanded="true" signature="27356:27559" ph="select SUM(s... server_id" />
-            <marker date="1536487451902" expanded="true" signature="27418:27492" ph="select serve... order_server_item" />
-            <marker date="1536487451902" expanded="true" signature="29170:29409" ph="SELECT c.*,d... *" />
-            <marker date="1536487451902" expanded="true" signature="29211:29347" ph="SELECT a.*,b... *" />
-            <marker date="1536487451902" expanded="true" signature="29243:29301" ph="SELECT * FRO... vip_order" />
-            <marker date="1536487451902" expanded="true" signature="29465:29537" ph="select SUM(p... point_detail" />
-            <marker date="1536487451902" expanded="true" signature="30022:30147" ph="INSERT INTO `vms`.`point_detail`... " />
-            <marker date="1536487451902" expanded="true" signature="30628:30753" ph="INSERT INTO `vms`.`point_detail`... " />
-            <marker date="1536487451902" expanded="true" signature="31393:31544" ph="UPDATE vip_order... " />
-            <marker date="1536487451902" expanded="true" signature="31674:31799" ph="INSERT INTO `vms`.`point_detail`... " />
-            <marker date="1536487451902" expanded="true" signature="32824:32925" ph="UPDATE vip_order... " />
-            <marker date="1536487451902" expanded="true" signature="32967:33098" ph="select a.goo... order_good_item" />
-            <marker date="1536487451902" expanded="true" signature="33345:33397" ph="UPDATE good... " />
-            <marker date="1536487451902" expanded="true" signature="34182:34203" ph="SELECT usern... manager" />
-            <marker date="1536487451902" expanded="true" signature="34182:34242" ph="SELECT usern... manager" />
-            <marker date="1536487451902" expanded="true" signature="34422:34502" ph="INSERT INTO `vms`.`t_token`... " />
-            <marker date="1536487451902" expanded="true" signature="34422:34503" ph="INSERT INTO `vms`.`t_token`... " />
-            <marker date="1536487451902" expanded="true" signature="35198:35238" ph="select * fro... t_token" />
-            <marker date="1536487451902" expanded="true" signature="35284:35296" ph="DELETE FROM vms.... " />
-            <marker date="1536487451902" expanded="true" signature="35284:35322" ph="DELETE FROM t_token... " />
-            <marker date="1536487451902" expanded="true" signature="36252:36361" ph="SELECT user_... t_token" />
-            <marker date="1536487451902" expanded="true" signature="36432:36483" ph="UPDATE manager... " />
+            <marker date="1536498929162" expanded="true" signature="585:836" ph="SELECT a.id,... person" />
+            <marker date="1536498929162" expanded="true" signature="978:1251" ph="SELECT a.id,... *" />
+            <marker date="1536498929162" expanded="true" signature="1113:1154" ph="select * FRO... person" />
+            <marker date="1536498929162" expanded="true" signature="1336:1609" ph="SELECT a.id,... *" />
+            <marker date="1536498929162" expanded="true" signature="1471:1511" ph="select * FRO... person" />
+            <marker date="1536498929162" expanded="true" signature="1696:1985" ph="SELECT a.id,... *" />
+            <marker date="1536498929162" expanded="true" signature="1831:1888" ph="select * FRO... person" />
+            <marker date="1536498929162" expanded="true" signature="3810:3850" ph="SELECT * fro... person" />
+            <marker date="1536498929162" expanded="true" signature="4059:4195" ph="INSERT INTO person... " />
+            <marker date="1536498929162" expanded="true" signature="4956:4995" ph="DELETE FROM vms.person... " />
+            <marker date="1536498929162" expanded="true" signature="5048:5116" ph="select * fro... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="5966:6019" ph="SELECT * fro... person" />
+            <marker date="1536498929162" expanded="true" signature="6293:6383" ph="UPDATE person... " />
+            <marker date="1536498929162" expanded="true" signature="7110:7228" ph="select a.*,b... good" />
+            <marker date="1536498929162" expanded="true" signature="7408:7562" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="7441:7477" ph="select * fro... good" />
+            <marker date="1536498929162" expanded="true" signature="7645:7816" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="7678:7696" ph="select * fro... good" />
+            <marker date="1536498929162" expanded="true" signature="7713:7756" ph="select * fro... good_category" />
+            <marker date="1536498929162" expanded="true" signature="7898:8087" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="7931:7967" ph="select * fro... good" />
+            <marker date="1536498929162" expanded="true" signature="7984:8027" ph="select * fro... good_category" />
+            <marker date="1536498929162" expanded="true" signature="9669:9708" ph="SELECT * fro... good" />
+            <marker date="1536498929162" expanded="true" signature="10018:10157" ph="INSERT INTO `good`... " />
+            <marker date="1536498929162" expanded="true" signature="11016:11068" ph="SELECT * fro... good" />
+            <marker date="1536498929162" expanded="true" signature="11661:11784" ph="UPDATE good... " />
+            <marker date="1536498929162" expanded="true" signature="12668:12701" ph="DELETE FROM good... " />
+            <marker date="1536498929162" expanded="true" signature="13226:13337" ph="select a.*,b... server" />
+            <marker date="1536498929162" expanded="true" signature="13533:13678" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="13566:13604" ph="select * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="13768:13930" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="13801:13821" ph="select * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="13838:13883" ph="select * fro... server_category" />
+            <marker date="1536498929162" expanded="true" signature="14019:14199" ph="select a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="14052:14090" ph="select * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="14107:14152" ph="select * fro... server_category" />
+            <marker date="1536498929162" expanded="true" signature="15144:15185" ph="SELECT * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="15393:15480" ph="INSERT INTO `server`... " />
+            <marker date="1536498929162" expanded="true" signature="16245:16299" ph="SELECT * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="16602:16638" ph="SELECT * fro... server" />
+            <marker date="1536498929162" expanded="true" signature="17034:17116" ph="UPDATE server... " />
+            <marker date="1536498929162" expanded="true" signature="17980:18015" ph="DELETE FROM server... " />
+            <marker date="1536498929162" expanded="true" signature="18485:18815" ph="select c.ord... *" />
+            <marker date="1536498929162" expanded="true" signature="18621:18733" ph="select a.*,b... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="20737:20806" ph="SELECT * fro... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="21281:21475" ph="INSERT INTO vip_order... " />
+            <marker date="1536498929162" expanded="true" signature="21782:21876" ph="INSERT INTO `order_good_item`... " />
+            <marker date="1536498929162" expanded="true" signature="21966:22005" ph="select statu... good" />
+            <marker date="1536498929162" expanded="true" signature="22472:22517" ph="UPDATE good... " />
+            <marker date="1536498929162" expanded="true" signature="22694:22799" ph="INSERT INTO `vms`.`order_server_item`... " />
+            <marker date="1536498929162" expanded="true" signature="23515:23603" ph="SELECT id,fr... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="23743:23837" ph="INSERT INTO `order_good_item`... " />
+            <marker date="1536498929162" expanded="true" signature="23954:23993" ph="select statu... good" />
+            <marker date="1536498929162" expanded="true" signature="24350:24395" ph="UPDATE good... " />
+            <marker date="1536498929162" expanded="true" signature="24595:24700" ph="INSERT INTO `vms`.`order_server_item`... " />
+            <marker date="1536498929162" expanded="true" signature="26486:26724" ph="SELECT c.*,d... *" />
+            <marker date="1536498929162" expanded="true" signature="26527:26662" ph="SELECT a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="26559:26617" ph="SELECT * FRO... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="26833:26906" ph="select sum(p... point_detail" />
+            <marker date="1536498929162" expanded="true" signature="27084:27274" ph="select SUM(a... good_id" />
+            <marker date="1536498929162" expanded="true" signature="27144:27212" ph="select good_... order_good_item" />
+            <marker date="1536498929162" expanded="true" signature="27356:27559" ph="select SUM(s... server_id" />
+            <marker date="1536498929162" expanded="true" signature="27418:27492" ph="select serve... order_server_item" />
+            <marker date="1536498929162" expanded="true" signature="29170:29409" ph="SELECT c.*,d... *" />
+            <marker date="1536498929162" expanded="true" signature="29211:29347" ph="SELECT a.*,b... *" />
+            <marker date="1536498929162" expanded="true" signature="29243:29301" ph="SELECT * FRO... vip_order" />
+            <marker date="1536498929162" expanded="true" signature="29465:29537" ph="select SUM(p... point_detail" />
+            <marker date="1536498929162" expanded="true" signature="30022:30147" ph="INSERT INTO `vms`.`point_detail`... " />
+            <marker date="1536498929162" expanded="true" signature="30628:30753" ph="INSERT INTO `vms`.`point_detail`... " />
+            <marker date="1536498929162" expanded="true" signature="31393:31544" ph="UPDATE vip_order... " />
+            <marker date="1536498929162" expanded="true" signature="31674:31799" ph="INSERT INTO `vms`.`point_detail`... " />
+            <marker date="1536498929162" expanded="true" signature="32824:32925" ph="UPDATE vip_order... " />
+            <marker date="1536498929162" expanded="true" signature="32967:33098" ph="select a.goo... order_good_item" />
+            <marker date="1536498929162" expanded="true" signature="33345:33397" ph="UPDATE good... " />
+            <marker date="1536498929162" expanded="true" signature="34397:34418" ph="SELECT usern... manager" />
+            <marker date="1536498929162" expanded="true" signature="34397:34457" ph="SELECT usern... manager" />
+            <marker date="1536498929162" expanded="true" signature="34637:34717" ph="INSERT INTO `vms`.`t_token`... " />
+            <marker date="1536498929162" expanded="true" signature="34637:34718" ph="INSERT INTO `vms`.`t_token`... " />
+            <marker date="1536498929162" expanded="true" signature="35413:35453" ph="select * fro... t_token" />
+            <marker date="1536498929162" expanded="true" signature="35499:35511" ph="DELETE FROM vms.... " />
+            <marker date="1536498929162" expanded="true" signature="35499:35537" ph="DELETE FROM t_token... " />
+            <marker date="1536498929162" expanded="true" signature="36467:36576" ph="SELECT user_... t_token" />
+            <marker date="1536498929162" expanded="true" signature="36647:36698" ph="UPDATE manager... " />
           </folding>
         </state>
       </provider>

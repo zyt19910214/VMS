@@ -988,10 +988,18 @@ def del_order(req):
                 "msg": "internal_exceptions"
             }
     else:
-        resp ={
-            "code": 1,
-            "msg": "internal_exceptions"
-        }
+        count = db.update(sql)
+        if count == 1:
+            resp = {
+                "code": 0,
+                "msg": "success"
+            }
+            logger.debug('订单废弃成功')
+        else:
+            resp = {
+                "code": 1,
+                "msg": "internal_exceptions"
+            }
     db.dispose()
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
