@@ -1,48 +1,48 @@
 @echo off
-rem Ìá¹©WindowsÏÂnginxµÄÆô¶¯£¬ÖØÆô£¬¹Ø±Õ¹¦ÄÜ
+rem æä¾›Windowsä¸‹nginxçš„å¯åŠ¨ï¼Œé‡å¯ï¼Œå…³é—­åŠŸèƒ½
  
 echo ==================begin========================
  
 cls 
-::ngxin ËùÔÚµÄÅÌ·û
+::ngxin æ‰€åœ¨çš„ç›˜ç¬¦
 set NGINX_PATH=D:
  
-::nginx ËùÔÚÄ¿Â¼
+::nginx æ‰€åœ¨ç›®å½•
 set NGINX_DIR=D:\Study\VMS\nginx_1.13.6\
 color 0a 
-TITLE Nginx ¹ÜÀí³ÌÐòÔöÇ¿°æ
+TITLE Nginx ç®¡ç†ç¨‹åºå¢žå¼ºç‰ˆ
  
 CLS 
  
 echo. 
-echo. ** Nginx ¹ÜÀí³ÌÐò  *** 
+echo. ** Nginx ç®¡ç†ç¨‹åº  *** 
 echo. *** create 2017-09-22 *** 
 echo. 
  
 :MENU 
  
-echo. ***** nginx ½ø³Ìlist ****** 
+echo. ***** nginx è¿›ç¨‹list ****** 
 ::tasklist|findstr /i "nginx.exe"
 tasklist /fi "imagename eq nginx.exe"
  
 echo. 
  
     if ERRORLEVEL 1 (
-        echo nginx.exe²»´æÔÚ
+        echo nginx.exeä¸å­˜åœ¨
     ) else (
-        echo nginx.exe´æÔÚ
+        echo nginx.exeå­˜åœ¨
     )
  
 echo. 
 ::*************************************************************************************************************
 echo. 
-	echo.  [1] Æô¶¯Nginx  
-	echo.  [2] ¹Ø±ÕNginx  
-	echo.  [3] ÖØÆôNginx 
-	echo.  [0] ÍË ³ö 
+	echo.  [1] å¯åŠ¨Nginx  
+	echo.  [2] å…³é—­Nginx  
+	echo.  [3] é‡å¯Nginx 
+	echo.  [0] é€€ å‡º 
 echo. 
  
-echo.ÇëÊäÈëÑ¡ÔñµÄÐòºÅ:
+echo.è¯·è¾“å…¥é€‰æ‹©çš„åºå·:
 set /p ID=
 	IF "%id%"=="1" GOTO start 
 	IF "%id%"=="2" GOTO stop 
@@ -51,17 +51,17 @@ set /p ID=
 PAUSE 
  
 ::*************************************************************************************************************
-::Æô¶¯
+::å¯åŠ¨
 :start 
 	call :startNginx
 	GOTO MENU
  
-::Í£Ö¹
+::åœæ­¢
 :stop 
 	call :shutdownNginx
 	GOTO MENU
  
-::ÖØÆô
+::é‡å¯
 :restart 
 	call :shutdownNginx
 	call :startNginx
@@ -70,20 +70,20 @@ PAUSE
 
 	
 ::*************************************************************************************
-::µ×²ã
+::åº•å±‚
 ::*************************************************************************************
 :shutdownNginx
 	echo. 
-	echo.¹Ø±ÕNginx...... 
+	echo.å…³é—­Nginx...... 
 	taskkill /F /IM nginx.exe > nul
-	echo.OK,¹Ø±ÕËùÓÐnginx ½ø³Ì
+	echo.OK,å…³é—­æ‰€æœ‰nginx è¿›ç¨‹
 	goto :eof
  
 :startNginx
 	echo. 
-	echo.Æô¶¯Nginx...... 
+	echo.å¯åŠ¨Nginx...... 
 	IF NOT EXIST "%NGINX_DIR%nginx.exe" (
-        echo "%NGINX_DIR%nginx.exe"²»´æÔÚ
+        echo "%NGINX_DIR%nginx.exe"ä¸å­˜åœ¨
         goto :eof
      )
  
