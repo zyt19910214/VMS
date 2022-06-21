@@ -33,7 +33,7 @@ MarkupSafe==1.0
 #matplotlib==2.1.1
 #mysql-connector-python==1.0.12
 #MySQL-python==1.2.3
-numpy==1.13.3
+numpy==1.22.0
 olefile==0.44
 opencv-python==3.4.0.12
 parsel==1.4.0
